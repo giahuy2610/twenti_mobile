@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
+import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Authentication.initializeFirebase();
+
   runApp(
     MultiProvider(
       providers: [

@@ -1,0 +1,48 @@
+[
+    {
+        "IDProduct": 2,
+        "NameProduct": "Mặt Nạ Kỳ Dịu Nhẹ THE FACE SHOP Smart Peeling Mild Papaya 150ml",
+        "IDBrand": 5,
+        "Description": "<p class=\"p1\">\r\n                    <span>\r\n                        <strong>Tẩy Tế Bào Chết Toàn Thân YEHWADAM BODY PEELING</strong>\r\n                        &nbsp;dành được giải thưởng Allure Editor’s Pick vào tháng 10/2019, với công thức từ các loại hạt thiên nhiên giúp làm sạch nhẹ nhàng, mang lại làn da ẩm mượt và mịn màng.&nbsp;\r\n                    </span>\r\n                </p>\r\n                <p class=\"p2\">\r\n                    <div @click=\"$router.push({ path: '/collections', replace: true })\">\r\n                        <p class=\"inline\" title=\"Các sản phẩm tẩy tế bào chết toàn thân THEFACESHOP\" style=\"color:green\">Tẩy tế bào chết toàn thân</p>  \r\n                        <p class=\"inline\"> chiết xuất từ nhân sâm, đậu xanh, đậu đỏ, đậu nành giúp nhẹ nhàng loại bỏ các tế bào chết, những sắc tố da sạm màu thật nhẹ nhàng. Đặc biệt, những vùng da xỉn màu đã tích tụ lâu trên bề mặt da cũng sẽ được loại bỏ đáng kể. Giúp da trắng sáng, mềm mại tức thì sau khi sử dụng. Tăng hiệu quả hấp thụ dưỡng chất cho các liệu trình dưỡng da sau đó cũng sẽ tăng gấp nhiều lần.</p>\r\n                    </div>\r\n                </p>\r\n                <br>\r\n                <h2>\r\n                    <span>Công dụng chính của Yehwadam Body Peeling</span>\r\n                    <br>\r\n                </h2>\r\n                <ul>\r\n                    <li><span>Kết cấu dạng gel an toàn và dịu nhẹ đối với cả làn da nhạy cảm</span></li>\r\n                    <li><span id=\"iv0dv\">Chăm sóc cơ thể với hương hoa trắng tinh tế</span></li>\r\n                    <li><span id=\"i7awi\">Lưu giữ độ ẩm cho làn da sau khi sử dụng</span><br><br></li>\r\n                </ul>\r\n                <p><span>Trong sản phẩm gồm có:</span><br></p>\r\n                <ul>\r\n                    <li><span><em>Đậu xanh: </em>Thành phần làm sạch tự nhiên</span></li>\r\n                    <li><span><em>Đậu nành: </em>Thanh lọc làn da</span></li>\r\n                    <li><span><em>Đậu đỏ: </em>Làm sạch lỗ chân lông</span></li>\r\n                    <li><span><em>Hoa cúc: </em>Làm dịu mát làn da</span></li>\r\n                    <li><span><em>Nhân sâm: </em>Tăng sinh khí cho làn da</span></li>\r\n                    <li><span><em>Hạt kỷ tử: </em>Chống lão hóa sớm cho làn da</span></li>\r\n                </ul>\r\n                <h2>\r\n                    <span><strong>Hướng dẫn sử dụng Yehwadam Body Peeling</strong></span>\r\n                </h2>\r\n                <p><span>Bạn có thể sử dụng sản phẩm trên cơ thể khô hoặc ướt.&nbsp;</span></p>\r\n                <p><span>Lấy 1 lượng vừa đủ thoa lên vùng da cần loại bỏ tế bào chết, sau đó massage nhẹ nhàng khoảng 5 phút sau đó tắm sạch lại.&nbsp;</span></p>\r\n                <p><span>Bạn nên tẩy tế bào chết 1 -2 lần/tuần để giúp da luôn tươi sáng khỏe mạnh.</span></p>",
+        "CreatedOn": "2022-11-25 22:25:39",
+        "IsDeleted": 0,
+        "Stock": 88,
+        "TotalPurchaseQuantity": 34,
+        "Mass": 50,
+        "UnitsOfMass": "gam",
+        "Units": "Unit",
+        "ApplyTaxes": 0,
+        "StatusSale": 1,
+        "IDTag": 31,
+        "IDType": 3,
+        "ListPrice": 379000,
+        "RetailPrice": 379000,
+        "Brand": {
+            "IDBrand": 5,
+            "NameBrand": "THE FACE SHOP",
+            "IDCollection": null,
+            "Country": "Việt Nam",
+            "CreatedOn": "2022-06-14 13:09:37",
+            "IsDeleted": 0,
+            "TotalProduct": 198,
+            "TotalPurchaseQuantity": 140
+        },
+        "Images": [
+            {
+                "Path": "https://image.hsv-tech.io/0x400/tfs/common/fda5ef41-4b41-4bfb-9b07-6cdcdad2f0e9.webp"
+            },
+            {
+                "Path": "https://image.hsv-tech.io/0x400/tfs/common/27c2301d-ac0a-457a-b866-253dbf3a814e.webp"
+            },
+            {
+                "Path": "https://image.hsv-tech.io/0x400/tfs/common/1c7d5f29-0e3b-48d6-805f-deeafc29a01a.webp"
+            },
+            {
+                "Path": "https://image.hsv-tech.io/0x400/tfs/common/4622d29c-9c01-4a30-9ba2-6a4756b69514.webp"
+            }
+        ],
+        "Rating": 0,
+        "Reviews": [],
+        "Quantity": 3
+    }
+]

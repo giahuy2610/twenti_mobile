@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "512825509872",
+    "project_id": "twenti-67a6e",
+    "storage_bucket": "twenti-67a6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512825509872:android:5effc3c8ee507a58707f35",
+        "android_client_info": {
+          "package_name": "com.example.twenti_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512825509872-c76ro3v435ipte2bqfarol76l9hrsd9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3HL193nWlULK4OL9IxNDDDT6XwGHkctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512825509872-6402s22cncp2athuqa1efo0hq3588q9n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

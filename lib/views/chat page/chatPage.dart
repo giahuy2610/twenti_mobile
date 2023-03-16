@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:kommunicate_flutter/kommunicate_flutter.dart';
+import 'package:flutter/material.dart';
+
+import '../../services/chat/chat.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -9,23 +11,26 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  void test() {
-    dynamic conversationObject = {
-      'appId':
-          '<APP_ID>', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
-    };
+  void test() {}
 
-    KommunicateFlutterPlugin.buildConversation(conversationObject)
-        .then((clientConversationId) {
-      print(
-          "Conversation builder success : " + clientConversationId.toString());
-    }).catchError((error) {
-      print("Conversation builder error : " + error.toString());
-    });
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: SafeArea(
+          child: Column(children: const [
+        Text("hdoiidboidb"),
+        IconButton(onPressed: newChat, icon: Icon(Icons.face))
+      ])),
+    );
   }
 }

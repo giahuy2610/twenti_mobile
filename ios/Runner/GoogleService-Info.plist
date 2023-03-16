@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>512825509872-3m2f1mtincnoi2tob5pgt6ggfntqecu9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.512825509872-3m2f1mtincnoi2tob5pgt6ggfntqecu9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDjQ_YF1n24lrNsiP3cUwNR6weXXc3x3tQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>512825509872</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.twentiMobile</string>
+	<key>PROJECT_ID</key>
+	<string>twenti-67a6e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>twenti-67a6e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:512825509872:ios:bf8c7f45f4ef01fc707f35</string>
+</dict>
+</plist>

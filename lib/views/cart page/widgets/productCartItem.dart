@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ProductCartItem extends StatelessWidget {
   late final String? image;
   late final String name;
-  late final String id;
+  late final int id;
   late final int price;
   ProductCartItem(
       {this.image, required this.name, required this.id, required this.price});

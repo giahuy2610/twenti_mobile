@@ -8,6 +8,11 @@ class TopNavigation extends StatelessWidget {
   late final Widget? right;
   late final Widget? stepRight;
   late bool? isSearcher = true;
+  Widget placeHolder = const SizedBox(
+    width: 50,
+    height: 50,
+  );
+
   TopNavigation(
       {super.key, this.left, this.right, this.stepRight, this.isSearcher});
 
@@ -37,7 +42,7 @@ class TopNavigation extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                left!,
+                left != null ? left! : placeHolder,
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: GestureDetector(
@@ -56,9 +61,9 @@ class TopNavigation extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: stepRight!,
+                  child: stepRight != null ? stepRight! : placeHolder,
                 ),
-                right!
+                right != null ? right! : placeHolder
               ],
             ),
           )
