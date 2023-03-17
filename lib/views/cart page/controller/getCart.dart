@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:twenti_mobile/services/http/constant.dart';
 
 import '../../../models/product/cartProduct.dart';
 
 Future<List<CartProduct>>? fetchPost() async {
   http.Response response = await http.post(
-    Uri.parse('http://192.168.1.4:8000/api/cart/show'),
+    Uri.parse('$baseUrl/api/cart/show'),
     body: {"IDCus": "2"},
   );
 

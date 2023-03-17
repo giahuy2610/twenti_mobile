@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Twenti',
       theme: ThemeData(),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
