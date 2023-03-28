@@ -34,6 +34,7 @@ class TopNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 5),
       decoration: const BoxDecoration(
           border: Border(bottom: BorderSide(width: 2, color: Colors.grey))),
       child: Row(

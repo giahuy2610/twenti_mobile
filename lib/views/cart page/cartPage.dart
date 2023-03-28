@@ -13,20 +13,17 @@ class CartPage extends StatelessWidget {
             child: Column(
       children: [
         TopNavigation(
-            left: Material(
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.keyboard_arrow_left)),
-            ),
-            right: Text("CART"),
-            stepRight: Material(
-              child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.filter_list_alt)),
-            )),
-        Expanded(child: ProductCartListView()),
-        BottomNavigation()
+          left: Material(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.keyboard_arrow_left)),
+          ),
+          right: Text("CART"),
+        ),
+        const Expanded(child: ProductCartListView()),
+        const BottomNavigation()
       ],
     )));
   }

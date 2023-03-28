@@ -19,24 +19,31 @@ class _SearchPageState extends State<SearchPage> {
             child: Column(
       children: [
         TopNavigation(
-            left: Material(
+          isSearcher: false,
+          left: Material(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.keyboard_arrow_left)),
+          ),
+          right: Material(
               child: IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => CartPage()));
                   },
-                  icon: const Icon(Icons.keyboard_arrow_left)),
+                  icon: const Icon(Icons.shopping_bag_outlined))),
+          stepRight: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 100),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter a search term',
+              ),
             ),
-            right: Material(
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => CartPage()));
-                    },
-                    icon: const Icon(Icons.shopping_bag_outlined))),
-            stepRight: Material(
-              child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.filter_list_alt)),
-            )),
+          ),
+        ),
         Expanded(child: Text(""))
       ],
     )));

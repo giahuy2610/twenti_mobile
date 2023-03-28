@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/chat/chat.dart';
@@ -16,6 +15,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
+    newChat;
   }
 
   @override

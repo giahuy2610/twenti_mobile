@@ -5,13 +5,12 @@ import 'package:twenti_mobile/services/http/constant.dart';
 
 import '../../../models/product/cartProduct.dart';
 
-Future<List<CartProduct>>? fetchPost() async {
+Future<List<CartProduct>>? getCart() async {
   http.Response response = await http.post(
     Uri.parse('$baseUrl/api/cart/show'),
     body: {"IDCus": "2"},
   );
 
-  print(2);
   if (response.statusCode == 200) {
     var list = json.decode(response.body);
     var res = <CartProduct>[];

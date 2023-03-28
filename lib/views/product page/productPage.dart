@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
+import '../../models/product/product.dart';
 import '../../services/deep linking/deepLink.dart';
 import '../cart page/cartPage.dart';
+import 'controllers/futureGetProduct.dart';
 
 class ProductPage extends StatelessWidget {
   @override
@@ -32,7 +34,20 @@ class ProductPage extends StatelessWidget {
                   },
                   icon: const Icon(Icons.shopping_bag_outlined))),
         ),
-        Expanded(child: ListView()),
+        Expanded(
+            child: ListView(
+          children: [
+            FutureBuilder<Product>(
+                future: futureGetProduct(30400522),
+                builder: (builder, snapshot) {
+                  if (snapshot.hasData) {
+                    return Text("have done");
+                  } else {
+                    return Text("colection being loaded");
+                  }
+                })
+          ],
+        )),
       ],
     )));
   }

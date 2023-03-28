@@ -11,7 +11,6 @@ class CartProduct {
       CartProduct(quantity: json["Quantity"], product: Product.fromJson(json));
 }
 
-
 // @JsonSerializable()
 // class CartProduct extends Product {
 //   @JsonKey(name: 'Path')
@@ -65,6 +64,5 @@ class CartProduct {
 
 //   CartProduct.fromJson(Map<String, dynamic> json) :
 //     quantity = json["Quantity"];
-  
 
 // }

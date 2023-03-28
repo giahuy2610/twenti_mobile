@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '512825509872',
     projectId: 'twenti-67a6e',
     storageBucket: 'twenti-67a6e.appspot.com',
-    iosClientId: '512825509872-3m2f1mtincnoi2tob5pgt6ggfntqecu9.apps.googleusercontent.com',
+    iosClientId:
+        '512825509872-3m2f1mtincnoi2tob5pgt6ggfntqecu9.apps.googleusercontent.com',
     iosBundleId: 'com.example.twentiMobile',
   );
 }

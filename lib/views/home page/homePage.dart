@@ -1,11 +1,15 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:twenti_mobile/common%20widgets/product%20list%20view.dart';
 
-import '../../common widgets/bottom navigation/bottomNavigation.dart';
+import '../../common widgets/image slider/imageSlider.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
+import '../../models/image_slider/image_slider.dart';
+import '../../models/product/collection.dart';
 import '../cart page/cartPage.dart';
 import '../product page/productPage.dart';
+import 'controllers/futureGetCollection.dart';
+import 'controllers/futureGetImageSliderCollection.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -60,8 +64,37 @@ class _HomePageState extends State<HomePage> {
                   },
                   icon: const Icon(Icons.shopping_bag_outlined))),
         ),
-        Expanded(child: SvgPicture.asset('assets/icons/Send.svg')),
-        BottomNavigation()
+        Expanded(
+            child: ListView(
+          children: [
+            FutureBuilder<List<ImageSlider>>(
+                future: futureGetImageSliderCollection(),
+                builder: (builder, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
+                      height: 300,
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(50))),
+                      child: SizedBox(child: imageSlider(snapshot.data!)),
+                    );
+                  } else {
+                    return Text("loading");
+                  }
+                }),
+            FutureBuilder<Collection>(
+                future: futureGetCollection(65),
+                builder: (builder, snapshot) {
+                  if (snapshot.hasData) {
+                    return productListView(snapshot.data!.products);
+                  } else {
+                    return Text("colection being loaded");
+                  }
+                })
+          ],
+        )),
       ],
     )));
   }
