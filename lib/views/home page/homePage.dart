@@ -72,10 +72,10 @@ class _HomePageState extends State<HomePage> {
                 builder: (builder, snapshot) {
                   if (snapshot.hasData) {
                     return Container(
-                      height: 300,
+                      height: 200,
                       width: double.infinity,
+                      clipBehavior: Clip.hardEdge,
                       decoration: const BoxDecoration(
-                          color: Colors.red,
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(50))),
                       child: SizedBox(child: imageSlider(snapshot.data!)),

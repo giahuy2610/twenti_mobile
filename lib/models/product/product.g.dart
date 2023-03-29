@@ -28,10 +28,12 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
           ? null
           : Brand.fromJson(json['Brand'] as Map<String, dynamic>),
       images: (json['Images'] as List<dynamic>?)
-          ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      rating: json['Rating'] as int?,
-      reviews: json['Reviews'] as List<dynamic>?,
+      rating: json['Rating'] as dynamic?,
+      reviews: (json['Reviews'] as List<dynamic>?)
+          ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{

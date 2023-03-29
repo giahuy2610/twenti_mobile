@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:twenti_mobile/views/product%20page/widgets/description.dart';
+import 'package:twenti_mobile/views/product%20page/widgets/imageSlider.dart';
+import 'package:twenti_mobile/views/product%20page/widgets/productHeading.dart';
+import 'package:twenti_mobile/views/product%20page/widgets/reviews.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/product.dart';
@@ -35,19 +39,31 @@ class ProductPage extends StatelessWidget {
                   icon: const Icon(Icons.shopping_bag_outlined))),
         ),
         Expanded(
-            child: ListView(
-          children: [
-            FutureBuilder<Product>(
-                future: futureGetProduct(30400522),
+            child: FutureBuilder<Product>(
+                future: futureGetProduct(53050323),
                 builder: (builder, snapshot) {
                   if (snapshot.hasData) {
-                    return Text("have done");
+                    var data = snapshot.data!;
+                    return Container(
+                      height: 500,
+                      child: ListView(
+                        children: [
+                          productImagesSlider(data.images!),
+                          productHeading(
+                            nameProduct: data.nameProduct,
+                            nameBrand: data.brand!.nameBrand!,
+                            idBrand: data.idBrand,
+                            categoryName: data.nameProduct,
+                          ),
+                          reviews(data.reviews!),
+                          description(data.description!)
+                        ],
+                      ),
+                    );
                   } else {
                     return Text("colection being loaded");
                   }
-                })
-          ],
-        )),
+                })),
       ],
     )));
   }

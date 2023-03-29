@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:twenti_mobile/models/product/review.dart';
 
 import 'brand.dart';
 import 'image.dart';
@@ -44,11 +45,11 @@ class Product {
   @JsonKey(name: 'Brand')
   Brand? brand;
   @JsonKey(name: 'Images')
-  List<Image>? images;
+  List<ImageModel>? images;
   @JsonKey(name: 'Rating')
-  int? rating;
+  dynamic? rating;
   @JsonKey(name: 'Reviews')
-  List<dynamic>? reviews;
+  List<Review>? reviews;
 
   Product({
     required this.idProduct,

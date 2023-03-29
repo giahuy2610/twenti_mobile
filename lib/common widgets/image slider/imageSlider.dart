@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/models/image_slider/image_slider.dart';
-import 'package:twenti_mobile/views/product%20page/productPage.dart';
+
+import '../../views/collection page/collectionPage.dart';
 
 class imageSlider extends StatefulWidget {
   late List<ImageSlider> child;
@@ -19,58 +20,14 @@ class _imageSliderState extends State<imageSlider> {
 
   _imageSliderState(List<ImageSlider> this.child);
 
-  // late List<Map<String, Object>> child = [
-  //   {
-  //     "IDImage": 1,
-  //     "StartOn": "2022-12-05",
-  //     "EndOn": "2025-12-19",
-  //     "Path":
-  //         "https://image.hsv-tech.io/1920x0/tfs/common/5e1e5fb5-8cc3-4da9-94c1-4bd9f9e55a79.webp",
-  //     "Route": "/collection/1",
-  //     "IsDeleted": 0,
-  //     "CreatedOn": "2022-12-05"
-  //   },
-  //   {
-  //     "IDImage": 2,
-  //     "StartOn": "2022-12-05",
-  //     "EndOn": "2027-12-16",
-  //     "Path":
-  //         "https://image.hsv-tech.io/1920x0/tfs/common/d7ba21cd-a534-41fb-ab78-7e72d12b8c05.webp",
-  //     "Route": "/collection/1",
-  //     "IsDeleted": 0,
-  //     "CreatedOn": "2022-12-05"
-  //   },
-  //   {
-  //     "IDImage": 3,
-  //     "StartOn": "2022-12-05",
-  //     "EndOn": "2027-12-24",
-  //     "Path":
-  //         "https://image.hsv-tech.io/1920x0/tfs/common/9de5f6bd-3dad-4a05-b006-7a992e181089.webp",
-  //     "Route": "/collection/1",
-  //     "IsDeleted": 0,
-  //     "CreatedOn": "2022-12-05"
-  //   },
-  //   {
-  //     "IDImage": 4,
-  //     "StartOn": "2022-12-24",
-  //     "EndOn": "2026-12-31",
-  //     "Path":
-  //         "https://image.hsv-tech.io/1920x0/tfs/common/5921e9a3-728b-42db-8e02-3cc7b21f35d8.webp",
-  //     "Route": "/collection/1",
-  //     "IsDeleted": 0,
-  //     "CreatedOn": "2022-12-24"
-  //   }
-  // ];
-
-  // imageSlider({required this.child});
   @override
   Widget build(BuildContext context) => Stack(children: <Widget>[
         CarouselSlider(
           items: [
             for (var i in child)
               InkWell(
-                onTap: () => Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => ProductPage())),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => CollectionPage())),
                 child: Image.network(
                   i.path.toString(),
                   fit: BoxFit.fill,
