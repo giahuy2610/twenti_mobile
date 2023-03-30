@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
 class TopNavigation extends StatelessWidget {
@@ -18,15 +17,24 @@ class TopNavigation extends StatelessWidget {
 
   Widget searchFiedld(context) {
     return Container(
+        width: 150,
         decoration: BoxDecoration(
-            border:
-                Border.all(color: Theme.of(context).own().textBaloon, width: 2),
+            border: Border.all(
+              color: Color.fromRGBO(244, 163, 155, 1),
+              width: 2,
+            ),
             borderRadius: BorderRadius.circular(500)),
         padding: const EdgeInsets.all(5),
         child: Row(
           children: const [
-            Icon(CupertinoIcons.search),
-            Text("Place holder...")
+            Icon(
+              CupertinoIcons.search,
+              color: Colors.grey,
+            ),
+            Text(
+              "Mua gì em ",
+              style: TextStyle(color: Colors.grey),
+            )
           ],
         ));
   }

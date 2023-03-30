@@ -37,8 +37,7 @@ class _imageSliderState extends State<imageSlider> {
           carouselController: buttonCarouselController,
           options: CarouselOptions(
             autoPlay: true,
-            // enlargeCenterPage: true,
-            viewportFraction: 0.95,
+            viewportFraction: 1,
             // aspectRatio: 2.0,
             initialPage: 2,
             onPageChanged: (index, reason) {
