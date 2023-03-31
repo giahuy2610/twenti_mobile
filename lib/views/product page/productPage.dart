@@ -92,18 +92,21 @@ class ProductPage extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                         color: Color.fromRGBO(255, 49, 49, 1)),
                                   ),
-                                  Text(
-                                    data.listPrice.toString(),
-                                    style: TextStyle(
-                                        decoration: TextDecoration.lineThrough),
-                                  )
+                                  data.listPrice != data.retailPrice
+                                      ? Text(
+                                          data.listPrice.toString(),
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                        )
+                                      : Container()
                                 ],
                               ),
                               salePercent != 0
                                   ? Padding(
                                       padding: EdgeInsets.only(left: 5),
                                       child: salePercentBadge(salePercent))
-                                  : Text("")
+                                  : Container()
                             ],
                           ),
                           Container(
