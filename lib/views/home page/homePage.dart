@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       final Uri deepLink = initialLink.link;
       // Example of using the dynamic link to push the user to a different screen
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ProductPage()));
+          context, MaterialPageRoute(builder: (context) => ProductPage(65)));
     }
 
     FirebaseDynamicLinks.instance.onLink.listen(

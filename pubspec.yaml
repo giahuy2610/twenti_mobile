@@ -51,6 +51,9 @@ dependencies:
   vnpay_flutter: ^1.0.1
   carousel_slider: ^4.2.1
   rive: ^0.10.3
+  flutter_i18n: ^0.32.4
+  qr_code_scanner: ^1.0.1
+  image_picker: ^0.8.7+1
 
 dev_dependencies:
   flutter_test:

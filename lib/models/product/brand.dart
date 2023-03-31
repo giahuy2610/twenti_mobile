@@ -5,11 +5,11 @@ part 'brand.g.dart';
 @JsonSerializable()
 class Brand {
   @JsonKey(name: 'IDBrand')
-  int? idBrand;
+  int idBrand;
   @JsonKey(name: 'NameBrand')
-  String? nameBrand;
+  String nameBrand;
   @JsonKey(name: 'IDCollection')
-  dynamic idCollection;
+  int? idCollection;
   @JsonKey(name: 'Country')
   String? country;
   @JsonKey(name: 'CreatedOn')
@@ -22,8 +22,8 @@ class Brand {
   int? totalPurchaseQuantity;
 
   Brand({
-    this.idBrand,
-    this.nameBrand,
+    required this.idBrand,
+    required this.nameBrand,
     this.idCollection,
     this.country,
     this.createdOn,
