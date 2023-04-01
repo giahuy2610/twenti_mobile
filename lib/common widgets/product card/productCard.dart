@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/common%20widgets/sale_percent_badge/salePercentBadge.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
@@ -33,8 +34,10 @@ class productCard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (_) => ProductPage(product.idProduct)));
+                  PageTransition(
+                      type: PageTransitionType.rightToLeftWithFade,
+                      child: ProductPage(product.idProduct),
+                      childCurrent: this));
             },
             child: Column(
               children: [

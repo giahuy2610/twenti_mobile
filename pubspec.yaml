@@ -54,6 +54,7 @@ dependencies:
   flutter_i18n: ^0.32.4
   qr_code_scanner: ^1.0.1
   image_picker: ^0.8.7+1
+  page_transition: ^2.0.9
 
 dev_dependencies:
   flutter_test:
