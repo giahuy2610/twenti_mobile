@@ -14,34 +14,52 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   FocusNode inputNode = FocusNode();
   bool isHidePassword = true;
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-              appBar: AppBar(
-                //toolbarHeight: 40,
-                title: Text('Đăng nhập',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),),
-                centerTitle: true,
+    return Scaffold(
+      body: SingleChildScrollView  (
+        child: Stack(
+          fit: StackFit.loose,
+              children:<Widget>[
+                Container(
+                  child: Center(
+                    child: AppBar(
+                    title: Text('Đăng nhập',
+                    style: TextStyle(
+                    fontSize: 20,
+                            ) , 
+                            ),
+                    centerTitle: true,
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                  ) 
+                  ),
+                ), 
+              //   AppBar(
+              //   //toolbarHeight: 40,
+              //   title: Text('Đăng nhập',
+              //           style: TextStyle(
+              //             fontSize: 20,
+              //           ),),
+              //   centerTitle: true,
                 
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
-                leading: (
-                  IconButton(
-                    icon: Icon(Icons.arrow_back_ios_outlined),
-                    onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('This is a button back ')));
-                    },
-                    )
-                ),
-              ),
-              body: Container(
+              //   backgroundColor: Colors.white,
+              //   foregroundColor: Colors.black,
+              //   leading: (
+              //     IconButton(
+              //       icon: Icon(Icons.arrow_back_ios_outlined),
+              //       onPressed: () {
+              //       ScaffoldMessenger.of(context).showSnackBar(
+              //       const SnackBar(content: Text('This is a button back ')));
+              //       },
+              //       )
+              //   ),
+              // ),
+              Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
+                  //mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     //SizedBox(height: 25.0),
                     Container(
@@ -93,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         
                       ),
+                  
                       Container(
                         margin: const EdgeInsets.only(top: 50),
                         child: OutlinedButton(                          
@@ -140,9 +159,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                     
                 ),
+              ],
               ),
           //children: [IconButton(onPressed: () {}, icon: Icon(Icons.login))],
-        
+      )
       );
   }
   void _togglePasswordView() {
