@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/models/image_slider/image_slider.dart';
 
 import '../../views/collection page/collectionPage.dart';
@@ -26,8 +27,12 @@ class _imageSliderState extends State<imageSlider> {
           items: [
             for (var i in child)
               InkWell(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => CollectionPage())),
+                onTap: () => Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: CollectionPage(),
+                        childCurrent: context.widget)),
                 child: Image.network(
                   i.path.toString(),
                   fit: BoxFit.fill,
@@ -37,8 +42,7 @@ class _imageSliderState extends State<imageSlider> {
           carouselController: buttonCarouselController,
           options: CarouselOptions(
             autoPlay: true,
-            // enlargeCenterPage: true,
-            viewportFraction: 0.95,
+            viewportFraction: 1,
             // aspectRatio: 2.0,
             initialPage: 2,
             onPageChanged: (index, reason) {
