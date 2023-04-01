@@ -15,12 +15,24 @@ class productHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 5),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      decoration: BoxDecoration(color: Colors.white),
       child: Column(
         children: [
           Row(
             children: [Text(nameBrand)],
           ),
-          Row(children: [Text(nameProduct)])
+          Row(children: [
+            Expanded(
+              child: Text(
+                nameProduct,
+                softWrap: true,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ])
         ],
       ),
     );

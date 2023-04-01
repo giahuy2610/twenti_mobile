@@ -1,6 +1,6 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
-import 'package:twenti_mobile/common%20widgets/product%20list%20view.dart';
+import 'package:twenti_mobile/common%20widgets/product_list_view/product%20list%20view.dart';
 
 import '../../common widgets/image slider/imageSlider.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       final Uri deepLink = initialLink.link;
       // Example of using the dynamic link to push the user to a different screen
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ProductPage()));
+          context, MaterialPageRoute(builder: (context) => ProductPage(65)));
     }
 
     FirebaseDynamicLinks.instance.onLink.listen(
@@ -72,13 +72,22 @@ class _HomePageState extends State<HomePage> {
                 builder: (builder, snapshot) {
                   if (snapshot.hasData) {
                     return Container(
-                      height: 200,
                       width: double.infinity,
+                      height: MediaQuery.of(context).size.width * 9 / 16,
                       clipBehavior: Clip.hardEdge,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(50))),
-                      child: SizedBox(child: imageSlider(snapshot.data!)),
+                              bottomLeft: Radius.circular(50)),
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                              color: Colors.black45.withOpacity(0.1),
+                              blurRadius: 1,
+                              offset: Offset(0, 2),
+                            ),
+                          ]),
+                      child: SizedBox(
+                          width: double.infinity,
+                          child: imageSlider(snapshot.data!)),
                     );
                   } else {
                     return Text("loading");

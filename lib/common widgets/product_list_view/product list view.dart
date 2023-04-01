@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/common%20widgets/product%20card/productCard.dart';
 
-import '../models/product/product.dart';
+import '../../models/product/product.dart';
 
 class productListView extends StatefulWidget {
   late List<Product> productList;

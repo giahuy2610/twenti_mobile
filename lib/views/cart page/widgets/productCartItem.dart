@@ -1,13 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
-class ProductCartItem extends StatelessWidget {
+class ProductCartItem extends StatefulWidget {
   late final String? image;
   late final String name;
   late final int id;
   late final int price;
   ProductCartItem(
       {this.image, required this.name, required this.id, required this.price});
+
+  @override
+  State<ProductCartItem> createState() => _ProductCartItemState();
+}
+
+class _ProductCartItemState extends State<ProductCartItem> {
+  bool _isChecked = false;
 
   Widget quantityPicker() {
     return Container(
@@ -39,25 +47,51 @@ class ProductCartItem extends StatelessWidget {
       height: 70,
       child: Row(
         children: [
-          Image(
-            image: NetworkImage(image!),
+          Checkbox(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+            checkColor: Colors.white,
+            // fillColor: MaterialStateProperty.resolveWith(getColor),
+            value: _isChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                _isChecked = value!;
+              });
+            },
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              child: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => ProductPage(widget.id)));
+            },
+            child: Row(
               children: [
-                //product name
-                Text(
-                  name,
-                  style: const TextStyle(overflow: TextOverflow.ellipsis),
-                  maxLines: 2,
+                Image(
+                  image: NetworkImage(widget.image!),
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(price.toString()), quantityPicker()])
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //product name
+                      Text(
+                        widget.name,
+                        style: const TextStyle(overflow: TextOverflow.ellipsis),
+                        maxLines: 2,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(widget.price.toString()),
+                            quantityPicker()
+                          ])
+                    ],
+                  ),
+                ),
               ],
             ),
-          )
+          ))
         ],
       ),
     );

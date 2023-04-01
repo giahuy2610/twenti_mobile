@@ -17,7 +17,11 @@ class _descriptionState extends State<description> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      decoration: BoxDecoration(color: Colors.white),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Mô tả sản phẩm"),
           SizedBox(
@@ -26,7 +30,12 @@ class _descriptionState extends State<description> {
               onTap: () => setState(() {
                     isShow = !isShow;
                   }),
-              child: Text(isShow == true ? "Thu gọn" : "Xem đầy đủ"))
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  isShow == true ? "Thu gọn" : "Xem đầy đủ",
+                ),
+              ))
         ],
       ),
     );

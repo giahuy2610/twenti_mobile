@@ -12,6 +12,10 @@ class reviewItem extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(5),
+      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: Color.fromRGBO(249, 249, 249, 1)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,11 +31,60 @@ class reviewItem extends StatelessWidget {
           Row(
             children: [
               for (var i in review.images!)
-                Image.network(
-                  i.path,
-                  width: 150,
-                  height: 150,
-                )
+                InkWell(
+                  // onTap: () => Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (_) =>
+                  //             viewImagePage(review.images, _current))),
+                  child: Container(
+                    margin: EdgeInsets.only(right: 5),
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.black45.withOpacity(0.1),
+                          blurRadius: 1,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Image.network(
+                      i.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+              for (var i in review.images!)
+                Container(
+                  margin: EdgeInsets.only(right: 5),
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.black45.withOpacity(0.1),
+                        blurRadius: 1,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Stack(children: [
+                    Image.network(
+                      i.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+                    Container(
+                      color: Colors.black45,
+                      child: Align(child: Text("+1")),
+                    )
+                  ]),
+                ),
             ],
           )
         ],
