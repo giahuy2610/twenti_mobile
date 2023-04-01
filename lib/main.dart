@@ -8,6 +8,7 @@ import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
 import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
+import 'package:twenti_mobile/views/login page/loginPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +55,7 @@ class _MyAppState extends State<MyApp> {
           body: IndexedStack(
             index: _index,
             children: [
+              //LoginPage(),
               HomePage(),
               CategoryPage(),
               ChatPage(),
@@ -82,9 +84,9 @@ class _MyAppState extends State<MyApp> {
             }),
             showUnselectedLabels: true,
           )),
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
+         ),
+       ),
+      // debugShowCheckedModeBanner: false,
     );
   }
 }
