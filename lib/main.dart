@@ -8,7 +8,6 @@ import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
 import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
-import 'package:twenti_mobile/views/login page/loginPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,37 +54,36 @@ class _MyAppState extends State<MyApp> {
           body: IndexedStack(
             index: _index,
             children: [
-              LoginPage(),
-              // HomePage(),
-              // CategoryPage(),
-              // ChatPage(),
-              // CartPage(),
-              // AccountPage()
+              HomePage(),
+              CategoryPage(),
+              ChatPage(),
+              CartPage(),
+              AccountPage()
             ],
           ),
-          // bottomNavigationBar: Material(
-          //     child: BottomNavigationBar(
-          //   items: [
-          //     for (var i in navList)
-          //       BottomNavigationBarItem(
-          //         icon: SvgPicture.asset(
-          //           i["iconPath"]!,
-          //         ),
-          //         label: i["title"]!,
-          //         backgroundColor: Colors.blue,
-          //       ),
-          //   ],
-          //   currentIndex: _index,
-          //   selectedItemColor: Colors.orange[400],
-          //   unselectedFontSize: 14,
-          //   selectedFontSize: 14,
-          //   onTap: (i) => setState(() {
-          //     _index = i;
-          //   }),
-          //   showUnselectedLabels: true,
-          //)),
-         ),
-       ),
+          bottomNavigationBar: Material(
+              child: BottomNavigationBar(
+            items: [
+              for (var i in navList)
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    i["iconPath"]!,
+                  ),
+                  label: i["title"]!,
+                  backgroundColor: Colors.blue,
+                ),
+            ],
+            currentIndex: _index,
+            selectedItemColor: Colors.orange[400],
+            unselectedFontSize: 14,
+            selectedFontSize: 14,
+            onTap: (i) => setState(() {
+              _index = i;
+            }),
+            showUnselectedLabels: true,
+          )),
+        ),
+      ),
       // debugShowCheckedModeBanner: false,
     );
   }
