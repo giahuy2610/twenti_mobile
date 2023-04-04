@@ -21,15 +21,22 @@ class _productListViewState extends State<productListView> {
     return Container(
       width: double.infinity,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Column(
-              children: [for (var i in productList) productCard(i)],
+              children: [
+                for (var i = 0; i < productList.length; i += 2)
+                  productCard(productList[i])
+              ],
             ),
           ),
           Expanded(
             child: Column(
-              children: [for (var i in productList) productCard(i)],
+              children: [
+                for (var i = 1; i < productList.length; i += 2)
+                  productCard(productList[i])
+              ],
             ),
           )
         ],

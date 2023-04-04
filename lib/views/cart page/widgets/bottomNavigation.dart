@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'package:twenti_mobile/providers/cartProvider.dart';
+import 'package:twenti_mobile/views/checkout%20pape/checkoutPage.dart';
+
+import '../../../providers/cartProvider.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -21,18 +24,23 @@ class _BottomNavigationState extends State<BottomNavigation> {
           children: [
             RichText(
               text: TextSpan(
-                text: 'Total ',
+                text: 'Tổng: ',
                 style: DefaultTextStyle.of(context).style,
-                children: const <TextSpan>[
+                children: <TextSpan>[
                   TextSpan(
-                      text: '200.000d',
+                      text: context.watch<CartProvider>().total.toString(),
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
                 ],
               ),
             ),
             InkWell(
-              onTap: () => context.read<CartProvider>().increment(),
+              onTap: () => Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeftPop,
+                      child: checkoutPage(),
+                      childCurrent: widget)),
               child: Container(
                 height: double.infinity,
                 width: MediaQuery.of(context).size.width * 0.4,
@@ -41,7 +49,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     borderRadius: BorderRadius.circular(500),
                     color: Colors.black),
                 child: const Text(
-                  "PAY",
+                  "Thanh toán",
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 20,

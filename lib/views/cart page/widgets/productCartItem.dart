@@ -1,14 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
+
+import '../controllers/futureAddToCart.dart';
 
 class ProductCartItem extends StatefulWidget {
   late final String? image;
   late final String name;
   late final int id;
   late final int price;
+  late int quantity;
   ProductCartItem(
-      {this.image, required this.name, required this.id, required this.price});
+      {this.image,
+      required this.name,
+      required this.id,
+      required this.price,
+      required this.quantity});
 
   @override
   State<ProductCartItem> createState() => _ProductCartItemState();
@@ -26,12 +35,18 @@ class _ProductCartItemState extends State<ProductCartItem> {
       child: Row(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              futureAddToCart(widget.id, 0);
+            },
             child: Icon(CupertinoIcons.minus),
           ),
-          Text("1"),
+          Text(widget.quantity.toString()),
           InkWell(
-            onTap: () {},
+            onTap: () async {
+              context
+                  .read<CartProvider>()
+                  .saveCartProducts(await futureAddToCart(widget.id, 1));
+            },
             child: Icon(CupertinoIcons.plus),
           )
         ],

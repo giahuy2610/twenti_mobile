@@ -46,8 +46,18 @@ class productCard extends StatelessWidget {
                   padding: const EdgeInsets.all(5.0),
                   child: Column(
                     children: [
-                      Text(product.brand!.nameBrand),
-                      Text(product.nameProduct),
+                      Text(
+                        product.brand!.nameBrand,
+                        maxLines: 1,
+                        style: TextStyle(overflow: TextOverflow.ellipsis),
+                      ),
+                      Text(
+                        product.nameProduct,
+                        maxLines: 2,
+                        style: TextStyle(
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
