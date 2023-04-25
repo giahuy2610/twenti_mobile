@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:twenti_mobile/views/cart%20page/widgets/productCartItem.dart';
+import 'package:twenti_mobile/views/cart%20page/widgets/productCartItemSkeleton.dart';
 
 import '../../../models/product/cartProduct.dart';
-import '../../../providers/cartProvider.dart';
 import '../controllers/getCart.dart';
 
 class ProductCartListView extends StatelessWidget {
@@ -12,12 +11,11 @@ class ProductCartListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<CartProduct>>(
-        future: getCart(),
+        future: getCart(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            context.read<CartProvider>().saveCartProducts(snapshot.data!);
             return ListView(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 10),
                 children: [
                   for (var i in (snapshot.data!))
                     ProductCartItem(
@@ -30,8 +28,10 @@ class ProductCartListView extends StatelessWidget {
                 ]);
           }
           return ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              children: [Text("loading")]);
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              children: [
+                for (var i = 0; i < 6; i++) productCartItemSkeleton()
+              ]);
         });
   }
 }

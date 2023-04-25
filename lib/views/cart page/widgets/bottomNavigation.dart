@@ -17,8 +17,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return Container(
         height: 60,
-        decoration: BoxDecoration(color: Colors.pinkAccent),
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        decoration: const BoxDecoration(color: Colors.pinkAccent),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,15 +34,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 ],
               ),
             ),
-            InkWell(
+            GestureDetector(
               onTap: () => Navigator.push(
                   context,
                   PageTransition(
                       type: PageTransitionType.rightToLeftPop,
-                      child: checkoutPage(),
+                      child: const checkoutPage(),
                       childCurrent: widget)),
               child: Container(
-                height: double.infinity,
+                // height: double.infinity,
                 width: MediaQuery.of(context).size.width * 0.4,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(

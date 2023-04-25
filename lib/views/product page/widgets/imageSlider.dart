@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/models/product/image.dart';
 import 'package:twenti_mobile/views/view_image_page/viewImagePage.dart';
 
@@ -30,8 +31,10 @@ class _productImagesSliderState extends State<productImagesSlider> {
                 InkWell(
                   onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (_) => viewImagePage(imageList, _current))),
+                      PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: viewImagePage(imageList, _current),
+                          childCurrent: widget)),
                   child: Image.network(
                     i.path!,
                     fit: BoxFit.fill,

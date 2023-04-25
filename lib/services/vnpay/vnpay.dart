@@ -1,6 +1,7 @@
 import 'package:vnpay_flutter/vnpay_flutter.dart';
 
 void vnpay() {
+  print("vnpay attacked");
   final paymentUrl = VNPAYFlutter.instance.generatePaymentUrl(
     url:
         'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html', //vnpay url, default is https://sandbox.vnpayment.vn/paymentv2/vpcpay.html

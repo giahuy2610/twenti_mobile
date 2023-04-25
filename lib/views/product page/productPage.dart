@@ -1,8 +1,8 @@
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
+import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
 import 'package:twenti_mobile/common%20widgets/sale_percent_badge/salePercentBadge.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/futureAddToCart.dart';
@@ -15,7 +15,6 @@ import 'package:twenti_mobile/views/product%20page/widgets/reviews.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/product.dart';
 import '../../services/deep linking/deepLink.dart';
-import '../cart page/cartPage.dart';
 import 'controllers/futureGetProduct.dart';
 
 class topW extends StatelessWidget {
@@ -23,56 +22,18 @@ class topW extends StatelessWidget {
   Widget build(BuildContext context) {
     print('ưi');
     return TopNavigation(
-      left: Material(
-        child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.keyboard_arrow_left)),
-      ),
-      stepRight: Material(
+        left: Material(
           child: IconButton(
-              onPressed: () => CreateSharingDynamicLink(1),
-              icon: SvgPicture.asset('assets/icons/Send.svg'))),
-      right: badges.Badge(
-        position: badges.BadgePosition.topEnd(top: -10, end: -12),
-        showBadge: true,
-        // ignorePointer: false,
-        // onTap: () {},
-        // badgeAnimation: const badges.BadgeAnimation.rotation(
-        //   animationDuration: Duration(seconds: 1),
-        //   colorChangeAnimationDuration: Duration(seconds: 1),
-        //   loopAnimation: false,
-        //   curve: Curves.fastOutSlowIn,
-        //   colorChangeAnimationCurve: Curves.easeInCubic,
-        // ),
-        // badgeStyle: badges.BadgeStyle(
-        //   shape: badges.BadgeShape.square,
-        //   badgeColor: Colors.blue,
-        //   padding: const EdgeInsets.all(5),
-        //   borderRadius: BorderRadius.circular(4),
-        //   borderSide:
-        //       const BorderSide(color: Colors.white, width: 2),
-        //   borderGradient: const badges.BadgeGradient.linear(
-        //       colors: [Colors.red, Colors.black]),
-        //   badgeGradient: const badges.BadgeGradient.linear(
-        //     colors: [Colors.blue, Colors.yellow],
-        //     begin: Alignment.topCenter,
-        //     end: Alignment.bottomCenter,
-        //   ),
-        //   elevation: 0,
-        // ),
-        badgeContent:
-            Text(context.watch<CartProvider>().numOfProducts.toString()),
-        child: Material(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.keyboard_arrow_left)),
+        ),
+        stepRight: Material(
             child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => CartPage()));
-                },
-                icon: const Icon(Icons.shopping_bag_outlined))),
-      ),
-    );
+                onPressed: () => CreateSharingDynamicLink(1),
+                icon: SvgPicture.asset('assets/icons/Send.svg'))),
+        right: cartIcon());
   }
 }
 
@@ -159,7 +120,8 @@ class ProductPage extends StatelessWidget {
                             child: InkWell(
                               onTap: () async {
                                 context.read<CartProvider>().saveCartProducts(
-                                    await futureAddToCart(idProduct, 1));
+                                    await futureAddToCart(
+                                        context, idProduct, 1));
                               },
                               child: const Text(
                                 "Thêm vào giỏ",

@@ -4,7 +4,8 @@ class SharedPreferencesObject {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   /*Local cache structure
   {
-
+    'searchingHistory' : List<String>['kem duong','mat na'],
+    'loginState': bool true
   }
    */
 
@@ -14,5 +15,37 @@ class SharedPreferencesObject {
       return success;
     });
     return false;
+  }
+
+  Future<bool> saveSearchingHistory(String value) async {
+    final prefs = await _prefs;
+    //get current list
+    List<String> searchingHistory = <String>[];
+    List<String>? currList = await prefs.getStringList("searchingHistory");
+    print("loading local data storage");
+    print(currList);
+    if (currList != null) searchingHistory = currList;
+    //add the new value to tail of list, remove the oldest value added if the length of list > 10
+    searchingHistory.add(value);
+    searchingHistory = [
+      ...{...searchingHistory}
+    ];
+    if (searchingHistory.length > 10) searchingHistory.removeAt(0);
+    await prefs
+        .setStringList('searchingHistory', searchingHistory)
+        .then((bool success) {
+      return success;
+    }).onError((error, stackTrace) => throw error!);
+    return false;
+  }
+
+  Future<bool> clearSearchingHistory() async {
+    final prefs = await _prefs;
+    return await prefs.remove("searchingHistory");
+  }
+
+  Future<List<String>?> futureGetSearchingHistory() async {
+    final prefs = await _prefs;
+    return await prefs.getStringList("searchingHistory");
   }
 }

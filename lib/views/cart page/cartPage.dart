@@ -20,7 +20,10 @@ class CartPage extends StatelessWidget {
                 },
                 icon: const Icon(Icons.keyboard_arrow_left)),
           ),
-          right: Text("giỏ hàng"),
+          right: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.restore_from_trash),
+          ),
         ),
         const Expanded(child: ProductCartListView()),
         const BottomNavigation()

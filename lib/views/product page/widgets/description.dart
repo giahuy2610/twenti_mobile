@@ -31,6 +31,7 @@ class _descriptionState extends State<description> {
                     isShow = !isShow;
                   }),
               child: Container(
+                padding: EdgeInsets.all(20),
                 alignment: Alignment.center,
                 child: Text(
                   isShow == true ? "Thu gọn" : "Xem đầy đủ",

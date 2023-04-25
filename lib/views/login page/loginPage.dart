@@ -57,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
           //   ),
           // ),
           Container(
+            margin: EdgeInsets.only(top: 50),
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.center,

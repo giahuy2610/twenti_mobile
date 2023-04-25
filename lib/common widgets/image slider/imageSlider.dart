@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/models/image_slider/image_slider.dart';
+import 'package:twenti_mobile/views/collection%20page/controllers/futureGetCollection.dart';
 
 import '../../views/collection page/collectionPage.dart';
 
@@ -31,7 +32,7 @@ class _imageSliderState extends State<imageSlider> {
                     context,
                     PageTransition(
                         type: PageTransitionType.rightToLeftWithFade,
-                        child: CollectionPage(),
+                        child: CollectionPage(futureGetCollection(65)),
                         childCurrent: context.widget)),
                 child: Image.network(
                   i.path.toString(),

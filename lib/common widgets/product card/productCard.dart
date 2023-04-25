@@ -7,7 +7,6 @@ import '../../models/product/product.dart';
 
 class productCard extends StatelessWidget {
   late Product product;
-
   productCard(this.product);
 
   @override
@@ -15,6 +14,7 @@ class productCard extends StatelessWidget {
     var salePercent =
         (100 - product.retailPrice / product.listPrice * 100).toInt();
     return Container(
+        height: MediaQuery.of(context).size.height / 3,
         margin: const EdgeInsets.all(5),
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
@@ -41,36 +41,40 @@ class productCard extends StatelessWidget {
             },
             child: Column(
               children: [
-                Image.network(product.images!.first.path!),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        product.brand!.nameBrand,
-                        maxLines: 1,
-                        style: TextStyle(overflow: TextOverflow.ellipsis),
-                      ),
-                      Text(
-                        product.nameProduct,
-                        maxLines: 2,
-                        style: TextStyle(
-                          overflow: TextOverflow.ellipsis,
+                Expanded(
+                    flex: 2, child: Image.network(product.images!.first.path!)),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          product.brand!.nameBrand,
+                          maxLines: 1,
+                          style: TextStyle(overflow: TextOverflow.ellipsis),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(product.retailPrice.toString()),
-                          salePercent != 0
-                              ? Padding(
-                                  padding: const EdgeInsets.only(left: 5),
-                                  child: salePercentBadge(salePercent),
-                                )
-                              : Text(""),
-                        ],
-                      )
-                    ],
+                        Text(
+                          product.nameProduct,
+                          maxLines: 2,
+                          style: const TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(product.retailPrice.toString()),
+                            salePercent != 0
+                                ? Padding(
+                                    padding: const EdgeInsets.only(left: 5),
+                                    child: salePercentBadge(salePercent),
+                                  )
+                                : Container(),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],

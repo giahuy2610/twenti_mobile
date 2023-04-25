@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
 class TopNavigation extends StatelessWidget {
@@ -56,8 +57,12 @@ class TopNavigation extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 10.0),
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => SearchPage()));
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.rightToLeftWithFade,
+                                child: SearchPage(),
+                                childCurrent: context.widget));
                       },
                       child: searchFiedld(context)),
                 )
