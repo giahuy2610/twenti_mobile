@@ -8,7 +8,7 @@ import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
 import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
-
+import 'package:twenti_mobile/views/my order list page/myOrderListPage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Authentication.initializeFirebase();
@@ -58,7 +58,8 @@ class _MyAppState extends State<MyApp> {
               CategoryPage(),
               ChatPage(),
               CartPage(),
-              AccountPage()
+              AccountPage(),
+              //MyOrderListPage()
             ],
           ),
           bottomNavigationBar: Material(
