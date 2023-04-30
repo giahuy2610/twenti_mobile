@@ -21,7 +21,7 @@ class productHeading extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: [Text(nameBrand)],
+            children: [Hero(tag: "brand_product_hero", child: Text(nameBrand))],
           ),
           Row(children: [
             Expanded(

@@ -42,7 +42,11 @@ class productCard extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                    flex: 2, child: Image.network(product.images!.first.path!)),
+                    flex: 2,
+                    child: Hero(
+                        tag: "hero_product_image_" +
+                            product.idProduct.toString(),
+                        child: Image.network(product.images!.first.path!))),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),

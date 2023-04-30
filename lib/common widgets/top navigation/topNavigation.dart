@@ -57,7 +57,7 @@ class TopNavigation extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 10.0),
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             PageTransition(
                                 type: PageTransitionType.rightToLeftWithFade,

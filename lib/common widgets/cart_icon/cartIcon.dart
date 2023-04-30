@@ -3,7 +3,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
+import 'package:twenti_mobile/views/checkout%20pape/checkoutPage.dart';
 
 import '../../providers/cartProvider.dart';
 
@@ -25,7 +25,7 @@ class cartIcon extends StatelessWidget {
                 context,
                 PageTransition(
                     type: PageTransitionType.rightToLeftWithFade,
-                    child: CartPage(),
+                    child: checkoutPage(),
                     childCurrent: this));
           },
           icon: Icon(Icons.shopping_bag_outlined)),

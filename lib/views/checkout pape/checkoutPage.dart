@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/views/checkout%20pape/widgets/addressContainer.dart';
+import 'package:twenti_mobile/views/checkout%20pape/widgets/couponContainer.dart';
+import 'package:twenti_mobile/views/checkout%20pape/widgets/orderDetailsContainer.dart';
 import 'package:twenti_mobile/views/checkout%20pape/widgets/paymentContainer.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
@@ -16,6 +19,7 @@ class _checkoutPageState extends State<checkoutPage> {
     return Scaffold(
         body: SafeArea(
             child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TopNavigation(
           left: Material(
@@ -28,8 +32,16 @@ class _checkoutPageState extends State<checkoutPage> {
         ),
         Expanded(
             child: ListView(
-          children: [paymentContainer()],
+          children: [
+            AddressContainer(),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: CouponContainer(),
+            ),
+            PaymentContainer(),
+          ],
         )),
+        OrderDetailsContainer()
       ],
     )));
   }

@@ -17,6 +17,7 @@ class SharedPreferencesObject {
     return false;
   }
 
+  //Search history
   Future<bool> saveSearchingHistory(String value) async {
     final prefs = await _prefs;
     //get current list
@@ -47,5 +48,38 @@ class SharedPreferencesObject {
   Future<List<String>?> futureGetSearchingHistory() async {
     final prefs = await _prefs;
     return await prefs.getStringList("searchingHistory");
+  }
+
+  Future<bool> saveViewProductHistory(int productId) async {
+    final prefs = await _prefs;
+    //get current list
+    List<String> viewHistory = <String>[];
+    List<String>? currList = await prefs.getStringList("viewProductHistory");
+    print("loading local data storage");
+    print(currList);
+    if (currList != null) viewHistory = currList;
+    //add the new value to tail of list, remove the oldest value added if the length of list > 10
+    viewHistory.add(productId.toString());
+    viewHistory = [
+      ...{...viewHistory}
+    ];
+
+    await prefs
+        .setStringList('viewProductHistory', viewHistory)
+        .then((bool success) {
+      return success;
+    }).onError((error, stackTrace) => throw error!);
+    return false;
+  }
+
+  Future<bool> clearViewProductHistory() async {
+    final prefs = await _prefs;
+    return await prefs.remove("viewProductHistory");
+  }
+
+  Future<List<int>?> futureGetViewProductHistory() async {
+    final prefs = await _prefs;
+    List<String>? res = await prefs.getStringList("viewProductHistory");
+    return res!.map((e) => int.parse(e)).toList();
   }
 }

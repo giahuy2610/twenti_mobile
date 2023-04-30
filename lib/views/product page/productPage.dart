@@ -3,10 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
+import 'package:twenti_mobile/common%20widgets/description/description.dart';
 import 'package:twenti_mobile/common%20widgets/sale_percent_badge/salePercentBadge.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/futureAddToCart.dart';
-import 'package:twenti_mobile/views/product%20page/widgets/description.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/imageSlider.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/productHeading.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/relatedProductsList.dart';
@@ -15,6 +15,7 @@ import 'package:twenti_mobile/views/product%20page/widgets/reviews.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/product.dart';
 import '../../services/deep linking/deepLink.dart';
+import '../../services/shared preferences/sharedPreferences.dart';
 import 'controllers/futureGetProduct.dart';
 
 class topW extends StatelessWidget {
@@ -44,6 +45,9 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //add product to products view recent history
+    SharedPreferencesObject().saveViewProductHistory(idProduct);
+
     return FutureBuilder<Product>(
         future: futureGetProduct(idProduct),
         builder: (builder, snapshot) {
@@ -62,7 +66,10 @@ class ProductPage extends StatelessWidget {
                       height: 500,
                       child: ListView(
                         children: [
-                          productImagesSlider(data.images!),
+                          Hero(
+                              tag: "hero_product_image_" +
+                                  data.idProduct.toString(),
+                              child: productImagesSlider(data.images!)),
                           productHeading(
                             nameProduct: data.nameProduct,
                             nameBrand: data.brand!.nameBrand,
@@ -70,14 +77,24 @@ class ProductPage extends StatelessWidget {
                             categoryName: data.nameProduct,
                           ),
                           reviews(data.reviews!),
-                          description(data.description!),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Mô tả sản phẩm"),
+                                description(data.description!),
+                              ],
+                            ),
+                          ),
                           relatedProductsList()
                         ],
                       ),
                     )),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 5),
+                      decoration: const BoxDecoration(
                           color: Color.fromRGBO(250, 239, 239, 1)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
