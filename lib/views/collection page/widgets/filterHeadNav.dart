@@ -85,12 +85,11 @@ class _FilterHeadContainerState extends State<FilterHeadContainer> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(vertical: 5),
                         child: Text(
                           "Sắp xếp",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
                       Row(
@@ -150,12 +149,11 @@ class _FilterHeadContainerState extends State<FilterHeadContainer> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(vertical: 5),
                         child: Text(
                           "Lọc",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
                       Column(

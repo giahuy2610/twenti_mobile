@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
   String total = "100";
@@ -9,25 +10,38 @@ class OrderDetailsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration:
+          BoxDecoration(color: Theme.of(context).own().defaultContainerColor),
       child: Column(
         children: [
-          Row(
-            children: [
-              Image.asset("assets/icons/icons8_invoice.png"),
-              Text("Chi tiết thanh toán")
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("Tổng cộng"), Text(total)],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("Giảm giá"), Text(couponValue)],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("Tổng thanh toán"), Text(lastTotal)],
+          Padding(
+            padding: EdgeInsets.all(
+                Theme.of(context).own().defaultVerticalPaddingOfScreen),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Image.asset("assets/icons/icons8_invoice.png"),
+                    Text("Chi tiết thanh toán")
+                  ],
+                ),
+                SizedBox(height: Theme.of(context).own().defaultMarginBetween),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text("Tổng cộng"), Text(total)],
+                ),
+                SizedBox(height: Theme.of(context).own().defaultMarginBetween),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text("Giảm giá"), Text(couponValue)],
+                ),
+                SizedBox(height: Theme.of(context).own().defaultMarginBetween),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text("Tổng thanh toán"), Text(lastTotal)],
+                ),
+              ],
+            ),
           ),
           Container(
             height: 60,
@@ -43,16 +57,18 @@ class OrderDetailsContainer extends StatelessWidget {
                     )),
                 Expanded(
                   flex: 2,
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                        alignment: Alignment.center,
-                        height: double.infinity,
-                        color: Colors.red,
-                        child: Text(
-                          "Đặt hàng",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
+                  child: Material(
+                    color: Colors.red,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                          alignment: Alignment.center,
+                          height: double.infinity,
+                          child: Text(
+                            "Đặt hàng",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                    ),
                   ),
                 ),
               ],

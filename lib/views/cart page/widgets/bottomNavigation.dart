@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/checkout%20pape/checkoutPage.dart';
 
 import '../../../providers/cartProvider.dart';
@@ -17,8 +18,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return Container(
         height: 60,
-        decoration: const BoxDecoration(color: Colors.pinkAccent),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        decoration:
+            BoxDecoration(color: Theme.of(context).own().defaultContainerColor),
+        padding: EdgeInsets.symmetric(
+            vertical: 5,
+            horizontal: Theme.of(context).own().defaultVerticalPaddingOfScreen),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 ],
               ),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () => Navigator.push(
                   context,
                   PageTransition(

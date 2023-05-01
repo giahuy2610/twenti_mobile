@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
 import '../controllers/futureAddToCart.dart';
@@ -31,7 +32,8 @@ class _ProductCartItemState extends State<ProductCartItem> {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(500),
-          border: Border.all(width: 2.0, color: Colors.black12)),
+          border: Border.all(width: 2.0, color: Colors.black12),
+          color: Theme.of(context).own().defaultContainerColor),
       padding: EdgeInsets.all(5),
       child: Row(
         children: [

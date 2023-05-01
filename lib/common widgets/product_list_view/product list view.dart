@@ -41,7 +41,6 @@ class _productListViewState extends State<productListView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 7),
         width: double.infinity,
         child: productList.length == 0
             ? Padding(

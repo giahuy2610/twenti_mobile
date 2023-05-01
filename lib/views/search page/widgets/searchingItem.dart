@@ -13,33 +13,35 @@ class searchingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        //saving the searching value
-        Navigator.push(
-            context,
-            PageTransition(
-                type: PageTransitionType.rightToLeftWithFade,
-                child: CollectionPage(futureProductsSearching(value)),
-                childCurrent: context.widget));
+    return Material(
+      color: Color.fromARGB(255, 220, 220, 220),
+      child: InkWell(
+        onTap: () async {
+          //saving the searching value
+          Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeftWithFade,
+                  child: CollectionPage(futureProductsSearching(value)),
+                  childCurrent: context.widget));
 
-        //achieve the result of
-        await SharedPreferencesObject().saveSearchingHistory(value);
-      },
-      child: Container(
-          decoration: BoxDecoration(
-              color: Colors.grey, borderRadius: BorderRadius.circular(5)),
-          padding: const EdgeInsets.all(5),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(value),
-              const SizedBox(
-                width: 5,
-              ),
-              InkWell(onTap: () {}, child: const Icon(Icons.close_rounded))
-            ],
-          )),
+          //achieve the result of
+          await SharedPreferencesObject().saveSearchingHistory(value);
+        },
+        child: Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+            padding: const EdgeInsets.all(5),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(value),
+                const SizedBox(
+                  width: 5,
+                ),
+                InkWell(onTap: () {}, child: const Icon(Icons.close_rounded))
+              ],
+            )),
+      ),
     );
   }
 }

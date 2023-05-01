@@ -5,23 +5,31 @@
 import 'package:flutter/material.dart';
 
 class OwnThemeFields {
-  final Color errorShade;
-  final Color textBaloon;
-  final Color spanColor;
-  final Color textSelectionPopupColor;
-  final double searchBarHeight;
+  final double defaultVerticalPaddingOfScreen = 10;
+  final double defaultMarginBetween = 10;
 
-  const OwnThemeFields(
-      {Color? errorShade,
-      Color? textBaloon,
-      Color? spanColor,
-      Color? textSelectionPopupColor,
-      double? searchBarHeight})
-      : errorShade = errorShade ?? Colors.red,
-        textBaloon = textBaloon ?? Colors.black,
-        spanColor = spanColor ?? Colors.black,
-        textSelectionPopupColor = textSelectionPopupColor ?? Colors.black,
-        searchBarHeight = 80;
+  final double defaultProductCardMargin = 3;
+
+  final Color defaultScaffoldColor = const Color.fromARGB(255, 230, 230, 243);
+  final Color defaultContainerColor = Colors.white;
+  final Color badgeNotiColor = const Color.fromRGBO(244, 163, 155, 1);
+
+  final Color bottomNavigationColor = Colors.white;
+  final Color bottomNavigationLabelColor = Colors.black;
+  final Color bottomNavigationSelectedColor = Colors.blue;
+
+  final Color retailPriceColor = const Color.fromARGB(255, 240, 15, 15);
+  final double retailPriceSize = 20;
+  final Color headingSearchBoxBorderColor =
+      const Color.fromRGBO(244, 163, 155, 1);
+
+  //search page
+  final Color searchBoxBorderColor = const Color.fromRGBO(244, 163, 155, 1);
+
+  //cart page
+  final Color orderButtonColor = Colors.orange;
+
+  OwnThemeFields();
 }
 
 extension ThemeDataExtensions on ThemeData {
@@ -37,7 +45,7 @@ extension ThemeDataExtensions on ThemeData {
   OwnThemeFields own() {
     var o = _own[inputDecorationTheme];
     if (o == null) {
-      empty ??= const OwnThemeFields();
+      empty ??= OwnThemeFields();
       o = empty;
     }
     return o!;
@@ -47,7 +55,9 @@ extension ThemeDataExtensions on ThemeData {
 OwnThemeFields ownTheme(BuildContext context) => Theme.of(context).own();
 
 final ThemeData lightTheme = ThemeData.light().copyWith(
-    canvasColor: const Color.fromARGB(255, 240, 242, 243),
+    // buttonTheme: const ButtonThemeData(
+    //     buttonColor: Colors.transparent, splashColor: Colors.white),
+    scaffoldBackgroundColor: const Color.fromARGB(255, 230, 230, 243),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
             foregroundColor: MaterialStateProperty.all<Color>(Colors.black))),
@@ -60,106 +70,78 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
     colorScheme: const ColorScheme.light().copyWith(
         background: const Color.fromARGB(255, 240, 242, 243),
         secondary: Colors.grey.withAlpha(128)),
-    textTheme: TextTheme(
-      labelLarge: const TextStyle(
-          fontSize: 18, fontFamily: 'Montserrat', color: Colors.black),
-      headlineSmall: const TextStyle(
-        fontSize: 20.0,
-        color: Colors.black,
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.bold,
-      ),
-      // standard TextField()
-      titleMedium: const TextStyle(
-        fontSize: 20.0,
-        fontFamily: 'Montserrat',
-        color: Colors.black,
-      ),
-      titleSmall: TextStyle(
-        fontSize: 16.0,
-        fontFamily: 'Montserrat',
-        fontStyle: FontStyle.italic,
-        color: Colors.black.withAlpha(128),
-      ),
-      // used for dictionary error text in Online dicts
-      labelSmall: const TextStyle(
+    primaryColor: Colors.red,
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(color: Colors.black),
+      titleMedium: TextStyle(
+          fontSize: 18.0,
+          fontFamily: 'Montserrat',
+          color: Colors.black,
+          fontWeight: FontWeight.bold),
+      labelMedium: TextStyle(
           fontSize: 14.0,
           fontFamily: 'Montserrat',
-          fontStyle: FontStyle.italic,
-          color: Colors.black),
-      // standard Text()
-      bodyMedium: const TextStyle(
-          fontSize: 20.0, fontFamily: 'Montserrat', color: Colors.black),
-      // italic Text()
-      bodyLarge: const TextStyle(
-          fontSize: 20.0,
-          fontFamily: 'Montserrat',
-          fontStyle: FontStyle.italic,
-          color: Colors.black),
-      // Dictionary card, dictionary  name
-      bodySmall: const TextStyle(
-          fontSize: 17.0, fontFamily: 'Montserrat', color: Colors.black),
+          color: Colors.black,
+          fontWeight: FontWeight.w300),
     ))
-  ..addOwn(const OwnThemeFields(
-      errorShade: Color.fromARGB(240, 255, 200, 200),
-      textBaloon: Color.fromARGB(240, 255, 200, 200),
-      textSelectionPopupColor: Color.fromARGB(255, 255, 200, 200)));
+  ..addOwn(OwnThemeFields());
 
-final ThemeData darkTheme = ThemeData.dark().copyWith(
-    cardColor: const Color.fromARGB(255, 32, 33, 36),
-    dialogBackgroundColor: const Color.fromARGB(255, 32, 33, 36),
-    canvasColor: const Color.fromARGB(255, 32, 33, 36),
-    scaffoldBackgroundColor: const Color.fromARGB(255, 16, 17, 18),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-        style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white))),
-    //backgroundColor: const Color.fromARGB(255, 32, 35, 36),
-    colorScheme: const ColorScheme.dark().copyWith(
-        background: const Color.fromARGB(255, 32, 35, 36),
-        secondary: Colors.green),
-    buttonTheme: const ButtonThemeData(
-        buttonColor: Colors.white, splashColor: Colors.white),
-    //menuTheme: const MenuThemeData(style: MenuStyle(backgroundColor: Colors.blueGrey)),
-    textTheme: TextTheme(
-      labelLarge: const TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
-      headlineSmall: const TextStyle(
-          fontSize: 20.0,
-          color: Color.fromARGB(255, 240, 240, 240),
-          fontFamily: 'Montserrat',
-          fontWeight: FontWeight.bold,
-          fontFamilyFallback: ['Roboto']),
-      titleMedium: const TextStyle(
-          fontSize: 20.0,
-          fontFamily: 'Montserrat',
-          color: Colors.white,
-          fontFamilyFallback: ['Roboto']),
-      titleSmall: TextStyle(
-          fontSize: 16.0,
-          fontFamily: 'Montserrat',
-          fontStyle: FontStyle.italic,
-          color: Colors.white.withAlpha(128),
-          fontFamilyFallback: const ['Roboto']),
-      // used for dictionary error text in Online dicts
-      labelSmall: const TextStyle(
-          fontSize: 14.0,
-          fontFamily: 'Montserrat',
-          fontStyle: FontStyle.italic,
-          color: Colors.white,
-          fontFamilyFallback: ['Roboto']),
-      bodyMedium: const TextStyle(
-          fontSize: 20.0,
-          fontFamily: 'Montserrat',
-          color: Colors.white,
-          fontFamilyFallback: ['Roboto']),
-      // Dictionary card, dictionary  name
-      bodySmall: const TextStyle(
-          fontSize: 17.0,
-          fontFamily: 'Montserrat',
-          color: Colors.white,
-          fontFamilyFallback: ['Roboto']),
-    ))
-  ..addOwn(OwnThemeFields(
-      spanColor: Colors.grey[400],
-      errorShade: const Color.fromARGB(240, 200, 0, 0),
-      textBaloon: const Color.fromARGB(255, 200, 80, 80),
-      textSelectionPopupColor: const Color.fromARGB(255, 200, 80, 80)));
+//
+// final ThemeData darkTheme = ThemeData.dark().copyWith(
+//     cardColor: const Color.fromARGB(255, 32, 33, 36),
+//     dialogBackgroundColor: const Color.fromARGB(255, 32, 33, 36),
+//     canvasColor: const Color.fromARGB(255, 32, 33, 36),
+//     scaffoldBackgroundColor: const Color.fromARGB(255, 16, 17, 18),
+//     outlinedButtonTheme: OutlinedButtonThemeData(
+//         style: ButtonStyle(
+//             foregroundColor: MaterialStateProperty.all<Color>(Colors.white))),
+//     //backgroundColor: const Color.fromARGB(255, 32, 35, 36),
+//     colorScheme: const ColorScheme.dark().copyWith(
+//         background: const Color.fromARGB(255, 32, 35, 36),
+//         secondary: Colors.green),
+//     buttonTheme: const ButtonThemeData(
+//         buttonColor: Colors.white, splashColor: Colors.white),
+//     //menuTheme: const MenuThemeData(style: MenuStyle(backgroundColor: Colors.blueGrey)),
+//     textTheme: TextTheme(
+//       labelLarge: const TextStyle(fontSize: 18, fontFamily: 'Montserrat'),
+//       headlineSmall: const TextStyle(
+//           fontSize: 20.0,
+//           color: Color.fromARGB(255, 240, 240, 240),
+//           fontFamily: 'Montserrat',
+//           fontWeight: FontWeight.bold,
+//           fontFamilyFallback: ['Roboto']),
+//       titleMedium: const TextStyle(
+//           fontSize: 20.0,
+//           fontFamily: 'Montserrat',
+//           color: Colors.white,
+//           fontFamilyFallback: ['Roboto']),
+//       titleSmall: TextStyle(
+//           fontSize: 16.0,
+//           fontFamily: 'Montserrat',
+//           fontStyle: FontStyle.italic,
+//           color: Colors.white.withAlpha(128),
+//           fontFamilyFallback: const ['Roboto']),
+//       // used for dictionary error text in Online dicts
+//       labelSmall: const TextStyle(
+//           fontSize: 14.0,
+//           fontFamily: 'Montserrat',
+//           fontStyle: FontStyle.italic,
+//           color: Colors.white,
+//           fontFamilyFallback: ['Roboto']),
+//       bodyMedium: const TextStyle(
+//           fontSize: 20.0,
+//           fontFamily: 'Montserrat',
+//           color: Colors.white,
+//           fontFamilyFallback: ['Roboto']),
+//       // Dictionary card, dictionary  name
+//       bodySmall: const TextStyle(
+//           fontSize: 17.0,
+//           fontFamily: 'Montserrat',
+//           color: Colors.white,
+//           fontFamilyFallback: ['Roboto']),
+//     ))
+//   ..addOwn(OwnThemeFields(
+//       spanColor: Colors.grey[400],
+//       errorShade: const Color.fromARGB(240, 200, 0, 0),
+//       textBaloon: const Color.fromARGB(255, 200, 80, 80),
+//       textSelectionPopupColor: const Color.fromARGB(255, 200, 80, 80)));

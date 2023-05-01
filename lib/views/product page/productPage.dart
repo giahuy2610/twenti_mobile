@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
 import 'package:twenti_mobile/common%20widgets/description/description.dart';
 import 'package:twenti_mobile/common%20widgets/sale_percent_badge/salePercentBadge.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/futureAddToCart.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/imageSlider.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/productHeading.dart';
@@ -56,101 +58,156 @@ class ProductPage extends StatelessWidget {
             var salePercent =
                 (100 - data.retailPrice / data.listPrice * 100).toInt();
             return Scaffold(
-                backgroundColor: Color.fromRGBO(249, 249, 249, 1),
                 body: SafeArea(
                     child: Column(
-                  children: [
-                    topW(),
-                    Expanded(
-                        child: Container(
-                      height: 500,
-                      child: ListView(
-                        children: [
-                          Hero(
-                              tag: "hero_product_image_" +
-                                  data.idProduct.toString(),
-                              child: productImagesSlider(data.images!)),
-                          productHeading(
-                            nameProduct: data.nameProduct,
-                            nameBrand: data.brand!.nameBrand,
-                            idBrand: data.idBrand,
-                            categoryName: data.nameProduct,
-                          ),
-                          reviews(data.reviews!),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Mô tả sản phẩm"),
-                                description(data.description!),
-                              ],
-                            ),
-                          ),
-                          relatedProductsList()
-                        ],
+              children: [
+                topW(),
+                Expanded(
+                    child: Container(
+                  height: 500,
+                  child: ListView(
+                    children: [
+                      Hero(
+                          tag:
+                              "hero_product_image_" + data.idProduct.toString(),
+                          child: productImagesSlider(data.images!)),
+                      productHeading(
+                        nameProduct: data.nameProduct,
+                        nameBrand: data.brand!.nameBrand,
+                        idBrand: data.idBrand,
+                        categoryName: data.nameProduct,
                       ),
-                    )),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 5),
-                      decoration: const BoxDecoration(
-                          color: Color.fromRGBO(250, 239, 239, 1)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      reviews(data.reviews!),
+                      Container(
+                        padding: EdgeInsets.all(Theme.of(context)
+                            .own()
+                            .defaultVerticalPaddingOfScreen),
+                        color: Theme.of(context).own().defaultContainerColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Mô tả sản phẩm",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            description(data.description!),
+                          ],
+                        ),
+                      ),
+                      relatedProductsList()
+                    ],
+                  ),
+                )),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: Theme.of(context)
+                          .own()
+                          .defaultVerticalPaddingOfScreen),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).own().defaultContainerColor,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Theme.of(context).own().defaultScaffoldColor,
+                            spreadRadius: 1)
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
                         children: [
-                          Row(
+                          Column(
                             children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    data.retailPrice.toString(),
-                                    style: const TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color.fromRGBO(255, 49, 49, 1)),
-                                  ),
-                                  data.listPrice != data.retailPrice
-                                      ? Text(
-                                          data.listPrice.toString(),
-                                          style: const TextStyle(
-                                              decoration:
-                                                  TextDecoration.lineThrough),
-                                        )
-                                      : Container()
-                                ],
+                              Text(
+                                NumberFormat("#,###")
+                                        .format(data.retailPrice)
+                                        .toString() +
+                                    "₫",
+                                style: TextStyle(
+                                    fontSize:
+                                        Theme.of(context).own().retailPriceSize,
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context)
+                                        .own()
+                                        .retailPriceColor),
                               ),
-                              salePercent != 0
-                                  ? Padding(
-                                      padding: EdgeInsets.only(left: 5),
-                                      child: salePercentBadge(salePercent))
+                              data.listPrice != data.retailPrice
+                                  ? Text(
+                                      data.listPrice.toString(),
+                                      style: const TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                    )
                                   : Container()
                             ],
                           ),
-                          Container(
-                            height: 50,
-                            width: 150,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(500)),
+                          salePercent != 0
+                              ? Padding(
+                                  padding: EdgeInsets.only(left: 5),
+                                  child: salePercentBadge(salePercent))
+                              : Container()
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Material(
                             child: InkWell(
                               onTap: () async {
                                 context.read<CartProvider>().saveCartProducts(
                                     await futureAddToCart(
                                         context, idProduct, 1));
                               },
-                              child: const Text(
-                                "Thêm vào giỏ",
-                                style: TextStyle(color: Colors.white),
+                              child: Container(
+                                height: 50,
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Color.fromRGBO(244, 163, 155, 0.4),
+                                    border:
+                                        Border.all(color: Colors.redAccent)),
+                                child: const Text(
+                                  "MUA NGAY",
+                                  style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
-                          )
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Material(
+                            child: InkWell(
+                              onTap: () async {
+                                context.read<CartProvider>().saveCartProducts(
+                                    await futureAddToCart(
+                                        context, idProduct, 1));
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 150,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    color: Colors.red.shade400,
+                                    borderRadius: BorderRadius.circular(500)),
+                                child: const Text(
+                                  "THÊM VÀO GIỎ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                    )
-                  ],
-                )));
+                    ],
+                  ),
+                )
+              ],
+            )));
           } else {
             return RiveAnimation.asset('assets/icons/delivery.riv');
           }

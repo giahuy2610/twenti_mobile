@@ -32,7 +32,7 @@ class _descriptionState extends State<description> {
                             isShow = !isShow;
                           }),
                       child: Container(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(10),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 
 import '../../../services/shared preferences/sharedPreferences.dart';
 import '../../collection page/collectionPage.dart';
@@ -39,11 +40,16 @@ class _topNavigationSearchPageState extends State<topNavigationSearchPage> {
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(right: 10),
+              margin: EdgeInsets.only(
+                  right:
+                      Theme.of(context).own().defaultVerticalPaddingOfScreen),
               padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.pinkAccent, width: 2)),
+                  border: Border.all(
+                      color:
+                          Theme.of(context).own().headingSearchBoxBorderColor,
+                      width: 2)),
               child: Row(
                 children: [
                   const SizedBox(width: 5),

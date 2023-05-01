@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/common%20widgets/rating%20stars/ratingStars.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 
 import '../../../models/product/review.dart';
 
@@ -12,7 +13,9 @@ class reviewItem extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(5),
-      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+      margin: EdgeInsets.symmetric(
+          horizontal: 0,
+          vertical: Theme.of(context).own().defaultMarginBetween),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: Color.fromRGBO(249, 249, 249, 1)),

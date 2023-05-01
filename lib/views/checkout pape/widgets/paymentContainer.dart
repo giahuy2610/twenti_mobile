@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 
 import '../../../services/vnpay/vnpay.dart';
 
@@ -19,7 +20,14 @@ class PaymentContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      padding: EdgeInsets.fromLTRB(
+          Theme.of(context).own().defaultVerticalPaddingOfScreen,
+          Theme.of(context).own().defaultVerticalPaddingOfScreen,
+          0,
+          Theme.of(context).own().defaultVerticalPaddingOfScreen),
+      decoration:
+          BoxDecoration(color: Theme.of(context).own().defaultContainerColor),
+      height: 170,
       child: Column(
         children: [
           Container(
@@ -43,14 +51,15 @@ class PaymentContainer extends StatelessWidget {
                 for (var i in paymentsList)
                   Padding(
                     padding: const EdgeInsets.all(5),
-                    child: InkWell(
-                      onTap: () {
-                        (i["function"] as Function)();
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.6,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                    child: Material(
+                      child: InkWell(
+                        onTap: () {
+                          (i["function"] as Function)();
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
@@ -59,20 +68,23 @@ class PaymentContainer extends StatelessWidget {
                                 offset: Offset(0, 2),
                               ),
                             ],
-                            color: Colors.white),
-                        padding: EdgeInsets.all(5),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(i["name"].toString()),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Image.asset(
-                              i["image"].toString(),
-                              fit: BoxFit.fitHeight,
-                            )
-                          ],
+                            color: Colors.white,
+                          ),
+                          padding: EdgeInsets.all(5),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(i["name"].toString()),
+                              SizedBox(
+                                  height: Theme.of(context)
+                                      .own()
+                                      .defaultMarginBetween),
+                              Image.asset(
+                                i["image"].toString(),
+                                fit: BoxFit.fitHeight,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

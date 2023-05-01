@@ -7,6 +7,7 @@ import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/providers/collectionPageProvider.dart';
 import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 import 'package:twenti_mobile/services/notification/notificationController.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/getCart.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
@@ -45,34 +46,39 @@ class _MyAppState extends State<MyApp> {
   int _index = 0;
   List<Map<String, dynamic>> navList = [
     {
+      'id': 0,
       "title": "Trang chủ",
-      "iconPath": "assets/icons/Send.svg",
+      "iconPath": "assets/icons/icon_house.svg",
       "routePath": "",
       "isNoti": false,
       "futureToGetBadge": null
     },
     {
+      'id': 1,
       "title": "Danh mục",
-      "iconPath": "assets/icons/Send.svg",
+      "iconPath": "assets/icons/icon_lipstick.svg",
       "routePath": "",
       "isNoti": false,
       "futureToGetBadge": null
     },
     {
+      'id': 2,
       "title": "Tin nhắn",
-      "iconPath": "assets/icons/Send.svg",
+      "iconPath": "assets/icons/icon_bell.svg",
       "routePath": "",
       "isNoti": true,
       "futureToGetBadge": null
     },
+    // {
+    //   'id': 3,
+    //   "title": "Giỏ hàng",
+    //   "iconPath": "assets/icons/Send.svg",
+    //   "routePath": "",
+    //   "isNoti": true,
+    //   "futureToGetBadge": null
+    // },
     {
-      "title": "Giỏ hàng",
-      "iconPath": "assets/icons/Send.svg",
-      "routePath": "",
-      "isNoti": true,
-      "futureToGetBadge": null
-    },
-    {
+      'id': 3,
       "title": "Tài khoản",
       "iconPath": "assets/icons/User.svg",
       "routePath": "",
@@ -126,47 +132,100 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       navigatorKey: navigatorKey,
       title: 'Twenti',
-      theme: ThemeData(),
+      theme: lightTheme,
+      // darkTheme: darkTheme,
       home: Scaffold(
-        body: IndexedStack(
-          index: _index,
-          children: [
-            HomePage(),
-            CategoryPage(),
-            ChatPage(),
-            CartPage(),
-            LoginPage()
-          ],
-        ),
-        bottomNavigationBar: Material(
-            child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          items: [
-            for (var i in navList)
-              BottomNavigationBarItem(
-                icon: badges.Badge(
-                  position: badges.BadgePosition.custom(top: -6, end: -6),
-                  showBadge: i["isNoti"],
-                  badgeContent:
-                      i["isNoti"] ? i["futureToGetBadge"] : const Text(""),
-                  child: SvgPicture.asset(
-                    i["iconPath"]!,
+          body: IndexedStack(
+            index: _index,
+            children: [
+              HomePage(),
+              CategoryPage(),
+              ChatPage(),
+              CartPage(),
+              LoginPage()
+            ],
+          ),
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).own().defaultContainerColor,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                boxShadow: [
+                  BoxShadow(
+                      color: Theme.of(context).own().defaultScaffoldColor,
+                      spreadRadius: 1)
+                ]),
+            padding: EdgeInsets.symmetric(
+                vertical: 5,
+                horizontal:
+                    Theme.of(context).own().defaultVerticalPaddingOfScreen),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (var i in navList)
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            _index = i['id'];
+                          });
+                        },
+                        child: Container(
+                          child: (i['id'] == _index)
+                              ? Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color:
+                                          Color.fromRGBO(244, 163, 155, 0.4)),
+                                  child: Row(
+                                    children: [
+                                      badges.Badge(
+                                        position: badges.BadgePosition.custom(
+                                            top: -6, end: -6),
+                                        showBadge: i["isNoti"],
+                                        badgeContent: i["isNoti"]
+                                            ? i["futureToGetBadge"]
+                                            : const Text(""),
+                                        child: SvgPicture.asset(
+                                          i["iconPath"]!,
+                                          color: Colors.red,
+                                          width: 24,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        i['title'],
+                                        style: const TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              : badges.Badge(
+                                  position: badges.BadgePosition.custom(
+                                      top: -6, end: -6),
+                                  showBadge: i["isNoti"],
+                                  badgeContent: i["isNoti"]
+                                      ? i["futureToGetBadge"]
+                                      : const Text(""),
+                                  child: SvgPicture.asset(
+                                    i["iconPath"]!,
+                                    width: 24,
+                                  ),
+                                ),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                label: i["title"]!,
-                backgroundColor: Colors.blueGrey,
-              ),
-          ],
-          currentIndex: _index,
-          selectedItemColor: Colors.orange[400],
-          unselectedFontSize: 14,
-          selectedFontSize: 14,
-          onTap: (i) => setState(() {
-            _index = i;
-          }),
-          showUnselectedLabels: true,
-        )),
-      ),
+              ],
+            ),
+          )),
+
       debugShowCheckedModeBanner: false,
     );
   }

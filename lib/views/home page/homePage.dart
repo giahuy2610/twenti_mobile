@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:skeletons/skeletons.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/product%20list%20view.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/productListViewSkeleton.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/qr_scanner_page/qrScannerPage.dart';
 
 import '../../common widgets/cart_icon/cartIcon.dart';
@@ -114,7 +115,14 @@ class _HomePageState extends State<HomePage> {
                 future: futureGetCollection(65),
                 builder: (builder, snapshot) {
                   if (snapshot.hasData) {
-                    return productListView(snapshot.data!.products, true);
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Theme.of(context)
+                                  .own()
+                                  .defaultVerticalPaddingOfScreen -
+                              Theme.of(context).own().defaultProductCardMargin),
+                      child: productListView(snapshot.data!.products, true),
+                    );
                   } else {
                     return productListViewSkeleton();
                   }

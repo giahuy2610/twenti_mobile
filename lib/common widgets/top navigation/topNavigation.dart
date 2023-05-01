@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
 class TopNavigation extends StatelessWidget {
@@ -21,7 +22,8 @@ class TopNavigation extends StatelessWidget {
         width: 150,
         decoration: BoxDecoration(
             border: Border.all(
-              color: Color.fromRGBO(244, 163, 155, 1),
+              // color: Theme.of(context).own().headingSearchBoxBorderColor,
+              color: Colors.redAccent,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(500)),
@@ -44,8 +46,12 @@ class TopNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5),
-      decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(width: 2, color: Colors.grey))),
+      decoration: BoxDecoration(
+          color: Theme.of(context).own().defaultContainerColor,
+          border: Border(
+              bottom: BorderSide(
+                  width: 1,
+                  color: Theme.of(context).own().defaultScaffoldColor))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -53,28 +59,33 @@ class TopNavigation extends StatelessWidget {
             child: Row(
               children: [
                 left != null ? left! : placeHolder,
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.rightToLeftWithFade,
-                                child: SearchPage(),
-                                childCurrent: context.widget));
-                      },
-                      child: searchFiedld(context)),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 0),
+                    child: Material(
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type:
+                                        PageTransitionType.rightToLeftWithFade,
+                                    child: SearchPage(),
+                                    childCurrent: context.widget));
+                          },
+                          child: searchFiedld(context)),
+                    ),
+                  ),
                 )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 0),
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 0),
                   child: stepRight != null ? stepRight! : placeHolder,
                 ),
                 right != null ? right! : placeHolder

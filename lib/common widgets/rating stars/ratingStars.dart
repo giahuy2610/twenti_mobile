@@ -11,7 +11,10 @@ class ratingStars extends StatelessWidget {
       child: Row(
         children: [
           for (int i = 0; i < count; i++)
-            SvgPicture.asset('assets/icons/starFill.svg'),
+            SvgPicture.asset(
+              'assets/icons/starFill.svg',
+              color: Colors.redAccent,
+            ),
           for (int i = count; i < 5; i++)
             SvgPicture.asset('assets/icons/startDefault.svg'),
         ],

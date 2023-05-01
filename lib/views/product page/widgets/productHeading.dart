@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 
 class productHeading extends StatelessWidget {
   late String nameProduct;
@@ -15,24 +16,25 @@ class productHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 5),
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      padding: EdgeInsets.all(
+          Theme.of(context).own().defaultVerticalPaddingOfScreen),
       decoration: BoxDecoration(color: Colors.white),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [Hero(tag: "brand_product_hero", child: Text(nameBrand))],
+          SizedBox(height: Theme.of(context).own().defaultMarginBetween),
+          Text(
+            nameProduct,
+            softWrap: true,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
-          Row(children: [
-            Expanded(
-              child: Text(
-                nameProduct,
-                softWrap: true,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ])
+          Text(
+            nameBrand,
+            textAlign: TextAlign.end,
+          ),
+          SizedBox(height: Theme.of(context).own().defaultMarginBetween),
         ],
       ),
     );

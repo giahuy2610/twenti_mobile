@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/models/product/image.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/view_image_page/viewImagePage.dart';
 
 class productImagesSlider extends StatefulWidget {
@@ -22,7 +23,8 @@ class _productImagesSliderState extends State<productImagesSlider> {
 
   @override
   Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration(color: Colors.white),
+        decoration:
+            BoxDecoration(color: Theme.of(context).own().defaultContainerColor),
         height: MediaQuery.of(context).size.width * 9 / 16,
         child: Stack(children: <Widget>[
           CarouselSlider(
@@ -52,8 +54,18 @@ class _productImagesSliderState extends State<productImagesSlider> {
             ),
           ),
           Align(
-              alignment: Alignment.bottomCenter,
-              child: Text("${_current + 1}/${imageList.length}")),
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                  margin: EdgeInsets.only(
+                      left: Theme.of(context)
+                          .own()
+                          .defaultVerticalPaddingOfScreen,
+                      bottom: 5),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.black12.withOpacity(0.1)),
+                  child: Text("${_current + 1}/${imageList.length}"))),
         ]),
       );
 }

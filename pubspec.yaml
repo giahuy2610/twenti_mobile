@@ -66,6 +66,7 @@ dependencies:
   quick_actions: ^1.0.2
   url_launcher: ^6.1.10
   webview_flutter: ^2.8.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

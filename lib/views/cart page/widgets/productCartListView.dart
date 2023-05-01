@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/cart%20page/widgets/productCartItem.dart';
 import 'package:twenti_mobile/views/cart%20page/widgets/productCartItemSkeleton.dart';
 
@@ -15,7 +16,9 @@ class ProductCartListView extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.symmetric(
+                    vertical:
+                        Theme.of(context).own().defaultVerticalPaddingOfScreen),
                 children: [
                   for (var i in (snapshot.data!))
                     ProductCartItem(
@@ -28,7 +31,10 @@ class ProductCartListView extends StatelessWidget {
                 ]);
           }
           return ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical:
+                      Theme.of(context).own().defaultVerticalPaddingOfScreen),
               children: [
                 for (var i = 0; i < 6; i++) productCartItemSkeleton()
               ]);
