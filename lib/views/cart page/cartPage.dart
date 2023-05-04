@@ -25,8 +25,14 @@ class CartPage extends StatelessWidget {
             icon: Icon(Icons.restore_from_trash),
           ),
         ),
-        const Expanded(child: ProductCartListView()),
-        const BottomNavigation()
+        Expanded(
+          child: Column(
+            children: const [
+              Expanded(child: ProductCartListView()),
+              BottomNavigation(),
+            ],
+          ),
+        )
       ],
     )));
   }

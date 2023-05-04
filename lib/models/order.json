@@ -1,0 +1,121 @@
+{
+  "IDInvoice": 39,
+  "IDTracking": 1,
+  "IDAddress": 52,
+  "IDCoupon": null,
+  "IDCus": 2,
+  "Note": null,
+  "TotalValue": 1045000,
+  "MethodPay": 1,
+  "MethodTransfer": 1,
+  "CreatedOn": "2022-12-13 14:51:42",
+  "IsPrintInvoice": 0,
+  "IsPaid": 0,
+  "Address": {
+    "IDAddress": 52,
+    "City": "Hồ Chí Minh",
+    "District": "12",
+    "AddressDetail": "44/37/1/3,HT43",
+    "Ward": "Hiệp Thành",
+    "Phone": "0868247806",
+    "IsDeleted": 0,
+    "FirstName": "test",
+    "LastName": "Ái",
+    "Email": "20520368@gm.uit.edu.vn"
+  },
+  "Products": [
+    {
+      "IDProduct": 30400522,
+      "NameProduct": "Sữa Rửa Mặt Làm Sáng Da THE FACE SHOP Rice Water Bright Cleansing Foam 300ml",
+      "IDBrand": 5,
+      "Description": "<div id=\"i9zo\"><span id=\"docs-internal-guid-f73b030e-7fff-cd8f-6239-b92d66b8b3ad\"><p dir=\"ltr\" id=\"ivhg\"><span id=\"i6of\">Sữa Rửa Mặt Làm Sáng Da THEFACESHOP RICE WATER BRIGHT CLEANSING FOAM có khả năng làm sạch sâu trong lỗ chân lông, làm sạch bụi bẩn ô nhiễm trên bề mặt da. Độ ẩm được lưu giữ tối ưu sau khi rửa, giúp làn da trắng sáng và khỏe mạnh. Ngoài ra, với kết cấu dạng kem mịn, dễ tạo bọt giúp tạo cảm giác trơn láng và mềm mịn sau khi rửa mặt.</span></p><h2 id=\"ibvtq\">Thành phần chính</h2><ul id=\"iqo0v\"><li dir=\"ltr\" aria-level=\"1\" id=\"ihtay\"><p dir=\"ltr\" role=\"presentation\" id=\"i1pf3\"><span id=\"i9iy8\">Nước gạo (10%)</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"ilnqi\"><p dir=\"ltr\" role=\"presentation\" id=\"idrrf\"><span id=\"isq5i\">Dầu Moringa</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"if6zb\"><p dir=\"ltr\" role=\"presentation\" id=\"itf3x\"><span id=\"i7mel\">Fit Protein trích xuất phong lan</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"i5087\"><p dir=\"ltr\" role=\"presentation\" id=\"ilbvu\"><span id=\"ii96p\">Vitamin B5 complex</span></p></li></ul><h2 id=\"ihs4x\">Công dụng sữa rửa mặt Water Bright Cleansing Foam</h2><div id=\"irzzc\"><span id=\"docs-internal-guid-92db16a9-7fff-157b-df17-85e7fe7f95d6\"><ul id=\"iwuy5\"><li dir=\"ltr\" aria-level=\"1\" id=\"i938s\"><p dir=\"ltr\" role=\"presentation\" id=\"ig2z5\"><span id=\"iccxl\">Làm sạch sâu lỗ chân lông</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"i93ie\"><p dir=\"ltr\" role=\"presentation\" id=\"iqg17\"><span id=\"idix5\">Dưỡng ẩm cho da</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"ijan3\"><p dir=\"ltr\" role=\"presentation\" id=\"i1e9z\"><span id=\"i2c8f\">Làm trắng sáng da</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"im42f\"><p dir=\"ltr\" role=\"presentation\" id=\"if3tk\"><span id=\"ii2ys\">Giúp da mềm mại và mịn màng</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"if7rl\"><p dir=\"ltr\" role=\"presentation\" id=\"i1c64\"><span id=\"ikn1f\">Không kích ứng da</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"ix8jl\"><p dir=\"ltr\" role=\"presentation\" id=\"iuhjs\"><span id=\"izgjm\">Có mùi thơm dễ chịu, mang lại cảm giác sảng khoái</span></p></li><li dir=\"ltr\" aria-level=\"1\" id=\"ijaxuo\"><p dir=\"ltr\" role=\"presentation\" id=\"iboe8o\"><span id=\"iikjhy\">Tác động dịu nhẹ, không làm tổn thương màng bảo vệ tự nhiên của da</span></p></li></ul></span></div><h2 id=\"ieccv\">Hướng dẫn sử dụng</h2><p dir=\"ltr\" id=\"i2iys\"><span id=\"i4bqq\">Để sử dụng sữa rửa mặt hiệu quả, bạn thực hiện các bước cơ bản sau:&nbsp;</span></p><p dir=\"ltr\" id=\"igadi\"><span id=\"it3pl\">Bước 1: Rửa tay thật sạch bằng cách sử dụng xà phòng kháng khuẩn nhẹ nhàng với nước ấm.</span></p><p dir=\"ltr\" id=\"ieug3\"><span id=\"ipv9z\">Bước 2: Nếu có trang điểm, trước khi rửa mặt, bạn nên dùng nước tẩy trang để làm sạch da mặt.</span></p><p dir=\"ltr\" id=\"iigve\"><span id=\"io2fy\">Bước 3: Làm ướt da mặt với nước ấm để các lỗ chân lông mở rộng, nhờ thế da bạn có thể được làm sạch sâu hơn và tránh được mụn.</span></p><p dir=\"ltr\" id=\"iya0l\"><span id=\"ivjj9\">Bước 4: Cho một lượng vừa đủ sữa rửa mặt vào lòng bàn tay, sau đó đánh đều tạo bọt và dùng ngón tay thoa đều lên mặt. Bạn nên massage mặt với chuyển động tròn trong khoảng 1 phút, từ trong ra ngoài và từ dưới lên trên.</span></p><p dir=\"ltr\" id=\"iuz7p\"><span id=\"ixlw4\">Bước 5: Rửa mặt thật sạch với nước</span></p><p dir=\"ltr\" id=\"i6j7s\"><span id=\"isxw2\">Bước 6: Dùng khăn sạch nhẹ nhàng thấm khô nước trên mặt hoặc bạn có thể để mặt khô tự nhiên</span></p></span></div><style>* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#i9zo{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ivhg{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#i6of{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#iqo0v{margin-bottom:0px;padding-inline-start:48px;}#ihtay{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#i1pf3{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:0pt;}#i9iy8{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ilnqi{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#idrrf{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:0pt;}#isq5i{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#if6zb{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#itf3x{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:0pt;}#i7mel{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#i5087{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#ilbvu{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:12pt;}#ii96p{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#i2iys{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#i4bqq{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#igadi{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#it3pl{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ieug3{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#ipv9z{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#iigve{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#io2fy{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#iya0l{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#ivjj9{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#iuz7p{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#ixlw4{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#i6j7s{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:12pt;}#isxw2{font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ibvtq{text-align:justify;}#ihs4x{text-align:justify;}#irzzc{padding:10px;}#iwuy5{margin-bottom:0px;padding-inline-start:48px;}#i938s{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#ig2z5{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:0pt;}#iccxl{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#i93ie{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#iqg17{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:0pt;}#idix5{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ijan3{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#i1e9z{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:0pt;}#i2c8f{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#im42f{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#if3tk{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:0pt;}#ii2ys{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#if7rl{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#i1c64{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:0pt;}#ikn1f{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ix8jl{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#iuhjs{line-height:1.38;text-align:justify;margin-top:0pt;margin-bottom:12pt;}#izgjm{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ijaxuo{list-style-type:disc;font-size:10.5pt;font-family:Arial;color:rgb(0, 0, 0);background-color:transparent;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre;}#iboe8o{line-height:1.38;text-align:justify;margin-top:12pt;margin-bottom:0pt;}#iikjhy{font-size:10.5pt;font-variant-numeric:normal;font-variant-east-asian:normal;vertical-align:baseline;white-space:pre-wrap;}#ieccv{text-align:justify;}</style>",
+      "CreatedOn": "2022-12-01 17:40:27",
+      "IsDeleted": 0,
+      "Stock": 26,
+      "TotalPurchaseQuantity": 12,
+      "Mass": 50,
+      "UnitsOfMass": "gam",
+      "Units": "Unit",
+      "ApplyTaxes": 0,
+      "StatusSale": 1,
+      "IDTag": 27,
+      "IDType": 3,
+      "ListPrice": 449000,
+      "RetailPrice": 249000,
+      "Brand": {
+        "IDBrand": 5,
+        "NameBrand": "THE FACE SHOP",
+        "IDCollection": null,
+        "Country": "Việt Nam",
+        "CreatedOn": "2022-06-14 13:09:37",
+        "IsDeleted": 0,
+        "TotalProduct": 198,
+        "TotalPurchaseQuantity": 140
+      },
+      "Images": [
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/c258d0fb-97ad-43a3-804a-e2fc216ce726.webp"
+        },
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/7bf86cb0-c16f-4375-b7ff-4c8b614f16d6.webp"
+        },
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/85dab37c-b022-4379-84ed-8d0e82405ef3.webp"
+        },
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/d26ecfcf-8672-4631-91a6-904344d5ac7b.webp"
+        }
+      ],
+      "Rating": 0,
+      "Reviews": [],
+      "Quantity": 1
+    },
+    {
+      "IDProduct": 34420295,
+      "NameProduct": "Mặt Nạ Giấy Làm Dịu Da Dr.Belmeur Intense Face Mask - Spot Care 30ml",
+      "IDBrand": 3,
+      "Description": "<div id=\"iyog\"><p id=\"iphi\"><strong><em>- Công dụng chính</em></strong><em>: Mặt nạ giấy giúp làm dịu làn da căng thẳng, đồng thời hỗ trợ kiểm soát dầu thừa, chăm sóc làn da mềm mại khỏe khoắn</em></p><p id=\"ixkk\"><strong><em>- Loại da sử dụng tốt nhất:</em></strong><em> Da nhạy cảm, da dầu</em></p><p id=\"iw28o\"><strong><em>- Thành phần chính:</em></strong><em> Beta-glucan, peptide</em></p><p></p><p><br></p><p id=\"imdgg\">Dr.Belmeur là “bác sĩ” của làn da nhạy cảm, với các sản phẩm chăm sóc cải thiện &amp; nuôi dưỡng làn da trở nên khỏe khoắn mịn màng. <strong>Mặt nạ giấy Dr.Belmeur Intense Face Mask Spot Care </strong>chứa tinh chất dạng ampoule cho khả năng thẩm thấu dưỡng chất vào sâu bên trong, đẩy mạnh hiệu quả làm giảm căng thẳng cho làn da nhạy cảm đồng thời chăm sóc bề mặt da ẩm mịn, kiềm dầu.</p><p id=\"ib05g\">Mặt nạ giấy <strong>Dr.Belmeur Intense Face Mask Spot Care </strong>sở hữu công thức Skin-sync Rx™: Clarifying (I) giúp hỗ trợ các dưỡng chất có trong mặt nạ đi sâu vào trong, tiếp cận các lớp hạ bì nhằm bổ sung độ ẩm, củng cố hàng rào bảo vệ da tự nhiên. Các vitamin và peptide sẽ nuôi dưỡng các tế bào khỏe mạnh, xoa dịu và làm giảm những căng thẳng đang xảy ra ở làn da do mất độ ẩm cũng như chịu tác động từ môi trường bên ngoài.</p><p id=\"iq9dp\">Bên cạnh đó, <strong>Dr.Belmeur Intense Face Mask Spot Care </strong>góp phần kiểm soát bã nhờn trên bề mặt da, duy trì vẻ mịn màng khỏe khoắn cho làn da nhạy cảm.</p><p><img data-cke-saved-src=\"https://file.hstatic.net/1000036599/file/dr.belmeur_intense_face_mask_spot_care_30ml_4_d24c7fec28124ef799a1867968855886.png\" src=\"https://file.hstatic.net/1000036599/file/dr.belmeur_intense_face_mask_spot_care_30ml_4_d24c7fec28124ef799a1867968855886.png\"></p><h2 id=\"i5i5g\"><strong>Điểm nổi bật của Mặt nạ giấy Dr.Belmeur Intense Face Mask Spot Care</strong></h2><p id=\"iukcx\">- Với công thức Cica Peptide Ampoule thẩm thấu vượt trội, cho hiệu quả tối đa tận sâu các lớp biểu bì da.</p><p id=\"i6jtm\">- Công thức Skin-sync Rx™: kích thích dưỡng chất thâm nhập sâu vào da, tạo ra hàng rào bảo vệ da khỏe mạnh.</p><p id=\"ipxtx\">- Mặt nạ chứa Beta-glucan giúp làm dịu và giải tỏa căng thẳng cho làn da nhạy cảm, kích ứng đồng thời hỗ trợ kiểm soát nhờn, chăm sóc bề mặt da mịn màng khỏe khoắn.</p><p id=\"iu8ag\">- Chiết xuất Nấm Chaga (chứa glycoprotein): giảm viêm, chống khuẩn, chống oxy hóa.</p><p id=\"iz50g\"><br></p><h3 id=\"if5yc\"><strong>Hướng dẫn sử dụng</strong></h3><p id=\"iov8h\">Sử dụng mặt nạ trên làn da sạch. Lấy Mask ra khỏi bao và trải đều lên mặt, để yên khoảng 10-20ph thì gỡ ra. Sau đó dùng các đầu ngón tay vỗ nhẹ và massage cho dưỡng chất thẩm thấu vào trong (không cần rửa mặt lại với nước).</p><p><img data-cke-saved-src=\"https://file.hstatic.net/1000036599/file/dr.belmeur_intense_face_mask_spot_care_30ml_1_73b0fcfd90ca479ab3769cc089c79f7f.png\" src=\"https://file.hstatic.net/1000036599/file/dr.belmeur_intense_face_mask_spot_care_30ml_1_73b0fcfd90ca479ab3769cc089c79f7f.png\"></p></div><style>* { box-sizing: border-box; } body {margin: 0;}#iyog{padding:10px;text-align:justify;}#iphi{text-align:justify;}#ixkk{text-align:justify;}#iw28o{text-align:justify;}#imdgg{text-align:justify;}#ib05g{text-align:justify;}#iq9dp{text-align:justify;}#i5i5g{text-align:justify;}#iukcx{text-align:justify;}#i6jtm{text-align:justify;}#ipxtx{text-align:justify;}#iu8ag{text-align:justify;}#iz50g{text-align:justify;}#if5yc{text-align:justify;}#iov8h{text-align:justify;}</style>",
+      "CreatedOn": "2022-12-01 17:38:19",
+      "IsDeleted": 0,
+      "Stock": 33,
+      "TotalPurchaseQuantity": 14,
+      "Mass": 30,
+      "UnitsOfMass": "ml",
+      "Units": "Unit",
+      "ApplyTaxes": 0,
+      "StatusSale": 1,
+      "IDTag": 31,
+      "IDType": 3,
+      "ListPrice": 149000,
+      "RetailPrice": 149000,
+      "Brand": {
+        "IDBrand": 3,
+        "NameBrand": "DR.BELMEUR",
+        "IDCollection": null,
+        "Country": "Việt Nam",
+        "CreatedOn": "2022-10-19 13:08:32",
+        "IsDeleted": 0,
+        "TotalProduct": 100,
+        "TotalPurchaseQuantity": 86
+      },
+      "Images": [
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/bbac240a-17e0-4e11-a659-ab4d54b75809.webp"
+        },
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/306f0280-3293-44bd-8cc8-1e78d1e6c05a.webp"
+        },
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/d5f82cfb-61ad-472b-8eb8-729652a56919.webp"
+        },
+        {
+          "Path": "https://image.hsv-tech.io/0x400/tfs/common/6e28dbcf-b4af-461b-8330-e2b1f407dd81.webp"
+        }
+      ],
+      "Rating": 0,
+      "Reviews": [],
+      "Quantity": 4
+    }
+  ],
+  "Coupon": null
+}

@@ -6,6 +6,7 @@ import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
+import '../../../services/currency_format/currencyFormat.dart';
 import '../controllers/futureAddToCart.dart';
 
 class ProductCartItem extends StatefulWidget {
@@ -14,12 +15,14 @@ class ProductCartItem extends StatefulWidget {
   late final int id;
   late final int price;
   late int quantity;
+  late final isUseInCart;
   ProductCartItem(
       {this.image,
       required this.name,
       required this.id,
       required this.price,
-      required this.quantity});
+      required this.quantity,
+      this.isUseInCart = true});
 
   @override
   State<ProductCartItem> createState() => _ProductCartItemState();
@@ -30,26 +33,29 @@ class _ProductCartItemState extends State<ProductCartItem> {
 
   Widget quantityPicker() {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(500),
-          border: Border.all(width: 2.0, color: Colors.black12),
-          color: Theme.of(context).own().defaultContainerColor),
-      padding: EdgeInsets.all(5),
       child: Row(
         children: [
           InkWell(
             onTap: () {
               futureAddToCart(context, widget.id, 0);
             },
-            child: Icon(CupertinoIcons.minus),
+            child: ColoredBox(
+                color: Colors.grey.shade300, child: Icon(CupertinoIcons.minus)),
           ),
-          Text(widget.quantity.toString()),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Text(
+              widget.quantity.toString(),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+          ),
           InkWell(
             onTap: () async {
               context.read<CartProvider>().saveCartProducts(
                   await futureAddToCart(context, widget.id, 1));
             },
-            child: Icon(CupertinoIcons.plus),
+            child: ColoredBox(
+                color: Colors.grey.shade300, child: Icon(CupertinoIcons.plus)),
           )
         ],
       ),
@@ -57,56 +63,69 @@ class _ProductCartItemState extends State<ProductCartItem> {
   }
 
   Widget item() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
       child: Row(
         children: [
-          Checkbox(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            checkColor: Colors.white,
-            // fillColor: MaterialStateProperty.resolveWith(getColor),
-            value: _isChecked,
-            onChanged: (bool? value) {
-              setState(() {
-                _isChecked = value!;
-              });
-            },
-          ),
+          if (widget.isUseInCart == true)
+            Checkbox(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25)),
+              checkColor: Colors.white,
+              // fillColor: MaterialStateProperty.resolveWith(getColor),
+              value: _isChecked,
+              onChanged: (bool? value) {
+                setState(() {
+                  _isChecked = value!;
+                });
+              },
+            ),
           Expanded(
               child: InkWell(
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (_) => ProductPage(widget.id)));
             },
-            child: Row(
-              children: [
-                Image(
-                  image: NetworkImage(widget.image!),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //product name
-                      Text(
-                        widget.name,
-                        style: const TextStyle(overflow: TextOverflow.ellipsis),
-                        maxLines: 2,
+            child: Container(
+              child: Row(
+                children: [
+                  Image.network(widget.image!, height: 150),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(Theme.of(context)
+                          .own()
+                          .defaultVerticalPaddingOfScreen),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          //product name
+                          Text(
+                            widget.name,
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis),
+                            maxLines: 2,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  currencyFormat(widget.price),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                (widget.isUseInCart == true)
+                                    ? quantityPicker()
+                                    : Text(
+                                        "Số lượng: ${widget.quantity}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )
+                              ])
+                        ],
                       ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              widget.price.toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            quantityPicker()
-                          ])
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ))
         ],

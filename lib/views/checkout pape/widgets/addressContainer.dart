@@ -37,7 +37,8 @@ class AddressContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text("Địa chỉ nhận hàng"),
+                    Text("Địa chỉ nhận hàng",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     Text(name + '|' + phone),
                     Text(
                       address,

@@ -5,6 +5,7 @@ import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
 import '../../models/product/product.dart';
+import '../../services/currency_format/currencyFormat.dart';
 
 class productCardHorizontal extends StatelessWidget {
   late Product product;
@@ -16,7 +17,7 @@ class productCardHorizontal extends StatelessWidget {
         (100 - product.retailPrice / product.listPrice * 100).toInt();
     return Container(
         height: MediaQuery.of(context).size.height / 6,
-        margin: const EdgeInsets.all(5),
+        margin: EdgeInsets.all(Theme.of(context).own().defaultProductCardMargin),
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
@@ -78,7 +79,7 @@ class productCardHorizontal extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              product.retailPrice.toString(),
+                              currencyFormat(product.retailPrice),
                               style: TextStyle(
                                 color: Theme.of(context).own().retailPriceColor,
                                 fontSize:

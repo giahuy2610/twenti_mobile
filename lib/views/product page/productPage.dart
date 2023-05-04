@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
@@ -16,6 +15,7 @@ import 'package:twenti_mobile/views/product%20page/widgets/reviews.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/product.dart';
+import '../../services/currency_format/currencyFormat.dart';
 import '../../services/deep linking/deepLink.dart';
 import '../../services/shared preferences/sharedPreferences.dart';
 import 'controllers/futureGetProduct.dart';
@@ -114,94 +114,98 @@ class ProductPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                NumberFormat("#,###")
-                                        .format(data.retailPrice)
-                                        .toString() +
-                                    "₫",
-                                style: TextStyle(
-                                    fontSize:
-                                        Theme.of(context).own().retailPriceSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: Theme.of(context)
-                                        .own()
-                                        .retailPriceColor),
-                              ),
-                              data.listPrice != data.retailPrice
-                                  ? Text(
-                                      data.listPrice.toString(),
-                                      style: const TextStyle(
-                                          decoration:
-                                              TextDecoration.lineThrough),
-                                    )
-                                  : Container()
-                            ],
-                          ),
-                          salePercent != 0
-                              ? Padding(
-                                  padding: EdgeInsets.only(left: 5),
-                                  child: salePercentBadge(salePercent))
-                              : Container()
-                        ],
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  currencyFormat(data.retailPrice),
+                                  style: TextStyle(
+                                      fontSize: Theme.of(context)
+                                          .own()
+                                          .retailPriceSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context)
+                                          .own()
+                                          .retailPriceColor),
+                                ),
+                                data.listPrice != data.retailPrice
+                                    ? Text(
+                                        currencyFormat(data.listPrice),
+                                        style: const TextStyle(
+                                            decoration:
+                                                TextDecoration.lineThrough),
+                                      )
+                                    : Container()
+                              ],
+                            ),
+                            salePercent != 0
+                                ? Padding(
+                                    padding: EdgeInsets.only(left: 5),
+                                    child: salePercentBadge(salePercent))
+                                : Container()
+                          ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Material(
-                            child: InkWell(
-                              onTap: () async {
-                                context.read<CartProvider>().saveCartProducts(
-                                    await futureAddToCart(
-                                        context, idProduct, 1));
-                              },
-                              child: Container(
-                                height: 50,
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Color.fromRGBO(244, 163, 155, 0.4),
-                                    border:
-                                        Border.all(color: Colors.redAccent)),
-                                child: const Text(
-                                  "MUA NGAY",
-                                  style: TextStyle(
-                                      color: Colors.redAccent,
-                                      fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            // Material(
+                            //   child: InkWell(
+                            //     onTap: () async {
+                            //       context.read<CartProvider>().saveCartProducts(
+                            //           await futureAddToCart(
+                            //               context, idProduct, 1));
+                            //     },
+                            //     child: Container(
+                            //       height: 50,
+                            //       alignment: Alignment.center,
+                            //       padding: EdgeInsets.all(5),
+                            //       decoration: BoxDecoration(
+                            //           borderRadius: BorderRadius.circular(50),
+                            //           color: Color.fromRGBO(244, 163, 155, 0.4),
+                            //           border:
+                            //               Border.all(color: Colors.redAccent)),
+                            //       child: const Text(
+                            //         "MUA NGAY",
+                            //         style: TextStyle(
+                            //             color: Colors.redAccent,
+                            //             fontWeight: FontWeight.bold),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Material(
+                              child: InkWell(
+                                onTap: () async {
+                                  context.read<CartProvider>().saveCartProducts(
+                                      await futureAddToCart(
+                                          context, idProduct, 1));
+                                },
+                                child: Container(
+                                  height: 50,
+                                  padding: EdgeInsets.all(5),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      color: Colors.red.shade400,
+                                      borderRadius: BorderRadius.circular(500)),
+                                  child: const Text(
+                                    "THÊM VÀO GIỎ",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Material(
-                            child: InkWell(
-                              onTap: () async {
-                                context.read<CartProvider>().saveCartProducts(
-                                    await futureAddToCart(
-                                        context, idProduct, 1));
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 150,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: Colors.red.shade400,
-                                    borderRadius: BorderRadius.circular(500)),
-                                child: const Text(
-                                  "THÊM VÀO GIỎ",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),

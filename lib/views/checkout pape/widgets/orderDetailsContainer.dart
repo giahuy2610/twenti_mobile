@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/services/currency_format/currencyFormat.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
-  String total = "100";
-  String coupon = "50";
-  String couponValue = "50";
-  String lastTotal = "50";
+  final total = 100;
+  final coupon = 50;
+  final couponValue = 50;
+  final lastTotal = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +22,34 @@ class OrderDetailsContainer extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Image.asset("assets/icons/icons8_invoice.png"),
-                    Text("Chi tiết thanh toán")
+                    Image.asset(
+                      "assets/icons/icons8_invoice.png",
+                      width: 36,
+                    ),
+                    Text("Chi tiết thanh toán",
+                        style: TextStyle(fontWeight: FontWeight.bold))
                   ],
                 ),
                 SizedBox(height: Theme.of(context).own().defaultMarginBetween),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Tổng cộng"), Text(total)],
+                  children: [Text("Tổng cộng"), Text(currencyFormat(total))],
                 ),
                 SizedBox(height: Theme.of(context).own().defaultMarginBetween),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Giảm giá"), Text(couponValue)],
+                  children: [
+                    Text("Giảm giá"),
+                    Text(currencyFormat(couponValue))
+                  ],
                 ),
                 SizedBox(height: Theme.of(context).own().defaultMarginBetween),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Tổng thanh toán"), Text(lastTotal)],
+                  children: [
+                    Text("Tổng thanh toán"),
+                    Text(currencyFormat(lastTotal))
+                  ],
                 ),
               ],
             ),
@@ -50,10 +61,18 @@ class OrderDetailsContainer extends StatelessWidget {
               children: [
                 Expanded(
                     flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Tổng thanh toán"), Text(lastTotal)],
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Tổng thanh toán"),
+                          Text(currencyFormat(lastTotal),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 24))
+                        ],
+                      ),
                     )),
                 Expanded(
                   flex: 2,

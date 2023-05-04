@@ -15,20 +15,25 @@ class ProductCartListView extends StatelessWidget {
         future: getCart(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView(
-                padding: EdgeInsets.symmetric(
-                    vertical:
-                        Theme.of(context).own().defaultVerticalPaddingOfScreen),
-                children: [
-                  for (var i in (snapshot.data!))
-                    ProductCartItem(
-                      image: i.product.images!.first.path,
-                      name: i.product.nameProduct,
-                      id: i.product.idProduct,
-                      price: i.product.retailPrice,
-                      quantity: i.quantity,
-                    )
-                ]);
+            return Container(
+              decoration: BoxDecoration(
+                  color: Theme.of(context).own().defaultContainerColor),
+              child: ListView(
+                  padding: EdgeInsets.only(
+                      right: Theme.of(context)
+                          .own()
+                          .defaultVerticalPaddingOfScreen),
+                  children: [
+                    for (var i in (snapshot.data!))
+                      ProductCartItem(
+                        image: i.product.images!.first.path,
+                        name: i.product.nameProduct,
+                        id: i.product.idProduct,
+                        price: i.product.retailPrice,
+                        quantity: i.quantity,
+                      )
+                  ]),
+            );
           }
           return ListView(
               padding: EdgeInsets.symmetric(

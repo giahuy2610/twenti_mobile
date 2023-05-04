@@ -35,12 +35,13 @@ class PaymentContainer extends StatelessWidget {
               children: [
                 Image.asset(
                   "assets/icons/icons8_payment.png",
-                  width: 48,
+                  width: 36,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                const Text("Phương pháp thanh toán")
+                const Text("Phương pháp thanh toán",
+                    style: TextStyle(fontWeight: FontWeight.bold))
               ],
             ),
           ),

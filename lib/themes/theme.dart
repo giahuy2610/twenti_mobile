@@ -3,6 +3,7 @@
 //thank Maxim for your help to solve
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OwnThemeFields {
   final double defaultVerticalPaddingOfScreen = 10;
@@ -71,19 +72,13 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
         background: const Color.fromARGB(255, 240, 242, 243),
         secondary: Colors.grey.withAlpha(128)),
     primaryColor: Colors.red,
-    textTheme: const TextTheme(
+    textTheme: GoogleFonts.merriweatherTextTheme(const TextTheme(
       bodyMedium: TextStyle(color: Colors.black),
       titleMedium: TextStyle(
-          fontSize: 18.0,
-          fontFamily: 'Montserrat',
-          color: Colors.black,
-          fontWeight: FontWeight.bold),
+          fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold),
       labelMedium: TextStyle(
-          fontSize: 14.0,
-          fontFamily: 'Montserrat',
-          color: Colors.black,
-          fontWeight: FontWeight.w300),
-    ))
+          fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.w300),
+    )))
   ..addOwn(OwnThemeFields());
 
 //

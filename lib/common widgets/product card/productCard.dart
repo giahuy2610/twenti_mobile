@@ -5,6 +5,7 @@ import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
 import '../../models/product/product.dart';
+import '../../services/currency_format/currencyFormat.dart';
 
 class productCard extends StatelessWidget {
   late Product product;
@@ -15,7 +16,6 @@ class productCard extends StatelessWidget {
     var salePercent =
         (100 - product.retailPrice / product.listPrice * 100).toInt();
     return Container(
-        height: MediaQuery.of(context).size.height / 3 + 100,
         margin:
             EdgeInsets.all(Theme.of(context).own().defaultProductCardMargin),
         clipBehavior: Clip.hardEdge,
@@ -43,63 +43,58 @@ class productCard extends StatelessWidget {
             },
             child: Column(
               children: [
-                Expanded(
-                    flex: 2,
-                    child: Hero(
-                        tag: "hero_product_image_${product.idProduct}",
-                        child: Image.network(
-                          product.images!.first.path!,
-                          fit: BoxFit.cover,
-                        ))),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsets.all(
-                        Theme.of(context).own().defaultVerticalPaddingOfScreen),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          product.brand!.nameBrand,
-                          maxLines: 1,
-                          style:
-                              const TextStyle(overflow: TextOverflow.ellipsis),
-                        ),
-                        SizedBox(
-                            height:
-                                Theme.of(context).own().defaultMarginBetween),
-                        Text(
-                          product.nameProduct,
-                          maxLines: 2,
-                          style: const TextStyle(
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        SizedBox(
-                            height:
-                                Theme.of(context).own().defaultMarginBetween),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              product.retailPrice.toString(),
-                              style: TextStyle(
-                                color: Theme.of(context).own().retailPriceColor,
-                                fontSize:
-                                    Theme.of(context).own().retailPriceSize,
-                                fontWeight: FontWeight.bold,
-                              ),
+                Hero(
+                    tag: "hero_product_image_${product.idProduct}",
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.network(
+                        product.images!.first.path!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        scale: 1,
+                      ),
+                    )),
+                Padding(
+                  padding: EdgeInsets.all(
+                      Theme.of(context).own().defaultVerticalPaddingOfScreen),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        product.brand!.nameBrand,
+                        maxLines: 1,
+                        style: const TextStyle(overflow: TextOverflow.ellipsis),
+                      ),
+                      SizedBox(
+                          height: Theme.of(context).own().defaultMarginBetween),
+                      Text(
+                        product.nameProduct,
+                        maxLines: 2,
+                        style: const TextStyle(
+                            overflow: TextOverflow.ellipsis, fontSize: 18),
+                      ),
+                      SizedBox(
+                          height: Theme.of(context).own().defaultMarginBetween),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            currencyFormat(product.retailPrice),
+                            style: TextStyle(
+                              color: Theme.of(context).own().retailPriceColor,
+                              fontSize: Theme.of(context).own().retailPriceSize,
+                              fontWeight: FontWeight.bold,
                             ),
-                            salePercent != 0
-                                ? Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: salePercentBadge(salePercent),
-                                  )
-                                : Container(),
-                          ],
-                        )
-                      ],
-                    ),
+                          ),
+                          salePercent != 0
+                              ? Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: salePercentBadge(salePercent),
+                                )
+                              : Container(),
+                        ],
+                      )
+                    ],
                   ),
                 )
               ],

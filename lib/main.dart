@@ -13,7 +13,7 @@ import 'package:twenti_mobile/views/cart%20page/controllers/getCart.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
 import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
-import 'package:twenti_mobile/views/login%20page/loginPage.dart';
+import 'package:twenti_mobile/views/my_orders_page/myOrdersPage.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
 void main() async {
@@ -69,20 +69,20 @@ class _MyAppState extends State<MyApp> {
       "isNoti": true,
       "futureToGetBadge": null
     },
-    // {
-    //   'id': 3,
-    //   "title": "Giỏ hàng",
-    //   "iconPath": "assets/icons/Send.svg",
-    //   "routePath": "",
-    //   "isNoti": true,
-    //   "futureToGetBadge": null
-    // },
     {
       'id': 3,
+      "title": "Cửa hàng",
+      "iconPath": "assets/icons/icon_map.svg",
+      "routePath": "",
+      "isNoti": false,
+      "futureToGetBadge": null
+    },
+    {
+      'id': 4,
       "title": "Tài khoản",
       "iconPath": "assets/icons/User.svg",
       "routePath": "",
-      "isNoti": false,
+      "isNoti": true,
       "futureToGetBadge": null
     }
   ];
@@ -142,7 +142,7 @@ class _MyAppState extends State<MyApp> {
               CategoryPage(),
               ChatPage(),
               CartPage(),
-              LoginPage()
+              MyOrdersPage()
             ],
           ),
           bottomNavigationBar: Container(

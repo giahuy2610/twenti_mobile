@@ -30,10 +30,7 @@ class Collection {
 
   factory Collection.fromJson(Map<String, dynamic> json) {
     var a = <Product>[];
-    for (var i in json['Products'])
-      // var b = json.decode(json['Products']);
-      a.add(Product.fromJson(i));
-    print(a);
+    for (var i in json['Products']) a.add(Product.fromJson(i));
     return Collection(
         iDCollection: json['IDCollection'],
         nameCollection: json['NameCollection'],

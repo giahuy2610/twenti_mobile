@@ -100,59 +100,62 @@ class _CollectionPageState extends State<CollectionPage> {
                                     clipBehavior: Clip.hardEdge,
                                     child: Image.network(data.wallPaperPath!),
                                   ),
-                                  Align(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.3,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            boxShadow: <BoxShadow>[
-                                              BoxShadow(
-                                                color: Colors.black45
-                                                    .withOpacity(0.3),
-                                                blurRadius: 2,
-                                                offset: Offset(0, 2),
-                                              ),
-                                            ],
+                                  if (data.logoImagePath != null)
+                                    Align(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.3,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.3,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              boxShadow: <BoxShadow>[
+                                                BoxShadow(
+                                                  color: Colors.black45
+                                                      .withOpacity(0.3),
+                                                  blurRadius: 2,
+                                                  offset: Offset(0, 2),
+                                                ),
+                                              ],
+                                            ),
+                                            clipBehavior: Clip.hardEdge,
+                                            transform:
+                                                Matrix4.translationValues(
+                                                    0.0,
+                                                    -MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.15,
+                                                    0.0),
+                                            child: Image.network(
+                                              data.logoImagePath!,
+                                            ),
                                           ),
-                                          clipBehavior: Clip.hardEdge,
-                                          transform: Matrix4.translationValues(
-                                              0.0,
-                                              -MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.15,
-                                              0.0),
-                                          child: Image.network(
-                                            data.logoImagePath!,
+                                          Text(
+                                            data.nameCollection,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 28,
+                                                letterSpacing: 5),
                                           ),
-                                        ),
-                                        Text(
-                                          data.nameCollection,
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 28,
-                                              letterSpacing: 5),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: Theme.of(context)
-                                            .own()
-                                            .defaultVerticalPaddingOfScreen),
-                                    child: description(data.description!),
-                                  ),
+                                  if (data.description != null)
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: Theme.of(context)
+                                              .own()
+                                              .defaultVerticalPaddingOfScreen),
+                                      child: description(data.description!),
+                                    ),
                                 ],
                               ),
                             ),

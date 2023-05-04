@@ -26,7 +26,9 @@ class CouponContainer extends StatelessWidget {
                     "assets/icons/icons8_voucher.png",
                     width: 36,
                   ),
-                  Text("Mã giảm giá"),
+                  SizedBox(width: Theme.of(context).own().defaultMarginBetween),
+                  Text("Mã giảm giá",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
               Text("Chọn hoặc nhập mã   >")

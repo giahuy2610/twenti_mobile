@@ -10,6 +10,120 @@ class AddressCheckoutPage extends StatefulWidget {
 }
 
 class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
+  Widget contactContainer() {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Liên hệ"),
+          TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), hintText: 'Tên người nhận'),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), hintText: 'Số điện thoại'),
+            keyboardType: TextInputType.phone,
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget addressContainer() {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Địa chỉ"),
+          Row(
+            children: [
+              Text("Tỉnh/thành phố"),
+              DropdownButton(
+                value: "New York",
+                items: [
+                  //add items in the dropdown
+                  DropdownMenuItem(child: Text("New York"), value: "New York"),
+
+                  DropdownMenuItem(
+                    child: Text("Tokyo"),
+                    value: "Tokyo",
+                  ),
+
+                  DropdownMenuItem(
+                    child: Text("Moscow"),
+                    value: "Moscow",
+                  )
+                ],
+                onChanged: (value) {
+                  //get value when changed
+                  print("You selected $value");
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text("Tỉnh/thành phố"),
+              DropdownButton(
+                value: "New York",
+                items: [
+                  //add items in the dropdown
+                  DropdownMenuItem(child: Text("New York"), value: "New York"),
+
+                  DropdownMenuItem(
+                    child: Text("Tokyo"),
+                    value: "Tokyo",
+                  ),
+
+                  DropdownMenuItem(
+                    child: Text("Moscow"),
+                    value: "Moscow",
+                  )
+                ],
+                onChanged: (value) {
+                  //get value when changed
+                  print("You selected $value");
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text("Tỉnh/thành phố"),
+              DropdownButton(
+                value: "New York",
+                items: [
+                  //add items in the dropdown
+                  DropdownMenuItem(child: Text("New York"), value: "New York"),
+
+                  DropdownMenuItem(
+                    child: Text("Tokyo"),
+                    value: "Tokyo",
+                  ),
+
+                  DropdownMenuItem(
+                    child: Text("Moscow"),
+                    value: "Moscow",
+                  )
+                ],
+                onChanged: (value) {
+                  //get value when changed
+                  print("You selected $value");
+                },
+              ),
+            ],
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), hintText: 'Tên đường, số nhà...'),
+            keyboardType: TextInputType.phone,
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,29 +141,31 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
         Expanded(
             child: ListView(
           children: [
-            DropdownButton(
-              value: "New York",
-              items: [
-                //add items in the dropdown
-                DropdownMenuItem(child: Text("New York"), value: "New York"),
-
-                DropdownMenuItem(
-                  child: Text("Tokyo"),
-                  value: "Tokyo",
-                ),
-
-                DropdownMenuItem(
-                  child: Text("Moscow"),
-                  value: "Moscow",
-                )
-              ],
-              onChanged: (value) {
-                //get value when changed
-                print("You selected $value");
-              },
-            )
+            contactContainer(),
+            addressContainer(),
           ],
         )),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                "Hủy bỏ",
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                "Hoàn thành",
+              ),
+            ),
+          ],
+        ),
       ],
     )));
   }

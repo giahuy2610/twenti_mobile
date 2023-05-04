@@ -18,7 +18,8 @@ class productHeading extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(
           Theme.of(context).own().defaultVerticalPaddingOfScreen),
-      decoration: BoxDecoration(color: Colors.white),
+      decoration:
+          BoxDecoration(color: Theme.of(context).own().defaultContainerColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,13 +29,16 @@ class productHeading extends StatelessWidget {
             softWrap: true,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
+          SizedBox(height: Theme.of(context).own().defaultMarginBetween),
           Text(
             nameBrand,
             textAlign: TextAlign.end,
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                fontStyle: FontStyle.italic),
           ),
-          SizedBox(height: Theme.of(context).own().defaultMarginBetween),
         ],
       ),
     );
