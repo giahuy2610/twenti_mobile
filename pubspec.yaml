@@ -68,6 +68,8 @@ dependencies:
   webview_flutter: ^2.8.0
   intl: ^0.17.0
   google_fonts: ^4.0.4
+  google_maps_flutter: ^2.2.6
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:

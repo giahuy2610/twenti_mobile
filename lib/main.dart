@@ -13,6 +13,7 @@ import 'package:twenti_mobile/views/cart%20page/controllers/getCart.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
 import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
+import 'package:twenti_mobile/views/map_page/mapPage.dart';
 import 'package:twenti_mobile/views/my_orders_page/myOrdersPage.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
@@ -112,7 +113,8 @@ class _MyAppState extends State<MyApp> {
         navigatorKey.currentState
             ?.push(MaterialPageRoute(builder: (context) => CartPage()));
       } else if (shortcutType == 'action_find_store') {
-        print('Show the help dialog!');
+        navigatorKey.currentState
+            ?.push(MaterialPageRoute(builder: (context) => MapSample()));
       }
     });
   }
@@ -141,7 +143,7 @@ class _MyAppState extends State<MyApp> {
               HomePage(),
               CategoryPage(),
               ChatPage(),
-              CartPage(),
+              MapSample(),
               MyOrdersPage()
             ],
           ),
