@@ -8,14 +8,18 @@ class TopNavigation extends StatelessWidget {
   late final Widget? left;
   late final Widget? right;
   late final Widget? stepRight;
-  late bool? isSearcher = true;
+  late bool isSearcher;
   Widget placeHolder = const SizedBox(
     width: 50,
     height: 50,
   );
 
   TopNavigation(
-      {super.key, this.left, this.right, this.stepRight, this.isSearcher});
+      {super.key,
+      this.left,
+      this.right,
+      this.stepRight,
+      this.isSearcher = true});
 
   Widget searchFiedld(context) {
     return Container(
@@ -58,25 +62,31 @@ class TopNavigation extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                left != null ? left! : placeHolder,
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 0),
-                    child: Material(
-                      child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    type:
-                                        PageTransitionType.rightToLeftWithFade,
-                                    child: SearchPage(),
-                                    childCurrent: context.widget));
-                          },
-                          child: searchFiedld(context)),
-                    ),
+                if (left is Text)
+                  SizedBox(
+                    width:
+                        Theme.of(context).own().defaultVerticalPaddingOfScreen,
                   ),
-                )
+                left != null ? left! : placeHolder,
+                if (isSearcher == true)
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 0),
+                      child: Material(
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType
+                                          .rightToLeftWithFade,
+                                      child: SearchPage(),
+                                      childCurrent: context.widget));
+                            },
+                            child: searchFiedld(context)),
+                      ),
+                    ),
+                  )
               ],
             ),
           ),

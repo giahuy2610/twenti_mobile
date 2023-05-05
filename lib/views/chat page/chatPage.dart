@@ -38,6 +38,7 @@ class _ChatPageState extends State<ChatPage> {
             onPressed: () {},
             icon: Icon(Icons.restore_from_trash),
           ),
+          isSearcher: false,
         ),
         Expanded(
             child: ListView(

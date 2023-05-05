@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/views/category%20page/widgets/grid_item.dart';
 
+import '../../common widgets/cart_icon/cartIcon.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
+import '../qr_scanner_page/qrScannerPage.dart';
 
 class CategoryPage extends StatelessWidget {
   final dataBrand = [
@@ -90,7 +93,22 @@ class CategoryPage extends StatelessWidget {
         body: SafeArea(
             child: Column(
       children: [
-        TopNavigation(),
+        TopNavigation(
+          isSearcher: true,
+          left: Material(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: qrScannerPage(),
+                          childCurrent: context.widget));
+                },
+                icon: const Icon(Icons.qr_code_scanner_outlined)),
+          ),
+          right: cartIcon(),
+        ),
         Expanded(
           child: ListView(
             children: [

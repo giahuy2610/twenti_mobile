@@ -31,7 +31,7 @@ class _notificationItemState extends State<notificationItem> {
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: widget.isRead == true ? Colors.cyan : Colors.cyanAccent),
+            color: widget.isRead == true ? Colors.grey : Colors.white),
         child: Row(
           children: [
             Image.asset("assets/icons/icons8_notification.png"),

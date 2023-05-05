@@ -17,19 +17,19 @@ class OrderDetailPage extends StatelessWidget {
             child: Column(
       children: [
         TopNavigation(
-          left: Row(
-            children: [
-              Material(
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.keyboard_arrow_left)),
-              ),
-              Text("Chi tiết đơn hàng")
-            ],
-          ),
-        ),
+            left: Row(
+              children: [
+                Material(
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.keyboard_arrow_left)),
+                ),
+                Text("Chi tiết đơn hàng")
+              ],
+            ),
+            isSearcher: false),
         Expanded(
             child: ListView(
           children: [

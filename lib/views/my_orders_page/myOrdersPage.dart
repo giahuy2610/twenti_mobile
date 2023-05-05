@@ -41,6 +41,7 @@ class _MyOrdersPageState extends State<MyOrdersPage>
               Text("Đơn hàng của tôi"),
             ],
           ),
+          isSearcher: false,
         ),
         Expanded(
           child: Column(

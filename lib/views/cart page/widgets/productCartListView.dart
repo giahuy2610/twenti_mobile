@@ -11,6 +11,7 @@ class ProductCartListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // context.watch<CartProvider>().total;
     return FutureBuilder<List<CartProduct>>(
         future: getCart(context),
         builder: (context, snapshot) {
