@@ -74,6 +74,7 @@ class ProductPage extends StatelessWidget {
                         nameBrand: data.brand!.nameBrand,
                         idBrand: data.idBrand,
                         categoryName: data.nameProduct,
+                        brandCollection: data.brand!.idCollection!,
                       ),
                       reviews(data.reviews!),
                       Container(

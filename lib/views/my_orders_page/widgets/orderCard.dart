@@ -7,12 +7,18 @@ import 'package:twenti_mobile/views/make_review_page/makeReviewPage.dart';
 import 'package:twenti_mobile/views/order_detail_page/orderDetailPage.dart';
 
 import '../../../models/order/order.dart';
+import '../controllers/futureCancelOrder.dart';
 import '../trackingStatusConstrain.dart';
 
-class OrderCard extends StatelessWidget {
+class OrderCard extends StatefulWidget {
   late final Order orderData;
   OrderCard(this.orderData);
 
+  @override
+  State<OrderCard> createState() => _OrderCardState();
+}
+
+class _OrderCardState extends State<OrderCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,8 +31,8 @@ class OrderCard extends StatelessWidget {
               context,
               PageTransition(
                   type: PageTransitionType.rightToLeftWithFade,
-                  child: OrderDetailPage(orderData),
-                  childCurrent: this)),
+                  child: OrderDetailPage(widget.orderData),
+                  childCurrent: widget)),
           child: Container(
             padding: EdgeInsets.all(
                 Theme.of(context).own().defaultVerticalPaddingOfScreen),
@@ -35,9 +41,9 @@ class OrderCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Đơn hàng #${orderData.iDInvoice}"),
+                    Text("Đơn hàng #${widget.orderData.iDInvoice}"),
                     Text(
-                      statusList[orderData.iDTracking],
+                      statusList[widget.orderData.iDTracking],
                       style: TextStyle(color: Colors.blueAccent),
                     )
                   ],
@@ -61,7 +67,7 @@ class OrderCard extends StatelessWidget {
                                     .own()
                                     .defaultMarginBetween),
                             child: Text(
-                              "${statusDescriptionList[orderData.iDTracking]}",
+                              "${statusDescriptionList[widget.orderData.iDTracking]}",
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -72,7 +78,7 @@ class OrderCard extends StatelessWidget {
                     )),
                 Column(
                   children: [
-                    for (var i in orderData.products)
+                    for (var i in widget.orderData.products)
                       ProductCartItem(
                         name: i.product.nameProduct,
                         id: i.product.idProduct,
@@ -89,11 +95,12 @@ class OrderCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Tổng cộng(${orderData.products.length} sản phẩm):"),
+                      Text(
+                          "Tổng cộng(${widget.orderData.products.length} sản phẩm):"),
                       SizedBox(
                           width: Theme.of(context).own().defaultMarginBetween),
                       Text(
-                        currencyFormat(orderData.totalValue),
+                        currencyFormat(widget.orderData.totalValue),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       )
                     ],
@@ -119,7 +126,7 @@ class OrderCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (orderData.iDTracking == 4)
+                    if (widget.orderData.iDTracking == 4)
                       Row(
                         children: [
                           SizedBox(
@@ -132,8 +139,9 @@ class OrderCard extends StatelessWidget {
                                   PageTransition(
                                       type: PageTransitionType
                                           .rightToLeftWithFade,
-                                      child: MakeReviewPage(orderData.products),
-                                      childCurrent: this));
+                                      child: MakeReviewPage(
+                                          widget.orderData.products),
+                                      childCurrent: widget));
                             },
                             child: const Text(
                               "Đánh giá",
@@ -152,14 +160,22 @@ class OrderCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                    if (orderData.iDTracking == 1 || orderData.iDTracking == 2)
+                    if (widget.orderData.iDTracking == 1 ||
+                        widget.orderData.iDTracking == 2)
                       Row(
                         children: [
                           SizedBox(
                               width:
                                   Theme.of(context).own().defaultMarginBetween),
                           OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              futureCancelOrder(widget.orderData.iDInvoice)
+                                  .then((value) {
+                                setState(() {
+                                  widget.orderData.iDTracking = 6;
+                                });
+                              });
+                            },
                             style: OutlinedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),

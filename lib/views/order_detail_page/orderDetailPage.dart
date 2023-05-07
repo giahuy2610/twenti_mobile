@@ -5,6 +5,7 @@ import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/order/order.dart';
 import '../../services/currency_format/currencyFormat.dart';
 import '../cart page/widgets/productCartItem.dart';
+import '../my_orders_page/trackingStatusConstrain.dart';
 
 class OrderDetailPage extends StatelessWidget {
   late Order orderData;
@@ -47,7 +48,7 @@ class OrderDetailPage extends StatelessWidget {
                             horizontal:
                                 Theme.of(context).own().defaultMarginBetween),
                         child: Text(
-                          "17/04-Kiện hàng của bạn đã được giao thành công",
+                          statusDescriptionList[orderData.iDTracking],
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -179,7 +180,7 @@ class OrderDetailPage extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text("Mã giảm giá"), Text(currencyFormat(100))],
+                    children: [Text("Mã giảm giá"), Text(currencyFormat(0))],
                   ),
                   SizedBox(
                     height: Theme.of(context).own().defaultProductCardMargin,
