@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
 import 'package:twenti_mobile/common%20widgets/description/description.dart';
-import 'package:twenti_mobile/common%20widgets/sale_percent_badge/salePercentBadge.dart';
-import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
-import 'package:twenti_mobile/views/cart%20page/controllers/futureAddToCart.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/imageSlider.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/productHeading.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/relatedProductsList.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/reviews.dart';
 
+import '../../common widgets/sale_percent_badge/salePercentBadge.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/product.dart';
 import '../../services/currency_format/currencyFormat.dart';
 import '../../services/deep linking/deepLink.dart';
 import '../../services/shared preferences/sharedPreferences.dart';
+import '../cart page/controllers/futureAddToCart.dart';
 import 'controllers/futureGetProduct.dart';
 
 class topW extends StatelessWidget {
@@ -151,9 +149,7 @@ class ProductPage extends StatelessWidget {
                           Material(
                             child: InkWell(
                               onTap: () async {
-                                context.read<CartProvider>().saveCartProducts(
-                                    await futureAddToCart(
-                                        context, idProduct, 1));
+                                futureAddToCart(context, idProduct, 1);
                               },
                               child: Container(
                                 height: 50,
@@ -179,9 +175,7 @@ class ProductPage extends StatelessWidget {
                           Material(
                             child: InkWell(
                               onTap: () async {
-                                context.read<CartProvider>().saveCartProducts(
-                                    await futureAddToCart(
-                                        context, idProduct, 1));
+                                futureAddToCart(context, idProduct, 1);
                               },
                               child: Container(
                                 height: 50,

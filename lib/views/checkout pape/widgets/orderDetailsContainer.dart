@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:twenti_mobile/services/currency_format/currencyFormat.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+
+import '../../../providers/cartProvider.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
   final total = 100;
@@ -11,8 +14,15 @@ class OrderDetailsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:
-          BoxDecoration(color: Theme.of(context).own().defaultContainerColor),
+      decoration: BoxDecoration(
+          color: Theme.of(context).own().defaultContainerColor,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+          boxShadow: [
+            BoxShadow(
+                color: Theme.of(context).own().defaultScaffoldColor,
+                spreadRadius: 1)
+          ]),
       child: Column(
         children: [
           Padding(
@@ -33,14 +43,37 @@ class OrderDetailsContainer extends StatelessWidget {
                 SizedBox(height: Theme.of(context).own().defaultMarginBetween),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Tổng cộng"), Text(currencyFormat(total))],
+                  children: [
+                    Text("Tổng cộng"),
+                    Text(currencyFormat(context.watch<CartProvider>().total))
+                  ],
                 ),
                 SizedBox(height: Theme.of(context).own().defaultMarginBetween),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Giảm giá"),
-                    Text(currencyFormat(couponValue))
+                    (context.watch<CartProvider>().selectedCoupon != null)
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                context
+                                    .watch<CartProvider>()
+                                    .selectedCoupon!
+                                    .codeCoupon,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "-${currencyFormat(context.watch<CartProvider>().selectedCoupon!.valueDiscount)}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )
+                        : Text(currencyFormat(0)),
                   ],
                 ),
                 SizedBox(height: Theme.of(context).own().defaultMarginBetween),
@@ -48,7 +81,13 @@ class OrderDetailsContainer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Tổng thanh toán"),
-                    Text(currencyFormat(lastTotal))
+                    Text(currencyFormat(context.watch<CartProvider>().total -
+                        (context.watch<CartProvider>().selectedCoupon == null
+                            ? 0
+                            : context
+                                .watch<CartProvider>()
+                                .selectedCoupon!
+                                .valueDiscount)))
                   ],
                 ),
               ],
@@ -56,6 +95,15 @@ class OrderDetailsContainer extends StatelessWidget {
           ),
           Container(
             height: 60,
+            decoration: BoxDecoration(
+                color: Theme.of(context).own().defaultContainerColor,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                boxShadow: [
+                  BoxShadow(
+                      color: Theme.of(context).own().defaultScaffoldColor,
+                      spreadRadius: 1)
+                ]),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -68,7 +116,18 @@ class OrderDetailsContainer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text("Tổng thanh toán"),
-                          Text(currencyFormat(lastTotal),
+                          Text(
+                              currencyFormat(
+                                  context.watch<CartProvider>().total -
+                                      (context
+                                                  .watch<CartProvider>()
+                                                  .selectedCoupon ==
+                                              null
+                                          ? 0
+                                          : context
+                                              .watch<CartProvider>()
+                                              .selectedCoupon!
+                                              .valueDiscount)),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 24))
                         ],
@@ -85,7 +144,12 @@ class OrderDetailsContainer extends StatelessWidget {
                           height: double.infinity,
                           child: Text(
                             "Đặt hàng",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context)
+                                    .own()
+                                    .defaultContainerColor),
                           )),
                     ),
                   ),

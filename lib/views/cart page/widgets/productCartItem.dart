@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:provider/provider.dart';
-import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
@@ -37,7 +35,13 @@ class _ProductCartItemState extends State<ProductCartItem> {
         children: [
           InkWell(
             onTap: () {
-              futureAddToCart(context, widget.id, 0);
+              futureAddToCart(context, widget.id, 0).then((value) {
+                if (value == true) {
+                  setState(() {
+                    widget.quantity--;
+                  });
+                } else {}
+              });
             },
             child: ColoredBox(
                 color: Colors.grey.shade300, child: Icon(CupertinoIcons.minus)),
@@ -51,8 +55,13 @@ class _ProductCartItemState extends State<ProductCartItem> {
           ),
           InkWell(
             onTap: () async {
-              context.read<CartProvider>().saveCartProducts(
-                  await futureAddToCart(context, widget.id, 1));
+              futureAddToCart(context, widget.id, 1).then((value) {
+                if (value == true) {
+                  setState(() {
+                    widget.quantity++;
+                  });
+                } else {}
+              });
             },
             child: ColoredBox(
                 color: Colors.grey.shade300, child: Icon(CupertinoIcons.plus)),
@@ -135,6 +144,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
 
   Widget slidable() {
     return Slidable(
+      enabled: widget.isUseInCart,
       // Specify a key if the Slidable is dismissible.
       key: const ValueKey(0),
 

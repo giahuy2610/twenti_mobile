@@ -6,8 +6,9 @@ import '../../../models/order/order.dart';
 import '../../../services/http/constant.dart';
 
 Future<List<Order>> futureGetOrderByStatus(int statusId) async {
-  http.Response response =
-      await http.get(Uri.parse('$baseUrl/api/invoice/customer/2'));
+  http.Response response = await http.post(
+      Uri.parse('$baseUrl/api/invoice/show-by-tracking/'),
+      body: {"IDCustomer": "1", "IDTracking": statusId.toString()});
   if (response.statusCode == 200) {
     List<Order> res = <Order>[];
     for (var i in json.decode(response.body)) res.add(Order.fromJson(i));

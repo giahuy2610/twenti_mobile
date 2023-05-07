@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
+import 'package:twenti_mobile/providers/checkoutProvider.dart';
 import 'package:twenti_mobile/providers/collectionPageProvider.dart';
 import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 import 'package:twenti_mobile/services/notification/notificationController.dart';
@@ -31,6 +32,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => CollectionPageProvider()),
+        ChangeNotifierProvider(create: (_) => CheckoutProvider()),
       ],
       child: MyApp(),
     ),

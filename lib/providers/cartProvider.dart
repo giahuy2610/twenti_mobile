@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:twenti_mobile/models/product/cartProduct.dart';
+
+import '../models/coupon/Coupon.dart';
 
 class CartProvider with ChangeNotifier {
   int _count = 0;
@@ -13,6 +15,14 @@ class CartProvider with ChangeNotifier {
 
   late List<CartProduct> _cartProducts;
   List<CartProduct> get cartProducts => _cartProducts;
+
+  CouponModel? _selectedCoupon;
+  CouponModel? get selectedCoupon => _selectedCoupon;
+
+  void setCoupon(CouponModel coupon) {
+    _selectedCoupon = coupon;
+    notifyListeners();
+  }
 
   void saveCartProducts(List<CartProduct> list) {
     print('saving cart');

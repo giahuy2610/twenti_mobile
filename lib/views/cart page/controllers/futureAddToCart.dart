@@ -9,7 +9,7 @@ import '../../../models/product/cartProduct.dart';
 import '../../../providers/cartProvider.dart';
 import '../../../services/http/constant.dart';
 
-Future<List<CartProduct>> futureAddToCart(
+Future<bool> futureAddToCart(
     BuildContext context, int idProduct, int isAdd) async {
   var body = {};
   body['IDCus'] = 2;
@@ -48,8 +48,9 @@ Future<List<CartProduct>> futureAddToCart(
           fontSize: 16.0);
     }
     context.read<CartProvider>().saveCartProducts(res);
-    return res;
+    return true;
   } else {
-    throw Exception('Failed to load post');
+    //throw Exception('Failed to load post');
+    return false;
   }
 }

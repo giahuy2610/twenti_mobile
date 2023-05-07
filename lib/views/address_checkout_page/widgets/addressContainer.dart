@@ -21,6 +21,7 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).own().defaultContainerColor,
       padding: EdgeInsets.all(
           Theme.of(context).own().defaultVerticalPaddingOfScreen),
       child: Column(
@@ -32,27 +33,30 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text("Tỉnh/thành phố"),
               FutureBuilder<List<Map<String, String>>>(
                 future: futureGetProvince(),
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.hasData) {
-                    return DropdownButton(
-                      value: selectedIdProvince,
-                      items: snapshot.data!
-                          .map((e) => DropdownMenuItem(
-                                value: e['id'].toString(),
-                                child: Text(e['name']!),
-                              ))
-                          .toList(),
-                      onChanged: (String? value) {
-                        setState(() {
-                          selectedIdProvince = value!;
-                          selectedIdDistrict = '000';
-                          selectedIdWard = '00000';
-                        });
-                      },
+                    return DropdownButtonHideUnderline(
+                      child: DropdownButton(
+                        value: selectedIdProvince,
+                        items: snapshot.data!
+                            .map((e) => DropdownMenuItem(
+                                  value: e['id'].toString(),
+                                  child: Text(e['name']!),
+                                ))
+                            .toList(),
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedIdProvince = value!;
+                            selectedIdDistrict = '000';
+                            selectedIdWard = '00000';
+                          });
+                        },
+                      ),
                     );
                   } else {
                     return Container();
@@ -62,12 +66,14 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text("Quận/huyện"),
               FutureBuilder<List<Map<String, String>>>(
                 future: futureGetDistrict(selectedIdProvince),
                 builder: (BuildContext context, snapshot) {
-                  return DropdownButton(
+                  return DropdownButtonHideUnderline(
+                      child: DropdownButton(
                     value: selectedIdDistrict,
                     items: (snapshot.hasData)
                         ? snapshot.data!
@@ -89,18 +95,20 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                         selectedIdWard = '00000';
                       });
                     },
-                  );
+                  ));
                 },
               ),
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text("Phường/xã"),
               FutureBuilder<List<Map<String, String>>>(
                 future: futureGetWard(selectedIdDistrict),
                 builder: (BuildContext context, snapshot) {
-                  return DropdownButton(
+                  return DropdownButtonHideUnderline(
+                      child: DropdownButton(
                     value: selectedIdWard,
                     items: (snapshot.hasData)
                         ? snapshot.data!
@@ -122,16 +130,32 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                         selectedIdDistrict = '000';
                       });
                     },
-                  );
+                  ));
                 },
               ),
             ],
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), hintText: 'Tên đường, số nhà...'),
-            keyboardType: TextInputType.phone,
-          )
+          Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.fromLTRB(20, 3, 20, 0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10)),
+              child: TextField(
+                keyboardType: TextInputType.text,
+                cursorColor: Colors.black,
+                textInputAction: TextInputAction.done,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.home_outlined),
+                    color: Colors.grey,
+                  ),
+                  hintText: 'Số nhà, đường,...',
+                ),
+              )),
         ],
       ),
     );

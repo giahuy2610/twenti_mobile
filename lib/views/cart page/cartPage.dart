@@ -13,18 +13,23 @@ class CartPage extends StatelessWidget {
             child: Column(
       children: [
         TopNavigation(
-          left: Material(
-            child: IconButton(
+            left: Material(
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.keyboard_arrow_left)),
+            ),
+            right: Material(
+              child: IconButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: const Icon(Icons.keyboard_arrow_left)),
-          ),
-          right: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.restore_from_trash),
-          ),
-        ),
+                icon: Image.asset(
+                  "assets/icons/icon_trash.png",
+                ),
+              ),
+            )),
         Expanded(
           child: Column(
             children: const [

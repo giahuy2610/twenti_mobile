@@ -199,7 +199,77 @@ class OrderDetailPage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     OutlinedButton(
+            //       onPressed: () {},
+            //       child: const Text(
+            //         "Mua lại",
+            //         style: TextStyle(
+            //           color: Colors.redAccent,
+            //         ),
+            //       ),
+            //       style: OutlinedButton.styleFrom(
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(10.0),
+            //         ),
+            //         side: const BorderSide(
+            //           color: Colors.redAccent,
+            //         ),
+            //       ),
+            //     ),
+            //     if (orderData.iDTracking == 4)
+            //       Row(
+            //         children: [
+            //           SizedBox(
+            //               width: Theme.of(context).own().defaultMarginBetween),
+            //           OutlinedButton(
+            //             onPressed: () {},
+            //             child: const Text(
+            //               "Đánh giá",
+            //               style: TextStyle(
+            //                 color: Colors.redAccent,
+            //               ),
+            //             ),
+            //             style: OutlinedButton.styleFrom(
+            //               shape: RoundedRectangleBorder(
+            //                 borderRadius: BorderRadius.circular(10.0),
+            //               ),
+            //               side: const BorderSide(
+            //                 color: Colors.redAccent,
+            //               ),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     if (orderData.iDTracking == 1 || orderData.iDTracking == 2)
+            //       Row(
+            //         children: [
+            //           SizedBox(
+            //               width: Theme.of(context).own().defaultMarginBetween),
+            //           OutlinedButton(
+            //             onPressed: () {},
+            //             style: OutlinedButton.styleFrom(
+            //               shape: RoundedRectangleBorder(
+            //                 borderRadius: BorderRadius.circular(10.0),
+            //               ),
+            //               side: const BorderSide(
+            //                 color: Colors.redAccent,
+            //               ),
+            //             ),
+            //             child: const Text(
+            //               "Hủy đơn",
+            //               style: TextStyle(
+            //                 color: Colors.redAccent,
+            //               ),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //   ],
+            // )
           ],
         )),
       ],

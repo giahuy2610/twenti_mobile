@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../common widgets/top navigation/topNavigation.dart';
+import '../../models/product/cartProduct.dart';
+
 class MakeReviewPage extends StatefulWidget {
-  const MakeReviewPage({Key? key}) : super(key: key);
+  final List<CartProduct> listProduct;
+  MakeReviewPage(this.listProduct);
 
   @override
   State<MakeReviewPage> createState() => _MakeReviewPageState();
@@ -10,6 +14,34 @@ class MakeReviewPage extends StatefulWidget {
 class _MakeReviewPageState extends State<MakeReviewPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        body: SafeArea(
+            child: Column(
+      children: [
+        TopNavigation(
+          left: Row(
+            children: [
+              Material(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.keyboard_arrow_left)),
+              ),
+              Text(
+                "Đánh giá",
+                style: Theme.of(context).textTheme.titleMedium,
+              )
+            ],
+          ),
+          isSearcher: false,
+        ),
+        Expanded(
+            child: ListView(
+          padding: EdgeInsets.all(10),
+          children: [],
+        )),
+      ],
+    )));
   }
 }

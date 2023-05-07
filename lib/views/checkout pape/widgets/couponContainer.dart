@@ -8,36 +8,41 @@ class CouponContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Theme.of(context).own().defaultContainerColor,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context,
-              PageTransition(
-                  type: PageTransitionType.rightToLeftWithFade,
-                  child: CouponPage(),
-                  childCurrent: this));
-        },
-        child: Container(
-          padding: EdgeInsets.all(
-              Theme.of(context).own().defaultVerticalPaddingOfScreen),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Image.asset(
-                    "assets/icons/icons8_voucher.png",
-                    width: 36,
-                  ),
-                  SizedBox(width: Theme.of(context).own().defaultMarginBetween),
-                  Text("Mã giảm giá",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
-              Text("Chọn hoặc nhập mã   >")
-            ],
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          vertical: Theme.of(context).own().defaultProductCardMargin),
+      child: Material(
+        color: Theme.of(context).own().defaultContainerColor,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.rightToLeftWithFade,
+                    child: CouponPage(),
+                    childCurrent: this));
+          },
+          child: Container(
+            padding: EdgeInsets.all(
+                Theme.of(context).own().defaultVerticalPaddingOfScreen),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/icons/icons8_voucher.png",
+                      width: 36,
+                    ),
+                    SizedBox(
+                        width: Theme.of(context).own().defaultMarginBetween),
+                    Text("Mã giảm giá",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                Text("Chọn hoặc nhập mã   >")
+              ],
+            ),
           ),
         ),
       ),

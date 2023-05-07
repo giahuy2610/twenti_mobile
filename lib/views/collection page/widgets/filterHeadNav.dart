@@ -21,11 +21,14 @@ class _FilterHeadContainerState extends State<FilterHeadContainer> {
 
   void sortIncreaseByPrice(bool isTrue) {
     List<Product> listOfProduct = provider.listOfProducts;
-    if (isTrue == true)
+    if (isTrue == true) {
       listOfProduct.sort((a, b) => a.retailPrice.compareTo(b.retailPrice));
-    else
+    } else {
       listOfProduct.sort((a, b) => b.retailPrice.compareTo(a.retailPrice));
-    for (var i in listOfProduct) print(i.retailPrice);
+    }
+    for (var i in listOfProduct) {
+      print(i.retailPrice);
+    }
     this.provider.saveListOfProducts(listOfProduct);
   }
 

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../models/product/product.dart';
 
@@ -10,5 +10,10 @@ class CollectionPageProvider with ChangeNotifier {
   void saveListOfProducts(List<Product> newList) {
     _listOfProducts = newList;
     notifyListeners();
+  }
+
+  void removeListOfProducts() {
+    _listOfProducts = [];
+    print("removed");
   }
 }

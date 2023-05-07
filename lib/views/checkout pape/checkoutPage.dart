@@ -3,6 +3,7 @@ import 'package:twenti_mobile/views/checkout%20pape/widgets/addressContainer.dar
 import 'package:twenti_mobile/views/checkout%20pape/widgets/couponContainer.dart';
 import 'package:twenti_mobile/views/checkout%20pape/widgets/orderDetailsContainer.dart';
 import 'package:twenti_mobile/views/checkout%20pape/widgets/paymentContainer.dart';
+import 'package:twenti_mobile/views/checkout%20pape/widgets/productCheckoutListView.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
 
@@ -32,7 +33,7 @@ class _checkoutPageState extends State<checkoutPage> {
                       icon: const Icon(Icons.keyboard_arrow_left)),
                 ),
                 Text(
-                  "Thêm địa chỉ",
+                  "Thanh toán",
                   style: Theme.of(context).textTheme.titleMedium,
                 )
               ],
@@ -42,10 +43,8 @@ class _checkoutPageState extends State<checkoutPage> {
             child: ListView(
           children: [
             AddressContainer(),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5),
-              child: CouponContainer(),
-            ),
+            ProductCheckoutListView(),
+            CouponContainer(),
             PaymentContainer(),
           ],
         )),

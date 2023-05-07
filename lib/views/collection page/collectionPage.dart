@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
-import 'package:twenti_mobile/common%20widgets/description/description.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/product%20list%20view.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/productListViewSkeleton.dart';
 import 'package:twenti_mobile/models/product/collection.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/collection%20page/widgets/filterHeadNav.dart';
 
+import '../../common widgets/description/description.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/product.dart';
 import '../../providers/collectionPageProvider.dart';
 
 class CollectionPage extends StatefulWidget {
-  dynamic function;
+  Future function;
   CollectionPage(this.function);
 
   @override
@@ -23,6 +23,13 @@ class CollectionPage extends StatefulWidget {
 
 class _CollectionPageState extends State<CollectionPage> {
   bool isGridView = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<CollectionPageProvider>().removeListOfProducts();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +80,13 @@ class _CollectionPageState extends State<CollectionPage> {
                     if (snapshot.hasData) {
                       var data = snapshot.data!;
                       if (data is Collection) {
-                        context
+                        if (context
                             .read<CollectionPageProvider>()
-                            .setListOfProducts = (data.products);
+                            .listOfProducts
+                            .isEmpty)
+                          context
+                              .read<CollectionPageProvider>()
+                              .setListOfProducts = (data.products);
 
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,18 +170,30 @@ class _CollectionPageState extends State<CollectionPage> {
                                 ],
                               ),
                             ),
-                            productListView(data.products, isGridView)
+                            productListView(
+                                context
+                                    .watch<CollectionPageProvider>()
+                                    .listOfProducts,
+                                isGridView)
                           ],
                         );
                       } else {
-                        context
+                        if (context
                             .read<CollectionPageProvider>()
-                            .setListOfProducts = (data as List<Product>);
+                            .listOfProducts
+                            .isEmpty)
+                          context
+                              .read<CollectionPageProvider>()
+                              .setListOfProducts = (data as List<Product>);
 
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            productListView(data as List<Product>, isGridView)
+                            productListView(
+                                context
+                                    .watch<CollectionPageProvider>()
+                                    .listOfProducts as List<Product>,
+                                isGridView)
                           ],
                         );
                       }
