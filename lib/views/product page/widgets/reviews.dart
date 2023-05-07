@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/reviewItem.dart';
 import 'package:twenti_mobile/views/review%20page/reviewPage.dart';
@@ -42,15 +43,28 @@ class reviews extends StatelessWidget {
           for (var i in (reviewList.length > 2
               ? reviewList.getRange(0, 2)
               : reviewList))
-            reviewItem(i),
+            Container(
+              margin: EdgeInsets.symmetric(
+                  vertical: Theme.of(context).own().defaultProductCardMargin),
+              child: reviewItem(i),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade500),
+                  borderRadius: BorderRadius.circular(5)),
+            ),
           (reviewList.length > 2)
-              ? InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => reviewPage(reviewList))),
-                  child: Text("Xem tất cả >"))
-              : Text(
+              ? Padding(
+                  padding: EdgeInsets.only(
+                      top: Theme.of(context).own().defaultMarginBetween),
+                  child: InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: reviewPage(reviewList),
+                              childCurrent: this)),
+                      child: const Text("Xem tất cả >")),
+                )
+              : const Text(
                   "Nhanh tay mua hàng để trở thành người đầu tiên đánh giá sản phẩm")
         ],
       ),

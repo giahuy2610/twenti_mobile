@@ -22,14 +22,22 @@ class _checkoutPageState extends State<checkoutPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TopNavigation(
-          left: Material(
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.keyboard_arrow_left)),
-          ),
-        ),
+            left: Row(
+              children: [
+                Material(
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.keyboard_arrow_left)),
+                ),
+                Text(
+                  "Thêm địa chỉ",
+                  style: Theme.of(context).textTheme.titleMedium,
+                )
+              ],
+            ),
+            isSearcher: false),
         Expanded(
             child: ListView(
           children: [

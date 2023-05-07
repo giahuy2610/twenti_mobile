@@ -12,17 +12,18 @@ class reviewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(
+          Theme.of(context).own().defaultVerticalPaddingOfScreen),
       margin: EdgeInsets.symmetric(
           horizontal: 0,
-          vertical: Theme.of(context).own().defaultMarginBetween),
+          vertical: Theme.of(context).own().defaultProductCardMargin),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: Color.fromRGBO(249, 249, 249, 1)),
+          color: Theme.of(context).own().defaultContainerColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Customer"),
+          Text("Khách hàng"),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -30,6 +31,7 @@ class reviewItem extends StatelessWidget {
               Text(review.createdOn),
             ],
           ),
+          SizedBox(height: Theme.of(context).own().defaultMarginBetween),
           Text(review.contentLong),
           Row(
             children: [

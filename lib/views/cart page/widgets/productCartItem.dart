@@ -156,7 +156,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
             backgroundColor: Color(0xFFFE4A49),
             foregroundColor: Colors.white,
             icon: Icons.delete,
-            label: 'Delete',
+            label: 'Xóa',
           ),
           SlidableAction(
             onPressed: (context) {
@@ -165,40 +165,11 @@ class _ProductCartItemState extends State<ProductCartItem> {
             backgroundColor: Color(0xFF21B7CA),
             foregroundColor: Colors.white,
             icon: Icons.share,
-            label: 'Share',
+            label: 'Chia sẻ',
           ),
         ],
       ),
 
-      // The end action pane is the one at the right or the bottom side.
-      endActionPane: ActionPane(
-        motion: ScrollMotion(),
-        children: [
-          SlidableAction(
-            // An action can be bigger than the others.
-            flex: 2,
-            onPressed: (context) {
-              print("hh");
-            },
-            backgroundColor: Color(0xFF7BC043),
-            foregroundColor: Colors.white,
-            icon: Icons.archive,
-            label: 'Archive',
-          ),
-          SlidableAction(
-            onPressed: (context) {
-              print("hh");
-            },
-            backgroundColor: Color(0xFF0392CF),
-            foregroundColor: Colors.white,
-            icon: Icons.save,
-            label: 'Save',
-          ),
-        ],
-      ),
-
-      // The child of the Slidable is what the user sees when the
-      // component is not dragged.
       child: item(),
     );
   }

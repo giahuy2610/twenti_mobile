@@ -99,11 +99,7 @@ class ProductPage extends StatelessWidget {
                   ),
                 )),
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: Theme.of(context)
-                          .own()
-                          .defaultVerticalPaddingOfScreen),
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   decoration: BoxDecoration(
                       color: Theme.of(context).own().defaultContainerColor,
                       boxShadow: [
@@ -149,63 +145,61 @@ class ProductPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            // Material(
-                            //   child: InkWell(
-                            //     onTap: () async {
-                            //       context.read<CartProvider>().saveCartProducts(
-                            //           await futureAddToCart(
-                            //               context, idProduct, 1));
-                            //     },
-                            //     child: Container(
-                            //       height: 50,
-                            //       alignment: Alignment.center,
-                            //       padding: EdgeInsets.all(5),
-                            //       decoration: BoxDecoration(
-                            //           borderRadius: BorderRadius.circular(50),
-                            //           color: Color.fromRGBO(244, 163, 155, 0.4),
-                            //           border:
-                            //               Border.all(color: Colors.redAccent)),
-                            //       child: const Text(
-                            //         "MUA NGAY",
-                            //         style: TextStyle(
-                            //             color: Colors.redAccent,
-                            //             fontWeight: FontWeight.bold),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Material(
-                              child: InkWell(
-                                onTap: () async {
-                                  context.read<CartProvider>().saveCartProducts(
-                                      await futureAddToCart(
-                                          context, idProduct, 1));
-                                },
-                                child: Container(
-                                  height: 50,
-                                  padding: EdgeInsets.all(5),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      color: Colors.red.shade400,
-                                      borderRadius: BorderRadius.circular(500)),
-                                  child: const Text(
-                                    "THÊM VÀO GIỎ",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Material(
+                            child: InkWell(
+                              onTap: () async {
+                                context.read<CartProvider>().saveCartProducts(
+                                    await futureAddToCart(
+                                        context, idProduct, 1));
+                              },
+                              child: Container(
+                                height: 50,
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Color.fromRGBO(244, 163, 155, 0.4),
+                                    border:
+                                        Border.all(color: Colors.redAccent)),
+                                child: const Text(
+                                  "MUA NGAY",
+                                  style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Material(
+                            child: InkWell(
+                              onTap: () async {
+                                context.read<CartProvider>().saveCartProducts(
+                                    await futureAddToCart(
+                                        context, idProduct, 1));
+                              },
+                              child: Container(
+                                height: 50,
+                                padding: EdgeInsets.all(5),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    color: Colors.red.shade400,
+                                    borderRadius: BorderRadius.circular(500)),
+                                child: const Text(
+                                  "THÊM VÀO GIỎ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

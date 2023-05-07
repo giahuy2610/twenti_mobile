@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/themes/theme.dart';
-
-import 'couponSelectOverlay.dart';
+import 'package:twenti_mobile/views/coupon_page/couponPage.dart';
 
 class CouponContainer extends StatelessWidget {
   const CouponContainer({Key? key}) : super(key: key);
@@ -12,7 +12,12 @@ class CouponContainer extends StatelessWidget {
       color: Theme.of(context).own().defaultContainerColor,
       child: InkWell(
         onTap: () {
-          openCouponOverlay(context);
+          Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeftWithFade,
+                  child: CouponPage(),
+                  childCurrent: this));
         },
         child: Container(
           padding: EdgeInsets.all(

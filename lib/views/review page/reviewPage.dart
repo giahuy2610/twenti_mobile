@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../common widgets/cart_icon/cartIcon.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/review.dart';
 import '../../services/deep linking/deepLink.dart';
-import '../cart page/cartPage.dart';
 import '../product page/widgets/reviewItem.dart';
 
 class reviewPage extends StatelessWidget {
@@ -18,25 +18,18 @@ class reviewPage extends StatelessWidget {
             child: Column(
       children: [
         TopNavigation(
-          left: Material(
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.keyboard_arrow_left)),
-          ),
-          stepRight: Material(
-              child: IconButton(
-                  onPressed: () => CreateSharingDynamicLink(65),
-                  icon: SvgPicture.asset('assets/icons/Send.svg'))),
-          right: Material(
+            left: Material(
               child: IconButton(
                   onPressed: () {
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => CartPage()));
+                    Navigator.pop(context);
                   },
-                  icon: const Icon(Icons.shopping_bag_outlined))),
-        ),
+                  icon: const Icon(Icons.keyboard_arrow_left)),
+            ),
+            stepRight: Material(
+                child: IconButton(
+                    onPressed: () => CreateSharingDynamicLink(1),
+                    icon: SvgPicture.asset('assets/icons/Send.svg'))),
+            right: cartIcon()),
         Expanded(
             child: ListView(
           children: [

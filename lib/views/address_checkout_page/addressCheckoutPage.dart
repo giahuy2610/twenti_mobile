@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/address_checkout_page/widgets/addressContainer.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
+import 'controllers/futureGetProvince.dart';
 
 class AddressCheckoutPage extends StatefulWidget {
   const AddressCheckoutPage({Key? key}) : super(key: key);
@@ -12,10 +15,15 @@ class AddressCheckoutPage extends StatefulWidget {
 class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
   Widget contactContainer() {
     return Container(
+      padding: EdgeInsets.all(
+          Theme.of(context).own().defaultVerticalPaddingOfScreen),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Liên hệ"),
+          Text(
+            "Liên hệ",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           TextFormField(
             decoration: InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Tên người nhận'),
@@ -32,33 +40,24 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
 
   Widget addressContainer() {
     return Container(
+      padding: EdgeInsets.all(
+          Theme.of(context).own().defaultVerticalPaddingOfScreen),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Địa chỉ"),
+          Text(
+            "Địa chỉ",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           Row(
             children: [
               Text("Tỉnh/thành phố"),
               DropdownButton(
                 value: "New York",
                 items: [
-                  //add items in the dropdown
                   DropdownMenuItem(child: Text("New York"), value: "New York"),
-
-                  DropdownMenuItem(
-                    child: Text("Tokyo"),
-                    value: "Tokyo",
-                  ),
-
-                  DropdownMenuItem(
-                    child: Text("Moscow"),
-                    value: "Moscow",
-                  )
                 ],
-                onChanged: (value) {
-                  //get value when changed
-                  print("You selected $value");
-                },
+                onChanged: (value) {},
               ),
             ],
           ),
@@ -126,23 +125,33 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
+    futureGetProvince()
+        .then((value) => print(value.map((e) => e['id'].toString()).toList()));
     return Scaffold(
         body: SafeArea(
             child: Column(
       children: [
         TopNavigation(
-            left: Material(
-          child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.keyboard_arrow_left)),
-        )),
+            left: Row(
+              children: [
+                Material(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.keyboard_arrow_left))),
+                Text(
+                  "Thêm địa chỉ",
+                  style: Theme.of(context).textTheme.titleMedium,
+                )
+              ],
+            ),
+            isSearcher: false),
         Expanded(
             child: ListView(
           children: [
             contactContainer(),
-            addressContainer(),
+            AddressCheckoutContainer(),
           ],
         )),
         Row(

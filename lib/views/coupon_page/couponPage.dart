@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'widgets/coupon.dart';
-import '../../../models/coupon/Coupon.dart';
 
+import '../../../models/coupon/Coupon.dart';
+import '../../common widgets/top navigation/topNavigation.dart';
 import 'controllers/futureGetCoupon.dart';
+import 'widgets/coupon.dart';
 
 class CouponPage extends StatefulWidget {
   const CouponPage({Key? key}) : super(key: key);
@@ -14,52 +15,50 @@ class CouponPage extends StatefulWidget {
 class _CouponPageState extends State<CouponPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.white,
-              iconTheme: const IconThemeData(color: Colors.black),
-              title: const Text(
-                'Ví voucher',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+    return Scaffold(
+        body: SafeArea(
+            child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TopNavigation(
+            left: Row(
+              children: [
+                Material(
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.keyboard_arrow_left)),
                 ),
-              ),
-            ),
-            body: Container(
-                color: const Color.fromARGB(1, 249, 249, 249),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    FutureBuilder<List<CouponModel>>(
-                        future: futureGetCoupon(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return Expanded(
-                              child: ListView.builder(
-                                itemCount: snapshot.data!.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10.0, left: 10, right: 10),
-                                    child: coupon(snapshot.data![index]),
-                                  );
-                                },
-                              ),
-                            );
-                          } else {
-                            return const Center(
-                                child: CircularProgressIndicator());
-                          }
-                        }
-                    )
-                  ],
+                Text(
+                  "Ví voucher",
+                  style: Theme.of(context).textTheme.titleMedium,
                 )
-            )
-        )
-    );
+              ],
+            ),
+            isSearcher: false),
+        Expanded(
+            child: FutureBuilder<List<CouponModel>>(
+                future: futureGetCoupon(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Expanded(
+                      child: ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10.0, left: 10, right: 10),
+                            child: coupon(snapshot.data![index]),
+                          );
+                        },
+                      ),
+                    );
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                })),
+      ],
+    )));
   }
 }
