@@ -20,7 +20,7 @@ class ProductCheckoutListView extends StatelessWidget {
                   vertical: Theme.of(context).own().defaultProductCardMargin),
               decoration: BoxDecoration(
                   color: Theme.of(context).own().defaultContainerColor),
-              child: Column(children: [
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
                 for (var i in (snapshot.data!))
                   ProductCartItem(
                     image: i.product.images!.first.path,
@@ -33,14 +33,9 @@ class ProductCheckoutListView extends StatelessWidget {
               ]),
             );
           }
-          return ListView(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical:
-                      Theme.of(context).own().defaultVerticalPaddingOfScreen),
-              children: [
-                for (var i = 0; i < 6; i++) productCartItemSkeleton()
-              ]);
+          return Column(children: [
+            for (var i = 0; i < 6; i++) productCartItemSkeleton()
+          ]);
         });
   }
 }

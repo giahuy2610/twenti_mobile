@@ -133,36 +133,33 @@ class _couponState extends State<coupon> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 5.0, bottom: 5.0),
-                      child: Container(
-                        width: 100,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [gradiantLeftColor, gradiantRightColor],
-                          ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 5, right: 5),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [gradiantLeftColor, gradiantRightColor],
                         ),
-                        child: InkWell(
-                          onTap: () {
-                            context
-                                .read<CartProvider>()
-                                .setCoupon(widget.model);
-                          },
-                          child: Center(
-                            child: Text(
-                              "Áp dụng",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: buttonFontColor,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          context.read<CartProvider>().setCoupon(widget.model);
+                        },
+                        child: Text(
+                          identical(
+                                  context.watch<CartProvider>().selectedCoupon,
+                                  widget.model)
+                              ? "Đang sử dụng"
+                              : "Áp dụng",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: buttonFontColor,
+                            fontWeight: FontWeight.w600,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),

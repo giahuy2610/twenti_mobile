@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/make_review_page/widgets/aboutProductContainer.dart';
+import 'package:twenti_mobile/views/make_review_page/widgets/reviewFieldsContainer.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/product/cartProduct.dart';
@@ -37,9 +40,18 @@ class _MakeReviewPageState extends State<MakeReviewPage> {
           isSearcher: false,
         ),
         Expanded(
-            child: ListView(
-          padding: EdgeInsets.all(10),
-          children: [],
+            child: Column(
+          children: [
+            AboutProductContainer(),
+            ReviewFieldsContainer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: Theme.of(context).own().defaultVerticalPaddingOfScreen),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: const SizedBox(
+                      width: double.infinity, child: Center(child: Text("Gửi")))),
+            )
+          ],
         )),
       ],
     )));

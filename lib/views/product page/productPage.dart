@@ -19,6 +19,9 @@ import '../cart page/controllers/futureAddToCart.dart';
 import 'controllers/futureGetProduct.dart';
 
 class topW extends StatelessWidget {
+  late int idProduct;
+  topW(this.idProduct);
+
   @override
   Widget build(BuildContext context) {
     print('ưi');
@@ -32,7 +35,7 @@ class topW extends StatelessWidget {
         ),
         stepRight: Material(
             child: IconButton(
-                onPressed: () => CreateSharingDynamicLink(1),
+                onPressed: () => CreateSharingDynamicLink(idProduct),
                 icon: SvgPicture.asset('assets/icons/Send.svg'))),
         right: cartIcon());
   }
@@ -59,7 +62,7 @@ class ProductPage extends StatelessWidget {
                 body: SafeArea(
                     child: Column(
               children: [
-                topW(),
+                topW(idProduct),
                 Expanded(
                     child: Container(
                   height: 500,

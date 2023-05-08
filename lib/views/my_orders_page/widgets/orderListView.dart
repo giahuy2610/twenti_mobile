@@ -22,13 +22,20 @@ class _OrderListViewState extends State<OrderListView> {
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
           var data = snapshot.data!;
-          return ListView(
-            padding: EdgeInsets.symmetric(
-                vertical: Theme.of(context).own().defaultProductCardMargin),
-            children: [
-              for (var i in data) OrderCard(i),
-            ],
-          );
+          if (data.length > 0)
+            return ListView(
+              padding: EdgeInsets.symmetric(
+                  vertical: Theme.of(context).own().defaultProductCardMargin),
+              children: [
+                for (var i in data) OrderCard(i),
+              ],
+            );
+          else
+            return Center(
+              child: Image.asset(
+                "assets/icons/icon_empty.png",
+              ),
+            );
         } else {
           return ListView(
             padding: EdgeInsets.symmetric(

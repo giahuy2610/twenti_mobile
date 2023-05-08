@@ -4,6 +4,7 @@ import 'package:twenti_mobile/views/my_orders_page/widgets/orderListView.dart';
 
 import './trackingStatusConstrain.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
+import '../../services/chat/chat.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({Key? key}) : super(key: key);
@@ -42,6 +43,13 @@ class _MyOrdersPageState extends State<MyOrdersPage>
             ],
           ),
           isSearcher: false,
+          right: Material(
+            child: IconButton(
+                onPressed: () {
+                  newChat();
+                },
+                icon: const Icon(Icons.mail_outline)),
+          ),
         ),
         Expanded(
           child: Column(

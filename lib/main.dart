@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart' as badges;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +19,14 @@ import 'package:twenti_mobile/views/map_page/mapPage.dart';
 import 'package:twenti_mobile/views/my_orders_page/myOrdersPage.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Authentication.initializeFirebase();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // Initialize cho Local Notification
   await NotificationController.initializeLocalNotifications(debug: true);
