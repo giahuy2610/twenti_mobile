@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:twenti_mobile/services/currency_format/currencyFormat.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/order_detail_page/orderDetailPage.dart';
 
 import '../../../providers/cartProvider.dart';
+import '../../order_detail_page/controllers/futureGetOrderDetail.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
   final total = 100;
@@ -138,7 +141,17 @@ class OrderDetailsContainer extends StatelessWidget {
                   child: Material(
                     color: Colors.red,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.read<CartProvider>().makeToOrder().then(
+                            (value) async => Navigator.pushReplacement(
+                                context,
+                                PageTransition(
+                                    type:
+                                        PageTransitionType.rightToLeftWithFade,
+                                    child: OrderDetailPage(
+                                        await futureGetOrderDetail(value)),
+                                    childCurrent: this)));
+                      },
                       child: Container(
                           alignment: Alignment.center,
                           height: double.infinity,

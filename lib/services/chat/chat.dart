@@ -1,9 +1,10 @@
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 void newChat() {
+  print("opening chat api");
   dynamic conversationObject = {
     'appId':
-        '34452e41144b71ffe441eb3404bf749b0', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+        '146a699b0210be3298a047df7d4a822c0', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
   };
 
   KommunicateFlutterPlugin.buildConversation(conversationObject)

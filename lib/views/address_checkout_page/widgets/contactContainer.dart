@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
 class ContactContainer extends StatefulWidget {
-  const ContactContainer({Key? key}) : super(key: key);
+  final Function callBackNameContact;
+  final Function callBackPhoneContact;
+  ContactContainer(this.callBackNameContact, this.callBackPhoneContact);
 
   @override
   State<ContactContainer> createState() => _ContactContainerState();
@@ -33,6 +35,9 @@ class _ContactContainerState extends State<ContactContainer> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: TextField(
+                onChanged: (value) {
+                  widget.callBackNameContact(value);
+                },
                 keyboardType: TextInputType.text,
                 cursorColor: Colors.black,
                 textInputAction: TextInputAction.next,
@@ -57,6 +62,9 @@ class _ContactContainerState extends State<ContactContainer> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: TextField(
+                onChanged: (value) {
+                  widget.callBackPhoneContact(value);
+                },
                 keyboardType: TextInputType.phone,
                 cursorColor: Colors.black,
                 textInputAction: TextInputAction.done,

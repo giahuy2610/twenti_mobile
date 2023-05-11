@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/views/account_page/widgets/accountMenu.dart';
+import 'package:twenti_mobile/views/account_page/widgets/avatar.dart';
 import 'package:twenti_mobile/views/account_page/widgets/historyPurchasedListView.dart';
 import 'package:twenti_mobile/views/account_page/widgets/orderMenu.dart';
-import 'package:twenti_mobile/views/account_page/widgets/avatar.dart';
 
 //the reason why this page is stateless is because
 //when navigating to this page, this page will be reloaded
@@ -13,16 +13,14 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-      body: ListView(
-        children: const [
-            Avatar(),
-            OrderMenu(),
-            HistoryPurchasedListView(),
-            SizedBox(height: 10),
-            AccountMenu(),
-        ]
-      ),
+        child: Scaffold(
+      body: ListView(children: [
+        Avatar(),
+        OrderMenu(),
+        HistoryPurchasedListView(),
+        SizedBox(height: 10),
+        AccountMenu(),
+      ]),
     ));
   }
 }

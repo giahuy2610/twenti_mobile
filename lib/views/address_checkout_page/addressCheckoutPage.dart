@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
-import 'package:twenti_mobile/views/address_checkout_page/controllers/achieveAddress.dart';
 import 'package:twenti_mobile/views/address_checkout_page/widgets/addressContainer.dart';
 import 'package:twenti_mobile/views/address_checkout_page/widgets/contactContainer.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
-import 'controllers/futureGetProvince.dart';
 
 class AddressCheckoutPage extends StatefulWidget {
   const AddressCheckoutPage({Key? key}) : super(key: key);
@@ -15,10 +15,15 @@ class AddressCheckoutPage extends StatefulWidget {
 }
 
 class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
+  late String? nameCustomer;
+  late String? phoneCustomer;
+  late String? addressDetail;
+  late String? city;
+  late String? district;
+  late String? ward;
+
   @override
   Widget build(BuildContext context) {
-    futureGetProvince()
-        .then((value) => print(value.map((e) => e['id'].toString()).toList()));
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: SafeArea(
@@ -43,11 +48,19 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
             Expanded(
                 child: ListView(
               children: [
-                ContactContainer(),
+                ContactContainer(
+                  (e) => this.nameCustomer = e,
+                  (e) => this.phoneCustomer = e,
+                ),
                 SizedBox(
                   height: Theme.of(context).own().defaultProductCardMargin,
                 ),
-                AddressCheckoutContainer(),
+                AddressCheckoutContainer(
+                  (e) => this.city = e,
+                  (e) => this.district = e,
+                  (e) => this.ward = e,
+                  (e) => this.addressDetail = e,
+                ),
               ],
             )),
             Padding(
@@ -58,7 +71,7 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: Colors.red,
                         style: BorderStyle.solid,
                       ),
@@ -73,7 +86,13 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      achieveAddress();
+                      context.read<CartProvider>().saveCustomerAddressContact(
+                          this.nameCustomer!,
+                          this.phoneCustomer!,
+                          this.city!,
+                          this.district!,
+                          this.ward!,
+                          this.addressDetail!);
                       Navigator.pop(context);
                     },
                     child: const Text(

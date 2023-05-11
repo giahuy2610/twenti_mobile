@@ -5,18 +5,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
-import 'package:twenti_mobile/providers/checkoutProvider.dart';
 import 'package:twenti_mobile/providers/collectionPageProvider.dart';
 import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 import 'package:twenti_mobile/services/notification/notificationController.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/account_page/accountPage.dart';
 import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/getCart.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
 import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
 import 'package:twenti_mobile/views/map_page/mapPage.dart';
-import 'package:twenti_mobile/views/my_orders_page/myOrdersPage.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 
 import 'firebase_options.dart';
@@ -38,7 +37,6 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => CollectionPageProvider()),
-        ChangeNotifierProvider(create: (_) => CheckoutProvider()),
       ],
       child: MyApp(),
     ),
@@ -152,7 +150,7 @@ class _MyAppState extends State<MyApp> {
               CategoryPage(),
               ChatPage(),
               MapSample(),
-              MyOrdersPage()
+              AccountPage()
             ],
           ),
           bottomNavigationBar: Container(

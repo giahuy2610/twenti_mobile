@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
+import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
 import '../../address_checkout_page/addressCheckoutPage.dart';
@@ -13,7 +15,8 @@ class AddressContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: Theme.of(context).own().defaultProductCardMargin),
+      padding: EdgeInsets.only(
+          bottom: Theme.of(context).own().defaultProductCardMargin),
       child: Material(
         color: Theme.of(context).own().defaultContainerColor,
         child: InkWell(
@@ -41,9 +44,11 @@ class AddressContainer extends StatelessWidget {
                     children: [
                       Text("Địa chỉ nhận hàng",
                           style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(name + '|' + phone),
+                      Text(context.watch<CartProvider>().nameCustomer +
+                          '|' +
+                          context.watch<CartProvider>().phoneCustomer),
                       Text(
-                        address,
+                        '${context.watch<CartProvider>().addressDetail}, ${context.watch<CartProvider>().ward}, ${context.watch<CartProvider>().district}, ${context.watch<CartProvider>().city}',
                         maxLines: 3,
                         style: const TextStyle(
                           overflow: TextOverflow.ellipsis,

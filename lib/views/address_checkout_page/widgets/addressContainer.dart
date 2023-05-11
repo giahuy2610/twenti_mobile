@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/themes/theme.dart';
-import 'package:twenti_mobile/views/address_checkout_page/controllers/futureGetDistrict.dart';
-import 'package:twenti_mobile/views/address_checkout_page/controllers/futureGetWard.dart';
 
+import '../controllers/futureGetDistrict.dart';
 import '../controllers/futureGetProvince.dart';
+import '../controllers/futureGetWard.dart';
 
 class AddressCheckoutContainer extends StatefulWidget {
-  const AddressCheckoutContainer({Key? key}) : super(key: key);
+  late Function callbackAddress;
+  late Function callbackCity;
+  late Function callbackDistrict;
+  late Function callbackWard;
+
+  AddressCheckoutContainer(this.callbackCity, this.callbackDistrict,
+      this.callbackWard, this.callbackAddress);
 
   @override
   State<AddressCheckoutContainer> createState() =>
@@ -14,9 +20,9 @@ class AddressCheckoutContainer extends StatefulWidget {
 }
 
 class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
-  late String selectedIdProvince = '00';
-  late String selectedIdDistrict = '000';
-  late String selectedIdWard = '00000';
+  late String selectedIdProvince = '01';
+  late String selectedIdDistrict = '001';
+  late String selectedIdWard = '00001';
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +56,7 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                                 ))
                             .toList(),
                         onChanged: (String? value) {
+                          widget.callbackCity(value);
                           setState(() {
                             selectedIdProvince = value!;
                             selectedIdDistrict = '000';
@@ -76,12 +83,12 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                       child: DropdownButton(
                     value: selectedIdDistrict,
                     items: (snapshot.hasData)
-                        ? snapshot.data!
+                        ? (snapshot.data!
                             .map((e) => DropdownMenuItem(
                                   value: e['id'].toString(),
                                   child: Text(e['name']!),
                                 ))
-                            .toList()
+                            .toList())
                         : [
                             const DropdownMenuItem(
                               value: '000',
@@ -89,9 +96,9 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                             )
                           ],
                     onChanged: (String? value) {
+                      widget.callbackDistrict(value);
                       setState(() {
                         selectedIdDistrict = value!;
-                        selectedIdProvince = '00';
                         selectedIdWard = '00000';
                       });
                     },
@@ -124,10 +131,9 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                             )
                           ],
                     onChanged: (String? value) {
+                      widget.callbackWard(value);
                       setState(() {
                         selectedIdWard = value!;
-                        selectedIdProvince = '00';
-                        selectedIdDistrict = '000';
                       });
                     },
                   ));
@@ -143,6 +149,9 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: TextField(
+                onChanged: (value) {
+                  widget.callbackAddress(value);
+                },
                 keyboardType: TextInputType.text,
                 cursorColor: Colors.black,
                 textInputAction: TextInputAction.done,
