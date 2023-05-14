@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -97,7 +98,14 @@ class _ProductCartItemState extends State<ProductCartItem> {
             child: Container(
               child: Row(
                 children: [
-                  Image.network(widget.image!, height: 150),
+                  CachedNetworkImage(
+                    imageUrl: widget.image!,
+                    placeholder: (context, url) => CircularProgressIndicator(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    height: 150,
+                  ),
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.all(Theme.of(context)

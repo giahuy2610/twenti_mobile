@@ -18,7 +18,7 @@ class AccountPage extends StatelessWidget {
         Avatar(),
         OrderMenu(),
         HistoryPurchasedListView(),
-        SizedBox(height: 10),
+        SizedBox(height: 35),
         AccountMenu(),
       ]),
     ));

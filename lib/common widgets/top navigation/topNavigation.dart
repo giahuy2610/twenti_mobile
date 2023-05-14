@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -9,10 +10,6 @@ class TopNavigation extends StatelessWidget {
   late final Widget? right;
   late final Widget? stepRight;
   late bool isSearcher;
-  Widget placeHolder = const SizedBox(
-    width: 50,
-    height: 50,
-  );
 
   TopNavigation(
       {super.key,
@@ -21,8 +18,22 @@ class TopNavigation extends StatelessWidget {
       this.stepRight,
       this.isSearcher = true});
 
+  Widget placeHolder = const SizedBox(
+    width: 50,
+    height: 50,
+  );
+
+  final listOfHintSearcher = [
+    "Mặt nạ dưỡng ẩm",
+    "Siêu sale tháng 5",
+    "Mỹ phẩm dưới 200k"
+  ];
+
+  int currentHintIndex = 0;
+
   Widget searchFiedld(context) {
     return Container(
+        clipBehavior: Clip.hardEdge,
         width: 150,
         decoration: BoxDecoration(
             border: Border.all(
@@ -33,15 +44,22 @@ class TopNavigation extends StatelessWidget {
             borderRadius: BorderRadius.circular(500)),
         padding: const EdgeInsets.all(5),
         child: Row(
-          children: const [
+          children: [
             Icon(
               CupertinoIcons.search,
               color: Colors.grey,
             ),
-            Text(
-              "Mua gì em ",
-              style: TextStyle(color: Colors.grey),
-            )
+            AnimatedTextKit(
+              animatedTexts: [
+                for (var i in this.listOfHintSearcher)
+                  TypewriterAnimatedText(i,
+                      speed: Duration(milliseconds: 200),
+                      textStyle: TextStyle(color: Colors.grey)),
+              ],
+              isRepeatingAnimation: true,
+              repeatForever: true,
+              pause: Duration(milliseconds: 5000),
+            ),
           ],
         ));
   }

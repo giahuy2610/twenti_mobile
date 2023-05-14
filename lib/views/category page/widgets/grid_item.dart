@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -67,11 +68,19 @@ class GridItem extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 clipBehavior: Clip.hardEdge,
-                                child: Image.network(
-                                  i["ImagePath"],
-                                  scale: 1,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
+                                child: AspectRatio(
+                                  aspectRatio: 1,
+                                  child: CachedNetworkImage(
+                                    imageUrl: i["ImagePath"],
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                  ),
                                 )),
                           ),
                           SizedBox(

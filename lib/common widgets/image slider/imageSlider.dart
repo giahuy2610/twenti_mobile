@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -28,17 +29,21 @@ class _imageSliderState extends State<imageSlider> {
           items: [
             for (var i in child)
               InkWell(
-                onTap: () => Navigator.push(
-                    context,
-                    PageTransition(
-                        type: PageTransitionType.rightToLeftWithFade,
-                        child: CollectionPage(futureGetCollection(65)),
-                        childCurrent: context.widget)),
-                child: Image.network(
-                  i.path.toString(),
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: CollectionPage(futureGetCollection(65)),
+                          childCurrent: context.widget)),
+                  child: CachedNetworkImage(
+                    imageUrl: i.path.toString(),
+                    placeholder: (context, url) => CircularProgressIndicator(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    height: 150,
+                    fit: BoxFit.fill,
+                  )),
           ],
           carouselController: buttonCarouselController,
           options: CarouselOptions(

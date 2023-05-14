@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/common%20widgets/sale_percent_badge/salePercentBadge.dart';
@@ -47,11 +48,15 @@ class productCard extends StatelessWidget {
                     tag: "hero_product_image_${product.idProduct}",
                     child: AspectRatio(
                       aspectRatio: 1,
-                      child: Image.network(
-                        product.images!.first.path!,
+                      child: CachedNetworkImage(
+                        imageUrl: product.images!.first.path!,
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                         fit: BoxFit.cover,
                         width: double.infinity,
-                        scale: 1,
                       ),
                     )),
                 Padding(

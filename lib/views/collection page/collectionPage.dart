@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -97,20 +98,28 @@ class _CollectionPageState extends State<CollectionPage> {
                               child: Column(
                                 children: [
                                   Container(
-                                    decoration: BoxDecoration(
-                                      // borderRadius: BorderRadius.circular(10),
-                                      boxShadow: <BoxShadow>[
-                                        BoxShadow(
-                                          color:
-                                              Colors.black45.withOpacity(0.3),
-                                          blurRadius: 2,
-                                          offset: const Offset(0, 2),
+                                      decoration: BoxDecoration(
+                                        // borderRadius: BorderRadius.circular(10),
+                                        boxShadow: <BoxShadow>[
+                                          BoxShadow(
+                                            color:
+                                                Colors.black45.withOpacity(0.3),
+                                            blurRadius: 2,
+                                            offset: const Offset(0, 2),
+                                          ),
+                                        ],
+                                      ),
+                                      width: double.infinity,
+                                      clipBehavior: Clip.hardEdge,
+                                      child: CachedNetworkImage(
+                                        imageUrl: data.wallPaperPath!,
+                                        placeholder: (context, url) =>
+                                            CircularProgressIndicator(
+                                          color: Theme.of(context).primaryColor,
                                         ),
-                                      ],
-                                    ),
-                                    clipBehavior: Clip.hardEdge,
-                                    child: Image.network(data.wallPaperPath!),
-                                  ),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                      )),
                                   if (data.logoImagePath != null)
                                     Align(
                                       child: Column(
@@ -145,8 +154,16 @@ class _CollectionPageState extends State<CollectionPage> {
                                                             .width *
                                                         0.15,
                                                     0.0),
-                                            child: Image.network(
-                                              data.logoImagePath!,
+                                            child: CachedNetworkImage(
+                                              imageUrl: data.logoImagePath!,
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
                                             ),
                                           ),
                                           Text(
