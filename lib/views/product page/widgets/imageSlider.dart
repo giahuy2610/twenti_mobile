@@ -40,9 +40,9 @@ class _productImagesSliderState extends State<productImagesSlider> {
                           childCurrent: widget)),
                   child: CachedNetworkImage(
                     imageUrl: i.path!,
-                    placeholder: (context, url) => CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
+                    // placeholder: (context, url) => CircularProgressIndicator(
+                    //   color: Colors.white,
+                    // ),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                     fit: BoxFit.fill,
                   ),

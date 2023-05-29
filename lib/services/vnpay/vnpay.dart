@@ -93,7 +93,28 @@ class VNPAYFlutter {
         onWebPaymentComplete();
       }
     } else {
-      // final FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
+      // var controller = WebViewController()
+      //   ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      //   ..setBackgroundColor(const Color(0x00000000))
+      //   ..setNavigationDelegate(
+      //     NavigationDelegate(
+      //       onProgress: (int progress) {
+      //         // Update loading bar.
+      //       },
+      //       onPageStarted: (String url) {},
+      //       onPageFinished: (String url) {},
+      //       onWebResourceError: (WebResourceError error) {},
+      //       onNavigationRequest: (NavigationRequest request) {
+      //         if (request.url.startsWith('https://www.youtube.com/')) {
+      //           return NavigationDecision.prevent;
+      //         }
+      //         return NavigationDecision.navigate;
+      //       },
+      //     ),
+      //   )
+      //   ..loadRequest(Uri.parse('https://flutter.dev'));
+
+      //final FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
       // flutterWebviewPlugin.onUrlChanged.listen((url) async {
       //   if (url.contains('vnp_ResponseCode')) {
       //     final params = Uri.parse(url).queryParameters;
@@ -116,36 +137,36 @@ class VNPAYFlutter {
 
 // import 'package:vnpay_flutter/vnpay_flutter.dart';
 //
-// void vnpay() {
-//   print("vnpay attacked");
-//   final paymentUrl = VNPAYFlutter.instance.generatePaymentUrl(
-//     url:
-//         'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html', //vnpay url, default is https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-//     version: '2.0.1', //version of VNPAY, default is 2.0.1
-//     tmnCode: 'UVY7QA94', //vnpay tmn code, get from vnpay
-//     txnRef: DateTime.now()
-//         .millisecondsSinceEpoch
-//         .toString(), //ref code, default is timestamp
-//     orderInfo: 'Pay 30.000 VND', //order info, default is Pay Order
-//     amount: 30000, //amount
-//     returnUrl:
-//         "http://localhost:8000/api/vnpay-return", //https://sandbox.vnpayment.vn/apis/docs/huong-dan-tich-hop/#code-returnurl
-//     ipAdress: '192.168.1.4', //Your IP address
-//     vnpayHashKey:
-//         'QWHUNEBSCZUSILCAYLDGCWVYWMZIKKKQ', //vnpay hash key, get from vnpay
-//     vnPayHashType: VNPayHashType
-//         .HMACSHA512, //hash type. Default is HmacSHA512, you can chang it in: https://sandbox.vnpayment.vn/merchantv2
-//   );
-//   VNPAYFlutter.instance.show(
-//       paymentUrl: paymentUrl,
-//       onPaymentSuccess: (params) {
-//         print("success");
-//       }, //on mobile transaction success
-//       onPaymentError: (params) {
-//         print("error");
-//       }, //on mobile transaction error
-//       onWebPaymentComplete: () {} //only use in web
-//       );
-// }
+void vnpay() {
+  print("vnpay attacked");
+  final paymentUrl = VNPAYFlutter.instance.generatePaymentUrl(
+    url:
+        'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html', //vnpay url, default is https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+    version: '2.0.1', //version of VNPAY, default is 2.0.1
+    tmnCode: 'UVY7QA94', //vnpay tmn code, get from vnpay
+    txnRef: DateTime.now()
+        .millisecondsSinceEpoch
+        .toString(), //ref code, default is timestamp
+    orderInfo: 'Pay 30.000 VND', //order info, default is Pay Order
+    amount: 30000, //amount
+    returnUrl:
+        "http://localhost:8000/api/vnpay-return", //https://sandbox.vnpayment.vn/apis/docs/huong-dan-tich-hop/#code-returnurl
+    ipAdress: '192.168.1.4', //Your IP address
+    vnpayHashKey:
+        'QWHUNEBSCZUSILCAYLDGCWVYWMZIKKKQ', //vnpay hash key, get from vnpay
+    vnPayHashType: VNPayHashType
+        .HMACSHA512, //hash type. Default is HmacSHA512, you can chang it in: https://sandbox.vnpayment.vn/merchantv2
+  );
+  VNPAYFlutter.instance.show(
+      paymentUrl: paymentUrl,
+      onPaymentSuccess: (params) {
+        print("success");
+      }, //on mobile transaction success
+      onPaymentError: (params) {
+        print("error");
+      }, //on mobile transaction error
+      onWebPaymentComplete: () {} //only use in web
+      );
+}
 
-void vnpay() {}
+// void vnpay() {}

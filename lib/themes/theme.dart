@@ -65,14 +65,14 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
     inputDecorationTheme: const InputDecorationTheme(
         focusedBorder: InputBorder.none,
         border: InputBorder.none,
-        labelStyle: TextStyle(
-            fontSize: 18, fontFamily: 'Montserrat', color: Colors.red)),
+        labelStyle:
+            TextStyle(fontSize: 18, fontFamily: 'Inter', color: Colors.red)),
     // backgroundColor: const Color.fromARGB(255, 240, 242, 243),
     colorScheme: const ColorScheme.light().copyWith(
         background: const Color.fromARGB(255, 240, 242, 243),
         secondary: Colors.grey.withAlpha(128)),
     primaryColor: Colors.red,
-    textTheme: GoogleFonts.merriweatherTextTheme(const TextTheme(
+    textTheme: GoogleFonts.interTextTheme(const TextTheme(
       bodyMedium: TextStyle(color: Colors.black),
       titleMedium: TextStyle(
           fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold),

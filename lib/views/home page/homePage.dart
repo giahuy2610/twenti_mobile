@@ -5,6 +5,8 @@ import 'package:skeletons/skeletons.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/product%20list%20view.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/productListViewSkeleton.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/home%20page/widgets/flashSaleBox.dart';
+import 'package:twenti_mobile/views/home%20page/widgets/switchCardsEvent.dart';
 import 'package:twenti_mobile/views/qr_scanner_page/qrScannerPage.dart';
 
 import '../../common widgets/cart_icon/cartIcon.dart';
@@ -81,11 +83,11 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.width * 9 / 16,
+              height: MediaQuery.of(context).size.width,
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                   borderRadius:
-                      const BorderRadius.only(bottomLeft: Radius.circular(50)),
+                      const BorderRadius.only(bottomLeft: Radius.circular(80)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                       color: Colors.black45.withOpacity(0.1),
@@ -110,7 +112,8 @@ class _HomePageState extends State<HomePage> {
                     }
                   }),
             ),
-            // flashSaleBox(),
+            flashSaleBox(),
+            SwitchCardsEvent(),
             FutureBuilder<Collection>(
                 future: futureGetCollection(65),
                 builder: (builder, snapshot) {

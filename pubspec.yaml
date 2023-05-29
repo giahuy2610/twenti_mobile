@@ -71,7 +71,6 @@ dependencies:
   google_maps_flutter: ^2.2.6
   geolocator: ^9.0.2
   flutter_native_splash: ^2.2.0+1
-  flutter_launcher_icons: ^0.11.0
   cached_network_image: ^3.2.3
   animated_text_kit: ^4.2.2
 
@@ -143,7 +142,7 @@ flutter_native_splash:
   # of your splash screen to a solid color.  Use background_image to set the background of your
   # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
   # size of the app. Only one parameter can be used, color and background_image cannot both be set.
-  color: "#dae0e6"
+  color: "#ffffff"
   #background_image: "assets/background.png"
 
   # Optional parameters are listed below.  To enable a parameter, uncomment the line by removing
@@ -151,7 +150,7 @@ flutter_native_splash:
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
-  image: assets/images/background.png
+  #image: assets/images/background.png
 
   # The branding property allows you to specify an image used as branding in the splash screen.
   # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,

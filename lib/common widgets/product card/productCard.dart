@@ -50,10 +50,10 @@ class productCard extends StatelessWidget {
                       aspectRatio: 1,
                       child: CachedNetworkImage(
                         imageUrl: product.images!.first.path!,
-                        placeholder: (context, url) =>
-                            CircularProgressIndicator(
-                          color: Theme.of(context).primaryColor,
-                        ),
+                        // placeholder: (context, url) =>
+                        //     CircularProgressIndicator(
+                        //   color: Theme.of(context).primaryColor,
+                        // ),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                         fit: BoxFit.cover,
                         width: double.infinity,

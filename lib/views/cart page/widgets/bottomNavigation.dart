@@ -49,19 +49,22 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
             Material(
               child: InkWell(
-                onTap: () => Navigator.push(
-                    context,
-                    PageTransition(
-                        type: PageTransitionType.rightToLeftPop,
-                        child: const checkoutPage(),
-                        childCurrent: widget)),
+                onTap: () => context.watch<CartProvider>().total > 0
+                    ? Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: const checkoutPage(),
+                            childCurrent: widget))
+                    : null,
                 child: Container(
-                  // height: double.infinity,
                   width: MediaQuery.of(context).size.width * 0.4,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(500),
-                      color: Colors.black),
+                      color: context.watch<CartProvider>().total > 0
+                          ? Colors.black
+                          : Colors.grey),
                   child: const Text(
                     "Thanh toán",
                     style: TextStyle(

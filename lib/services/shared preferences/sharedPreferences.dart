@@ -1,5 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../models/account/account.dart';
+
 class SharedPreferencesObject {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   /*Local cache structure
@@ -9,12 +11,13 @@ class SharedPreferencesObject {
   }
    */
 
-  Future<bool> saveLoginState(bool state) async {
+  Future<bool> saveLoginState(Account account) async {
     final prefs = await _prefs;
-    await prefs.setBool('loginState', state).then((bool success) {
-      return success;
-    });
-    return false;
+    await prefs.setString('idcus', account.idcus).then((bool success) {});
+    await prefs.setString('namecus', account.name).then((bool success) {});
+    await prefs.setString('emailcus', account.email).then((bool success) {});
+    await prefs.setString('phonecus', account.phone!).then((bool success) {});
+    return true;
   }
 
   //Search history
@@ -22,7 +25,7 @@ class SharedPreferencesObject {
     final prefs = await _prefs;
     //get current list
     List<String> searchingHistory = <String>[];
-    List<String>? currList = await prefs.getStringList("searchingHistory");
+    List<String>? currList = prefs.getStringList("searchingHistory");
     print("loading local data storage");
     print(currList);
     if (currList != null) searchingHistory = currList;
@@ -47,14 +50,14 @@ class SharedPreferencesObject {
 
   Future<List<String>?> futureGetSearchingHistory() async {
     final prefs = await _prefs;
-    return await prefs.getStringList("searchingHistory");
+    return prefs.getStringList("searchingHistory");
   }
 
   Future<bool> saveViewProductHistory(int productId) async {
     final prefs = await _prefs;
     //get current list
     List<String> viewHistory = <String>[];
-    List<String>? currList = await prefs.getStringList("viewProductHistory");
+    List<String>? currList = prefs.getStringList("viewProductHistory");
     print("loading local data storage");
     print(currList);
     if (currList != null) viewHistory = currList;
@@ -79,7 +82,7 @@ class SharedPreferencesObject {
 
   Future<List<int>?> futureGetViewProductHistory() async {
     final prefs = await _prefs;
-    List<String>? res = await prefs.getStringList("viewProductHistory");
+    List<String>? res = prefs.getStringList("viewProductHistory");
     return res!.map((e) => int.parse(e)).toList();
   }
 }

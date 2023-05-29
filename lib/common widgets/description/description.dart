@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
+// import 'package:flutter_html/flutter_html.dart';
 
 class description extends StatefulWidget {
   final String rawHtml;
@@ -25,7 +25,8 @@ class _descriptionState extends State<description> {
             children: [
               SizedBox(
                   height: isShow == true ? null : 300,
-                  child: Html(data: rawHtml)),
+                  // child: Html(data: rawHtml)),
+                  child: Text('')),
               isShow == false
                   ? InkWell(
                       onTap: () => setState(() {

@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/cart%20page/controllers/futureRemoveToCart.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
 import '../../../services/currency_format/currencyFormat.dart';
+import '../../../services/deep linking/deepLink.dart';
 import '../controllers/futureAddToCart.dart';
 
 class ProductCartItem extends StatefulWidget {
@@ -15,20 +17,23 @@ class ProductCartItem extends StatefulWidget {
   late final int price;
   late int quantity;
   late final isUseInCart;
+  late final Function? removeFromChild;
+
   ProductCartItem(
       {this.image,
       required this.name,
       required this.id,
       required this.price,
       required this.quantity,
-      this.isUseInCart = true});
+      this.isUseInCart = true,
+      this.removeFromChild});
 
   @override
   State<ProductCartItem> createState() => _ProductCartItemState();
 }
 
 class _ProductCartItemState extends State<ProductCartItem> {
-  bool _isChecked = false;
+  bool _isChecked = true;
 
   Widget quantityPicker() {
     return Container(
@@ -40,6 +45,8 @@ class _ProductCartItemState extends State<ProductCartItem> {
                 if (value == true) {
                   setState(() {
                     widget.quantity--;
+                    if (widget.quantity == 0)
+                      widget.removeFromChild!(widget.id);
                   });
                 } else {}
               });
@@ -88,6 +95,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                   _isChecked = value!;
                 });
               },
+              activeColor: Theme.of(context).own().headingSearchBoxBorderColor,
             ),
           Expanded(
               child: InkWell(
@@ -100,9 +108,9 @@ class _ProductCartItemState extends State<ProductCartItem> {
                 children: [
                   CachedNetworkImage(
                     imageUrl: widget.image!,
-                    placeholder: (context, url) => CircularProgressIndicator(
-                      color: Theme.of(context).primaryColor,
-                    ),
+                    // placeholder: (context, url) => CircularProgressIndicator(
+                    //   color: Theme.of(context).primaryColor,
+                    // ),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                     height: 150,
                   ),
@@ -154,7 +162,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
     return Slidable(
       enabled: widget.isUseInCart,
       // Specify a key if the Slidable is dismissible.
-      key: const ValueKey(0),
+      key: UniqueKey(),
 
       // The start action pane is the one at the left or the top side.
       startActionPane: ActionPane(
@@ -162,14 +170,18 @@ class _ProductCartItemState extends State<ProductCartItem> {
         motion: const ScrollMotion(),
 
         // A pane can dismiss the Slidable.
-        dismissible: DismissiblePane(onDismissed: () {}),
+        dismissible: DismissiblePane(onDismissed: () {
+          futureRemoveToCart(context, widget.id, widget.quantity);
+          widget.removeFromChild!(widget.id);
+        }),
 
         // All actions are defined in the children parameter.
         children: [
           // A SlidableAction can have an icon and/or a label.
           SlidableAction(
             onPressed: (context) {
-              print("hh");
+              futureRemoveToCart(context, widget.id, widget.quantity);
+              widget.removeFromChild!(widget.id);
             },
             backgroundColor: Color(0xFFFE4A49),
             foregroundColor: Colors.white,
@@ -177,9 +189,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
             label: 'Xóa',
           ),
           SlidableAction(
-            onPressed: (context) {
-              print("hh");
-            },
+            onPressed: (context) => CreateSharingDynamicLink(widget.id),
             backgroundColor: Color(0xFF21B7CA),
             foregroundColor: Colors.white,
             icon: Icons.share,

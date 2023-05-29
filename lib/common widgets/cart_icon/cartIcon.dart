@@ -15,10 +15,14 @@ class cartIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return badges.Badge(
-      position: badges.BadgePosition.custom(top: 4, end: 6),
+      position: badges.BadgePosition.custom(top: 5, end: 5),
       showBadge: context.watch<CartProvider>().numOfProducts > 0,
-      badgeContent:
-          Text(context.watch<CartProvider>().numOfProducts.toString()),
+      badgeContent: Align(
+        child: Text(
+          context.watch<CartProvider>().numOfProducts.toString(),
+          style: const TextStyle(color: Colors.white, fontSize: 13),
+        ),
+      ),
       child: IconButton(
           onPressed: () {
             Navigator.push(

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "512825509872-ek6r95pokhs85bm5q2ahvc6qi9d5brjo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.twenti_mobile",
+            "certificate_hash": "c7412945eac24cb5a8c2eb7ec6d71424f6df7560"
+          }
+        },
+        {
           "client_id": "512825509872-c76ro3v435ipte2bqfarol76l9hrsd9h.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "512825509872-6402s22cncp2athuqa1efo0hq3588q9n.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "512825509872-3m2f1mtincnoi2tob5pgt6ggfntqecu9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.twentiMobile"
+              }
             }
           ]
         }

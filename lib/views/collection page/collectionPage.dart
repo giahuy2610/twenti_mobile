@@ -113,10 +113,10 @@ class _CollectionPageState extends State<CollectionPage> {
                                       clipBehavior: Clip.hardEdge,
                                       child: CachedNetworkImage(
                                         imageUrl: data.wallPaperPath!,
-                                        placeholder: (context, url) =>
-                                            CircularProgressIndicator(
-                                          color: Theme.of(context).primaryColor,
-                                        ),
+                                        // placeholder: (context, url) =>
+                                        //     CircularProgressIndicator(
+                                        //   color: Theme.of(context).primaryColor,
+                                        // ),
                                         errorWidget: (context, url, error) =>
                                             Icon(Icons.error),
                                       )),
@@ -156,11 +156,11 @@ class _CollectionPageState extends State<CollectionPage> {
                                                     0.0),
                                             child: CachedNetworkImage(
                                               imageUrl: data.logoImagePath!,
-                                              placeholder: (context, url) =>
-                                                  CircularProgressIndicator(
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
+                                              // placeholder: (context, url) =>
+                                              //     CircularProgressIndicator(
+                                              //   color: Theme.of(context)
+                                              //       .primaryColor,
+                                              // ),
                                               errorWidget:
                                                   (context, url, error) =>
                                                       Icon(Icons.error),

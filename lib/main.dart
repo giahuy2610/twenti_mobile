@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/providers/collectionPageProvider.dart';
+import 'package:twenti_mobile/providers/globalProvider.dart';
 import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 import 'package:twenti_mobile/services/notification/notificationController.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -17,6 +18,7 @@ import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
 import 'package:twenti_mobile/views/map_page/mapPage.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
+import 'package:twenti_mobile/views/welcome_page/welcomePage.dart';
 
 import 'firebase_options.dart';
 
@@ -33,14 +35,30 @@ void main() async {
   // Initialize cho Push Notification
   await NotificationController.initializeRemoteNotifications(debug: true);
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => CartProvider()),
-        ChangeNotifierProvider(create: (_) => CollectionPageProvider()),
-      ],
-      child: MyApp(),
-    ),
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => GlobalProvider()),
+      ChangeNotifierProvider(create: (_) => CartProvider()),
+      ChangeNotifierProvider(create: (_) => CollectionPageProvider()),
+    ], child: TwentiApp()),
   );
+}
+
+class TwentiApp extends StatefulWidget {
+  const TwentiApp({Key? key}) : super(key: key);
+
+  @override
+  State<TwentiApp> createState() => _TwentiAppState();
+}
+
+class _TwentiAppState extends State<TwentiApp> {
+  @override
+  Widget build(BuildContext context) {
+    if (context.watch<GlobalProvider>().loginStatus == true) {
+      return MyApp();
+    } else {
+      return WelcomePage();
+    }
+  }
 }
 
 class MyApp extends StatefulWidget {
