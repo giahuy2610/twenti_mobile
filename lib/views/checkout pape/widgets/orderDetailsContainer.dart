@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:twenti_mobile/services/currency_format/currencyFormat.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/order_detail_page/orderDetailPage.dart';
+import 'package:twenti_mobile/views/vnpay/vnpay.dart';
 
 import '../../../providers/cartProvider.dart';
 import '../../order_detail_page/controllers/futureGetOrderDetail.dart';
@@ -98,6 +99,11 @@ class OrderDetailsContainer extends StatelessWidget {
           ),
           Container(
             height: 60,
+            padding: EdgeInsets.symmetric(
+              horizontal:
+                  Theme.of(context).own().defaultVerticalPaddingOfScreen,
+              vertical: 4,
+            ),
             decoration: BoxDecoration(
                 color: Theme.of(context).own().defaultContainerColor,
                 borderRadius: const BorderRadius.only(
@@ -112,8 +118,15 @@ class OrderDetailsContainer extends StatelessWidget {
               children: [
                 Expanded(
                     flex: 3,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              right: BorderSide(
+                                  color: Theme.of(context)
+                                      .own()
+                                      .defaultScaffoldColor))),
+                      margin: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.only(right: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -131,30 +144,53 @@ class OrderDetailsContainer extends StatelessWidget {
                                               .watch<CartProvider>()
                                               .selectedCoupon!
                                               .valueDiscount)),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 24))
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                  color: Color.fromRGBO(215, 129, 121, 1)))
                         ],
                       ),
                     )),
                 Expanded(
                   flex: 2,
                   child: Material(
-                    color: Colors.red,
+                    color: const Color.fromRGBO(215, 129, 121, 1),
+                    borderRadius: BorderRadius.circular(15),
                     child: InkWell(
                       onTap: () {
-                        context.read<CartProvider>().makeToOrder().then(
-                            (value) async => Navigator.pushReplacement(
+                        context
+                            .read<CartProvider>()
+                            .makeToOrder()
+                            .then((value) async {
+                          //route to vnpay gate way if paymethod == 2
+
+                          if (value['MethodPay'] == '2') {
+                            Navigator.pushReplacement(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Vnpay(value['IDInvoice']),
+                                    childCurrent: this));
+                          }
+
+                          //else => complete shopping processing
+                          else {
+                            Navigator.pushReplacement(
                                 context,
                                 PageTransition(
                                     type:
                                         PageTransitionType.rightToLeftWithFade,
                                     child: OrderDetailPage(
-                                        await futureGetOrderDetail(value)),
-                                    childCurrent: this)));
+                                        await futureGetOrderDetail(
+                                            value['IDInvoice'])),
+                                    childCurrent: this));
+                          }
+                        });
                       },
                       child: Container(
                           alignment: Alignment.center,
                           height: double.infinity,
+                          decoration: BoxDecoration(),
                           child: Text(
                             "Đặt hàng",
                             style: TextStyle(

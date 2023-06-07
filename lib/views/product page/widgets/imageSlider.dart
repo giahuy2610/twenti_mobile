@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/models/product/image.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/reality_viewer/realityViewer.dart';
 import 'package:twenti_mobile/views/view_image_page/viewImagePage.dart';
 
 class productImagesSlider extends StatefulWidget {
@@ -71,6 +72,21 @@ class _productImagesSliderState extends State<productImagesSlider> {
                       borderRadius: BorderRadius.circular(50),
                       color: Colors.black12.withOpacity(0.1)),
                   child: Text("${_current + 1}/${imageList.length}"))),
+          GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.rightToLeftWithFade,
+                    child: RealityViewer(),
+                    childCurrent: widget)),
+            child: Container(
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(500),
+                    color: Colors.black12.withOpacity(0.1)),
+                child: Image.asset("assets/icons/cube.png")),
+          )
         ]),
       );
 }

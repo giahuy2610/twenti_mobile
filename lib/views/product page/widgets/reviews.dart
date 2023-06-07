@@ -51,21 +51,22 @@ class reviews extends StatelessWidget {
                   border: Border.all(color: Colors.grey.shade500),
                   borderRadius: BorderRadius.circular(5)),
             ),
-          (reviewList.length > 2)
-              ? Padding(
-                  padding: EdgeInsets.only(
-                      top: Theme.of(context).own().defaultMarginBetween),
-                  child: InkWell(
-                      onTap: () => Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.rightToLeftWithFade,
-                              child: reviewPage(reviewList),
-                              childCurrent: this)),
-                      child: const Text("Xem tất cả >")),
-                )
-              : const Text(
-                  "Nhanh tay mua hàng để trở thành người đầu tiên đánh giá sản phẩm")
+          if (reviewList.length > 2)
+            Padding(
+              padding: EdgeInsets.only(
+                  top: Theme.of(context).own().defaultMarginBetween),
+              child: InkWell(
+                  onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: reviewPage(reviewList),
+                          childCurrent: this)),
+                  child: const Text("Xem tất cả >")),
+            ),
+          if (reviewList.isEmpty)
+            Text(
+                "Nhanh tay mua hàng để trở thành người đầu tiên đánh giá sản phẩm")
         ],
       ),
     );

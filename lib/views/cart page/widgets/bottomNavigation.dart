@@ -42,39 +42,56 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         text:
                             currencyFormat(context.watch<CartProvider>().total),
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 28)),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                            color: Color.fromRGBO(215, 129, 121, 1))),
                   ],
                 ),
               ),
             ),
-            Material(
-              child: InkWell(
-                onTap: () => context.watch<CartProvider>().total > 0
-                    ? Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.fade,
-                            child: const checkoutPage(),
-                            childCurrent: widget))
-                    : null,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(500),
-                      color: context.watch<CartProvider>().total > 0
-                          ? Colors.black
-                          : Colors.grey),
-                  child: const Text(
-                    "Thanh toán",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            )
+            context.watch<CartProvider>().total > 0
+                ? Material(
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: const checkoutPage(),
+                              childCurrent: widget)),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color.fromRGBO(215, 129, 121, 1)),
+                        child: const Text(
+                          "Thanh toán",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
+                : Material(
+                    child: InkWell(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color.fromRGBO(215, 129, 121, 1)),
+                        child: const Text(
+                          "Thanh toán",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
           ],
         ));
   }

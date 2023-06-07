@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:twenti_mobile/common%20widgets/rating%20stars/ratingStars.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
@@ -18,7 +19,7 @@ class reviewItem extends StatelessWidget {
           horizontal: 0,
           vertical: Theme.of(context).own().defaultProductCardMargin),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(15),
           color: Theme.of(context).own().defaultContainerColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +29,9 @@ class reviewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ratingStars(review.rating),
-              Text(review.createdOn),
+              Text(DateFormat.yMd()
+                  .add_jm()
+                  .format(DateTime.tryParse(review.createdOn)!))
             ],
           ),
           SizedBox(height: Theme.of(context).own().defaultMarginBetween),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
@@ -140,14 +141,30 @@ class OrderDetailPage extends StatelessWidget {
                         vertical: Theme.of(context).own().defaultMarginBetween),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("Đặt ngày"), Text(orderData.createdOn)],
+                      children: [
+                        Text("Đặt ngày"),
+                        Text(DateFormat.yMd()
+                            .add_jm()
+                            .format(DateTime.tryParse(orderData.createdOn)!))
+                      ],
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Trả tiền bởi"),
-                      Text("Thanh toán khi nhận hàng")
+                      if (this.orderData.methodPay == 1)
+                        Text("Thanh toán khi nhận hàng"),
+                      if (this.orderData.methodPay == 2)
+                        Text("thanh toán qua VNPAY")
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Trả tiền bởi"),
+                      if (this.orderData.isPaid == 1) Text("Đã thanh toán"),
+                      if (this.orderData.methodPay == 0) Text("Chưa thanh toán")
                     ],
                   ),
                 ],

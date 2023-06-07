@@ -34,9 +34,9 @@ class _ChatPageState extends State<ChatPage> {
       children: [
         TopNavigation(
           left: Text("Thông báo"),
-          right: IconButton(
+          right: TextButton(
             onPressed: () {},
-            icon: Icon(Icons.restore_from_trash),
+            child: Text("Đọc tất cả (1)"),
           ),
           isSearcher: false,
         ),

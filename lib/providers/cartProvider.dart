@@ -75,7 +75,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<int> makeToOrder() async {
+  Future<Map<String, dynamic>> makeToOrder() async {
     var invDetail = [];
     this.cartProducts.forEach((e) {
       invDetail.add({
@@ -105,6 +105,9 @@ class CartProvider with ChangeNotifier {
       Uri.parse('$baseUrl/api/invoice/create'),
       body: body,
     );
-    return jsonDecode(response.body)['IDInvoice'];
+    return {
+      'IDInvoice': jsonDecode(response.body)['IDInvoice'],
+      "MethodPay": jsonDecode(response.body)['MethodPay']
+    };
   }
 }

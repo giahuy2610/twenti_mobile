@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
-import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 enum VNPayHashType {
   SHA256,
@@ -78,66 +77,62 @@ class VNPAYFlutter {
     return paymentUrl;
   }
 
-  void show({
+  Future<WebView> show({
     required String paymentUrl,
     Function(Map<String, dynamic>)? onPaymentSuccess,
     Function(Map<String, dynamic>)? onPaymentError,
     Function()? onWebPaymentComplete,
   }) async {
-    if (kIsWeb) {
-      await launchUrlString(
-        paymentUrl,
-        webOnlyWindowName: '_self',
-      );
-      if (onWebPaymentComplete != null) {
-        onWebPaymentComplete();
-      }
-    } else {
-      // var controller = WebViewController()
-      //   ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      //   ..setBackgroundColor(const Color(0x00000000))
-      //   ..setNavigationDelegate(
-      //     NavigationDelegate(
-      //       onProgress: (int progress) {
-      //         // Update loading bar.
-      //       },
-      //       onPageStarted: (String url) {},
-      //       onPageFinished: (String url) {},
-      //       onWebResourceError: (WebResourceError error) {},
-      //       onNavigationRequest: (NavigationRequest request) {
-      //         if (request.url.startsWith('https://www.youtube.com/')) {
-      //           return NavigationDecision.prevent;
-      //         }
-      //         return NavigationDecision.navigate;
-      //       },
-      //     ),
-      //   )
-      //   ..loadRequest(Uri.parse('https://flutter.dev'));
+    print(paymentUrl);
+    // var controller = WebViewController()
+    //   ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    //   ..setBackgroundColor(const Color(0x00000000))
+    //   ..setNavigationDelegate(
+    //     NavigationDelegate(
+    //       onProgress: (int progress) {
+    //         // Update loading bar.
+    //       },
+    //       onPageStarted: (String url) {},
+    //       onPageFinished: (String url) {},
+    //       onWebResourceError: (WebResourceError error) {},
+    //       onNavigationRequest: (NavigationRequest request) {
+    //         if (request.url.startsWith('https://www.youtube.com/')) {
+    //           return NavigationDecision.prevent;
+    //         }
+    //         return NavigationDecision.navigate;
+    //       },
+    //     ),
+    //   )
+    //   ..loadRequest(Uri.parse('https://flutter.dev'));
 
-      //final FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
-      // flutterWebviewPlugin.onUrlChanged.listen((url) async {
-      //   if (url.contains('vnp_ResponseCode')) {
-      //     final params = Uri.parse(url).queryParameters;
-      //     if (params['vnp_ResponseCode'] == '00') {
-      //       if (onPaymentSuccess != null) {
-      //         onPaymentSuccess(params);
-      //       }
-      //     } else {
-      //       if (onPaymentError != null) {
-      //         onPaymentError(params);
-      //       }
-      //     }
-      //     flutterWebviewPlugin.close();
-      //   }
-      // });
-      // WebViewWidget(controller: controller);
-    }
+    // final FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
+    // flutterWebviewPlugin.onUrlChanged.listen((url) async {
+    //   if (url.contains('vnp_ResponseCode')) {
+    //     final params = Uri.parse(url).queryParameters;
+    //     if (params['vnp_ResponseCode'] == '00') {
+    //       if (onPaymentSuccess != null) {
+    //         onPaymentSuccess(params);
+    //       }
+    //     } else {
+    //       if (onPaymentError != null) {
+    //         onPaymentError(params);
+    //       }
+    //     }
+    //     flutterWebviewPlugin.close();
+    //   }
+    // });
+    // WebViewWidget(controller: controller);
+    return WebView(
+      onWebViewCreated: (controller) {},
+      javascriptMode: JavascriptMode.unrestricted,
+      initialUrl: paymentUrl,
+    );
   }
 }
 
 // import 'package:vnpay_flutter/vnpay_flutter.dart';
 //
-void vnpay() {
+String vnpay() {
   print("vnpay attacked");
   final paymentUrl = VNPAYFlutter.instance.generatePaymentUrl(
     url:
@@ -157,16 +152,6 @@ void vnpay() {
     vnPayHashType: VNPayHashType
         .HMACSHA512, //hash type. Default is HmacSHA512, you can chang it in: https://sandbox.vnpayment.vn/merchantv2
   );
-  VNPAYFlutter.instance.show(
-      paymentUrl: paymentUrl,
-      onPaymentSuccess: (params) {
-        print("success");
-      }, //on mobile transaction success
-      onPaymentError: (params) {
-        print("error");
-      }, //on mobile transaction error
-      onWebPaymentComplete: () {} //only use in web
-      );
-}
 
-// void vnpay() {}
+  return paymentUrl;
+}

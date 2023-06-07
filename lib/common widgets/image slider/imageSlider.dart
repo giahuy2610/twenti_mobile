@@ -36,8 +36,7 @@ class _imageSliderState extends State<imageSlider> {
                           child: CollectionPage(futureGetCollection(65)),
                           childCurrent: context.widget)),
                   child: CachedNetworkImage(
-                    imageUrl:
-                        "https://image.hsv-tech.io/575x0/tfs/common/26d9c8c4-a082-4de7-98ff-38bca0492b9c.webp",
+                    imageUrl: i.path!,
                     errorWidget: (context, url, error) => Icon(Icons.error),
                     width: double.infinity,
                     fit: BoxFit.fill,

@@ -112,24 +112,50 @@ class _HomePageState extends State<HomePage> {
                     }
                   }),
             ),
-            flashSaleBox(),
+            flashSaleBox(15100),
             SwitchCardsEvent(),
-            FutureBuilder<Collection>(
-                future: futureGetCollection(65),
-                builder: (builder, snapshot) {
-                  if (snapshot.hasData) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: Theme.of(context)
-                                  .own()
-                                  .defaultVerticalPaddingOfScreen -
-                              Theme.of(context).own().defaultProductCardMargin),
-                      child: productListView(snapshot.data!.products, true),
-                    );
-                  } else {
-                    return productListViewSkeleton();
-                  }
-                })
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Theme.of(context)
+                            .own()
+                            .defaultVerticalPaddingOfScreen,
+                        vertical: 4),
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(244, 163, 155, 0.4),
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            bottomRight: Radius.circular(10))),
+                    child: Text(
+                      "Gợi ý cho bạn",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.red),
+                    )),
+                FutureBuilder<Collection>(
+                    future: futureGetCollection(65),
+                    builder: (builder, snapshot) {
+                      if (snapshot.hasData) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Theme.of(context)
+                                      .own()
+                                      .defaultVerticalPaddingOfScreen -
+                                  Theme.of(context)
+                                      .own()
+                                      .defaultProductCardMargin),
+                          child: productListView(snapshot.data!.products, true),
+                        );
+                      } else {
+                        return productListViewSkeleton();
+                      }
+                    }),
+              ],
+            )
           ],
         )),
       ],
