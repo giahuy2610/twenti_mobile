@@ -7,7 +7,7 @@ class GlobalProvider with ChangeNotifier {
   Account? account;
 
   bool _loginStatus = false;
-  int idcus = 1;
+  int? idcus = 1;
   String email = '';
   String phone = '';
   String name = '';

@@ -8,11 +8,14 @@ import 'package:provider/provider.dart';
 import '../../../models/product/cartProduct.dart';
 import '../../../providers/cartProvider.dart';
 import '../../../services/http/constant.dart';
+import '../../../services/shared preferences/sharedPreferences.dart';
 
 Future<bool> futureAddToCart(
     BuildContext context, int idProduct, int isAdd) async {
   var body = {};
-  body['IDCus'] = 2;
+  await SharedPreferencesObject()
+      .futureGetIdCus()
+      .then((value) => body['IDCus'] = value.toString());
   body['IDProduct'] = idProduct;
   body['IsAdd'] = isAdd;
 

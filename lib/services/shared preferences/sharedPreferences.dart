@@ -85,4 +85,22 @@ class SharedPreferencesObject {
     List<String>? res = prefs.getStringList("viewProductHistory");
     return res!.map((e) => int.parse(e)).toList();
   }
+
+  Future<Account> futureGetAccountLocal() async {
+    final prefs = await _prefs;
+    final Account acc = Account(
+        prefs.getString('idcus')!,
+        prefs.getString('emailcus')!,
+        prefs.getString('namecus')!,
+        prefs.getString('phonecus')!);
+    return acc;
+  }
+
+  Future<int?> futureGetIdCus() async {
+    final prefs = await _prefs;
+    final id = prefs.getString('idcus');
+    if (id != null)
+    return int.parse(id);
+    else return 0;
+  }
 }

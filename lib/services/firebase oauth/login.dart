@@ -22,6 +22,7 @@ class Authentication {
   }
 
   static Future<User?> signInWithGoogle() async {
+    print("sign in.....");
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
@@ -29,7 +30,7 @@ class Authentication {
 
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
-
+    print(googleSignInAccount);
     if (googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount.authentication;
@@ -42,30 +43,44 @@ class Authentication {
       try {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
-
+        print("hello");
         user = userCredential.user!;
-        var body;
-        var subbody;
-        subbody['email'] = user.email;
-        subbody['uid'] = user.uid;
-        body['user'] = subbody;
-        print(json.encode(body));
+        var subbody = {
+          'email': user.email.toString(),
+          'uid': user.uid.toString()
+        };
+        print("sending");
         //send login request
-        http.Response response = await http
-            .post(Uri.parse('$baseUrl/api/login'), body: json.encode(body));
+        http.Response response = await http.post(
+            Uri.parse('$baseUrl/api/login'),
+            headers: {'Content-Type': 'application/json'},
+            body: json.encode({'user': subbody}));
         if (response.statusCode == 200) {
           var list = json.decode(response.body);
-          print(list);
+
           await SharedPreferencesObject().saveLoginState(Account(
-              user.uid, user.email!, user.phoneNumber!, user.displayName));
+              json.decode(response.body)["IDCus"].toString(),
+              json.decode(response.body)['Email'].toString(),
+              json.decode(response.body)['PhoneNumber'].toString(),
+              json.decode(response.body)['FirstName'].toString()));
+          print("login successful");
+          await SharedPreferencesObject().futureGetAccountLocal().then((value) {
+            if (value.idcus != '') {
+              print(value.idcus);
+            }
+          });
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
+          print("error2");
           print(e.code);
         } else if (e.code == 'invalid-credential') {
           // handle the error here
+          print("error3");
         }
       } catch (e) {
+        print("error 1");
+        print(e);
         // handle the error here
       }
     }

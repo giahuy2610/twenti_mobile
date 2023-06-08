@@ -7,12 +7,16 @@ import 'package:twenti_mobile/services/http/constant.dart';
 
 import '../../../models/product/cartProduct.dart';
 import '../../../providers/cartProvider.dart';
+import '../../../services/shared preferences/sharedPreferences.dart';
 
 Future<List<CartProduct>>? getCart(BuildContext context) async {
-  http.Response response = await http.post(
-    Uri.parse('$baseUrl/api/cart/show'),
-    body: {"IDCus": "2"},
-  );
+  late http.Response response;
+  await SharedPreferencesObject().futureGetIdCus().then((value) async {
+    response = await http.post(
+      Uri.parse('$baseUrl/api/cart/show'),
+      body: {"IDCus": value.toString()},
+    );
+  });
 
   if (response.statusCode == 200) {
     var list = json.decode(response.body);

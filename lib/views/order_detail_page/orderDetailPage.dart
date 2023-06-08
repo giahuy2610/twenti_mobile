@@ -36,9 +36,14 @@ class OrderDetailPage extends StatelessWidget {
             child: ListView(
           children: [
             Container(
-                color: Theme.of(context).own().defaultContainerColor,
                 padding: EdgeInsets.all(
                     Theme.of(context).own().defaultVerticalPaddingOfScreen),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).own().defaultContainerColor,
+                    border: Border(
+                        bottom: BorderSide(
+                            color:
+                                Theme.of(context).own().defaultScaffoldColor))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -159,12 +164,16 @@ class OrderDetailPage extends StatelessWidget {
                         Text("thanh toán qua VNPAY")
                     ],
                   ),
+                  SizedBox(
+                    height:
+                        Theme.of(context).own().defaultVerticalPaddingOfScreen,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Trả tiền bởi"),
+                      Text("Tình trạng thanh toán"),
                       if (this.orderData.isPaid == 1) Text("Đã thanh toán"),
-                      if (this.orderData.methodPay == 0) Text("Chưa thanh toán")
+                      if (this.orderData.isPaid == 0) Text("Chưa thanh toán")
                     ],
                   ),
                 ],

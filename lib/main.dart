@@ -9,6 +9,7 @@ import 'package:twenti_mobile/providers/collectionPageProvider.dart';
 import 'package:twenti_mobile/providers/globalProvider.dart';
 import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 import 'package:twenti_mobile/services/notification/notificationController.dart';
+import 'package:twenti_mobile/services/shared%20preferences/sharedPreferences.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/account_page/accountPage.dart';
 import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
@@ -53,11 +54,19 @@ class TwentiApp extends StatefulWidget {
 class _TwentiAppState extends State<TwentiApp> {
   @override
   Widget build(BuildContext context) {
-    if (context.watch<GlobalProvider>().loginStatus == true) {
-      return MyApp();
-    } else {
-      return WelcomePage();
-    }
+    return FutureBuilder(
+      future: SharedPreferencesObject().futureGetIdCus(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data == 0)
+            return WelcomePage();
+          else
+            return MyApp();
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
+    );
   }
 }
 

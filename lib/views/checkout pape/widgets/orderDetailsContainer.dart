@@ -7,6 +7,7 @@ import 'package:twenti_mobile/views/order_detail_page/orderDetailPage.dart';
 import 'package:twenti_mobile/views/vnpay/vnpay.dart';
 
 import '../../../providers/cartProvider.dart';
+import '../../cart page/controllers/getCart.dart';
 import '../../order_detail_page/controllers/futureGetOrderDetail.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
@@ -163,7 +164,7 @@ class OrderDetailsContainer extends StatelessWidget {
                             .makeToOrder()
                             .then((value) async {
                           //route to vnpay gate way if paymethod == 2
-
+                          getCart(context);
                           if (value['MethodPay'] == '2') {
                             Navigator.pushReplacement(
                                 context,

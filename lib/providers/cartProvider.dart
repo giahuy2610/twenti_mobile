@@ -7,6 +7,7 @@ import 'package:twenti_mobile/views/address_checkout_page/controllers/futureGetP
 
 import '../../../services/http/constant.dart';
 import '../models/coupon/Coupon.dart';
+import '../services/shared preferences/sharedPreferences.dart';
 import '../views/address_checkout_page/controllers/futureGetDistrict.dart';
 import '../views/address_checkout_page/controllers/futureGetWard.dart';
 
@@ -83,22 +84,25 @@ class CartProvider with ChangeNotifier {
         "Quantity": e.quantity.toString(),
       });
     });
-
-    var body = jsonEncode({
-      "IDCus": "1",
-      "MethodPay": this.paymentMethod,
-      "CodeCoupon":
-          this.selectedCoupon == null ? null : this.selectedCoupon!.codeCoupon,
-      "InvoiceDetail": invDetail,
-      "City": this.city,
-      "District": this.district,
-      "Ward": this.ward,
-      "AddressDetail": this.addressDetail,
-      "Email": "giahuytrinh.26102002@gmail.com",
-      "Phone": this.phoneCustomer,
-      "FirstName": this.nameCustomer,
-      "LastName": "."
-    });
+    late final body;
+    await SharedPreferencesObject()
+        .futureGetIdCus()
+        .then((value) => body = jsonEncode({
+              "IDCus": value.toString(),
+              "MethodPay": this.paymentMethod,
+              "CodeCoupon": this.selectedCoupon == null
+                  ? null
+                  : this.selectedCoupon!.codeCoupon,
+              "InvoiceDetail": invDetail,
+              "City": this.city,
+              "District": this.district,
+              "Ward": this.ward,
+              "AddressDetail": this.addressDetail,
+              "Email": "giahuytrinh.26102002@gmail.com",
+              "Phone": this.phoneCustomer,
+              "FirstName": this.nameCustomer,
+              "LastName": "."
+            }));
 
     http.Response response = await http.post(
       headers: {"Content-type": "application/json"},

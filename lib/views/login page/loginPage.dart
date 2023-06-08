@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:twenti_mobile/main.dart';
 import 'package:twenti_mobile/services/firebase%20oauth/login.dart';
 
 class LoginPage extends StatefulWidget {
@@ -131,7 +133,13 @@ class _LoginPageState extends State<LoginPage> {
                     Buttons.Google,
                     text: "Đăng nhập bằng Google",
                     onPressed: () {
-                      Authentication.signInWithGoogle();
+                      Authentication.signInWithGoogle().then((value) =>
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.rightToLeftWithFade,
+                                  child: MyApp(),
+                                  childCurrent: widget)));
                     },
                   ),
                 ),
