@@ -16,8 +16,8 @@ class ProductCheckoutListView extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: Theme.of(context).own().defaultProductCardMargin),
+              margin: EdgeInsets.only(
+                  bottom: Theme.of(context).own().defaultProductCardMargin),
               decoration: BoxDecoration(
                   color: Theme.of(context).own().defaultContainerColor),
               child: Column(mainAxisSize: MainAxisSize.min, children: [

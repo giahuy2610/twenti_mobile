@@ -28,7 +28,7 @@ class _PaymentContainerState extends State<PaymentContainer> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-          top: Theme.of(context).own().defaultProductCardMargin),
+          bottom: Theme.of(context).own().defaultProductCardMargin),
       padding: EdgeInsets.fromLTRB(
           Theme.of(context).own().defaultVerticalPaddingOfScreen,
           Theme.of(context).own().defaultVerticalPaddingOfScreen,

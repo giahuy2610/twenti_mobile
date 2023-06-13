@@ -41,42 +41,45 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Tỉnh/thành phố"),
-              FutureBuilder<List<Map<String, String>>>(
-                future: futureGetProvince(),
-                builder: (BuildContext context, snapshot) {
-                  if (snapshot.hasData) {
-                    return DropdownButtonHideUnderline(
-                      child: DropdownButton(
-                        value: selectedIdProvince,
-                        items: snapshot.data!
-                            .map((e) => DropdownMenuItem(
-                                  value: e['id'].toString(),
-                                  child: Text(e['name']!),
-                                ))
-                            .toList(),
-                        onChanged: (String? value) {
-                          widget.callbackCity(value);
-                          setState(() {
-                            selectedIdProvince = value!;
-                            selectedIdDistrict = '000';
-                            selectedIdWard = '00000';
-                          });
-                        },
-                      ),
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
+              Expanded(child: Text("Tỉnh/thành phố")),
+              Expanded(
+                child: FutureBuilder<List<Map<String, String>>>(
+                  future: futureGetProvince(),
+                  builder: (BuildContext context, snapshot) {
+                    if (snapshot.hasData) {
+                      return DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          value: selectedIdProvince,
+                          items: snapshot.data!
+                              .map((e) => DropdownMenuItem(
+                                    value: e['id'].toString(),
+                                    child: Text(e['name']!),
+                                  ))
+                              .toList(),
+                          onChanged: (String? value) {
+                            widget.callbackCity(value);
+                            setState(() {
+                              selectedIdProvince = value!;
+                              selectedIdDistrict = '000';
+                              selectedIdWard = '00000';
+                            });
+                          },
+                        ),
+                      );
+                    } else {
+                      return Container();
+                    }
+                  },
+                ),
               ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Quận/huyện"),
-              FutureBuilder<List<Map<String, String>>>(
+              Expanded(child: Text("Quận/huyện")),
+              Expanded(
+                  child: FutureBuilder<List<Map<String, String>>>(
                 future: futureGetDistrict(selectedIdProvince),
                 builder: (BuildContext context, snapshot) {
                   return DropdownButtonHideUnderline(
@@ -104,18 +107,20 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                     },
                   ));
                 },
-              ),
+              )),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Phường/xã"),
-              FutureBuilder<List<Map<String, String>>>(
+              Expanded(child: Text("Phường/xã")),
+              Expanded(
+                  child: FutureBuilder<List<Map<String, String>>>(
                 future: futureGetWard(selectedIdDistrict),
                 builder: (BuildContext context, snapshot) {
                   return DropdownButtonHideUnderline(
                       child: DropdownButton(
+                    isExpanded: true,
                     value: selectedIdWard,
                     items: (snapshot.hasData)
                         ? snapshot.data!
@@ -138,7 +143,7 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
                     },
                   ));
                 },
-              ),
+              )),
             ],
           ),
           Container(

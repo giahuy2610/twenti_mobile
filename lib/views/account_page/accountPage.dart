@@ -14,11 +14,16 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: ListView(children: [
-        Avatar(),
-        OrderMenu(),
-        HistoryPurchasedListView(),
-        SizedBox(height: 35),
+      body: Column(children: [
+        Expanded(
+          child: Column(
+            children: [
+              Avatar(),
+              OrderMenu(),
+              HistoryPurchasedListView(),
+            ],
+          ),
+        ),
         AccountMenu(),
       ]),
     ));

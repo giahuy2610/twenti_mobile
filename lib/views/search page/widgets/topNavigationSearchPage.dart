@@ -26,8 +26,11 @@ class _topNavigationSearchPageState extends State<topNavigationSearchPage> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 5),
-      decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(width: 2, color: Colors.grey))),
+      decoration: BoxDecoration(
+          border: Border(
+              bottom: BorderSide(
+                  width: 1,
+                  color: Theme.of(context).own().defaultScaffoldColor))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -63,7 +66,7 @@ class _topNavigationSearchPageState extends State<topNavigationSearchPage> {
                         contentPadding: EdgeInsets.zero,
                         isCollapsed: true,
                         focusColor: Colors.transparent,
-                        hintText: 'Eiu mua gì nà',
+                        hintText: 'Nhập vào từ khóa',
                       ),
                       onChanged: (v) {
                         //request to get autocomplete searching value
@@ -139,7 +142,7 @@ class _topNavigationSearchPageState extends State<topNavigationSearchPage> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
                           decoration: BoxDecoration(
-                              color: Colors.pinkAccent,
+                              color: Colors.red,
                               borderRadius: BorderRadius.circular(8)),
                           child: const Text(
                             "Tìm kiếm",

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class NotificationController {
   // Khởi tạo Local Notification ở đây với custom tùy thích
+  @pragma("vm:entry-point")
   static Future<void> initializeLocalNotifications(
       {required bool debug}) async {
     await AwesomeNotifications().initialize(
@@ -17,10 +18,18 @@ class NotificationController {
               playSound: true,
               importance: NotificationImportance.High,
               defaultPrivacy: NotificationPrivacy.Private,
-              defaultColor: Colors.deepPurple,
-              ledColor: Colors.deepPurple)
+              defaultColor: Colors.pinkAccent,
+              ledColor: Colors.pinkAccent)
         ],
         debug: debug);
+
+    await AwesomeNotifications()
+        .setListeners(onActionReceivedMethod: _onActionReceivedMethod);
+  }
+
+  @pragma("vm:entry-point")
+  static Future<void> _onActionReceivedMethod(ReceivedAction action) async {
+    print('It works');
   }
 
   // Hàm này dùng để Khởi tạo Push Notification.
@@ -41,6 +50,8 @@ class NotificationController {
         // visit http://awesome-notifications.carda.me#prices
         licenseKeys: null,
         debug: debug);
+
+    // FirebaseMessaging messaging = FirebaseMessaging.instance;
   }
 
   // Chỗ này để lấy cái FCM Token của thiết bị nè.

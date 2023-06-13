@@ -14,8 +14,7 @@ class HistoryPurchasedListView extends StatelessWidget {
               child: Text(
                 'Mua lại',
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -36,35 +35,6 @@ class HistoryPurchasedListView extends StatelessWidget {
             ),
           ],
         ),
-        // SizedBox(
-        //   height: 190,
-        //   child: ListView.builder(
-        //     scrollDirection: Axis.horizontal,
-        //     itemCount: 5,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return Padding(
-        //         padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
-        //         child: SizedBox(
-        //           width: 100,
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               Container(
-        //                 width: 100,
-        //                 height: 170,
-        //                 decoration: const BoxDecoration(
-        //                   image: DecorationImage(
-        //                     image: AssetImage('assets/icons/Product.png'),
-        //                   ),
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       );
-        //     },
-        //   ),
-        // ),
       ],
     );
   }

@@ -14,6 +14,7 @@ class searchingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: BorderRadius.circular(10),
       color: Color.fromARGB(255, 220, 220, 220),
       child: InkWell(
         onTap: () async {

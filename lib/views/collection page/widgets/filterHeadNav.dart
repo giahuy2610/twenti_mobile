@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 
 import '../../../models/product/product.dart';
 import '../../../providers/collectionPageProvider.dart';
@@ -181,6 +182,10 @@ class _FilterHeadContainerState extends State<FilterHeadContainer> {
                                 widget._currentRangeValues = values;
                               });
                             },
+                            inactiveColor:
+                                Theme.of(context).own().searchBoxBorderColor,
+                            activeColor:
+                                Theme.of(context).own().searchBoxBorderColor,
                           )
                         ],
                       ),
@@ -210,8 +215,9 @@ class _FilterHeadContainerState extends State<FilterHeadContainer> {
                                         return brand == i;
                                       });
                                     }
+                                    ;
+                                    filterByBrandId();
                                   });
-                                  filterByBrandId();
                                 },
                               )
                           ]),

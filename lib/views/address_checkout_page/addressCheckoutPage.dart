@@ -64,28 +64,40 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
               ],
             )),
             Padding(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      side: const BorderSide(
-                        color: Colors.red,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       Navigator.pop(context);
                     },
-                    child: const Text(
-                      "Hủy bỏ",
-                      style: TextStyle(color: Colors.redAccent),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.redAccent),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.close_rounded,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "Hủy bỏ",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       context.read<CartProvider>().saveCustomerAddressContact(
                           this.nameCustomer!,
                           this.phoneCustomer!,
@@ -95,8 +107,29 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
                           this.addressDetail!);
                       Navigator.pop(context);
                     },
-                    child: const Text(
-                      "Hoàn thành",
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.indigo,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.check,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "Hoàn thành",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

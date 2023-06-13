@@ -11,7 +11,7 @@ class OwnThemeFields {
 
   final double defaultProductCardMargin = 3;
 
-  final Color defaultScaffoldColor = const Color.fromARGB(255, 230, 230, 243);
+  final Color defaultScaffoldColor = const Color.fromARGB(150, 230, 230, 243);
   final Color defaultContainerColor = Colors.white;
   final Color badgeNotiColor = const Color.fromRGBO(244, 163, 155, 1);
 
@@ -58,7 +58,7 @@ OwnThemeFields ownTheme(BuildContext context) => Theme.of(context).own();
 final ThemeData lightTheme = ThemeData.light().copyWith(
     // buttonTheme: const ButtonThemeData(
     //     buttonColor: Colors.transparent, splashColor: Colors.white),
-    scaffoldBackgroundColor: const Color.fromARGB(255, 230, 230, 243),
+    scaffoldBackgroundColor: const Color.fromRGBO(247, 247, 247, 1),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
             foregroundColor: MaterialStateProperty.all<Color>(Colors.black))),

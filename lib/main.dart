@@ -31,10 +31,11 @@ void main() async {
   );
 
   // Initialize cho Local Notification
-  await NotificationController.initializeLocalNotifications(debug: true);
+  // await NotificationController.initializeLocalNotifications(debug: true);
 
   // Initialize cho Push Notification
   await NotificationController.initializeRemoteNotifications(debug: true);
+
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => GlobalProvider()),
@@ -63,7 +64,9 @@ class _TwentiAppState extends State<TwentiApp> {
           else
             return MyApp();
         } else {
-          return CircularProgressIndicator();
+          return Container(
+            color: Colors.white,
+          );
         }
       },
     );
@@ -75,7 +78,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with RouteAware {
   static final navigatorKey = GlobalKey<NavigatorState>();
   int _index = 0;
   List<Map<String, dynamic>> navList = [

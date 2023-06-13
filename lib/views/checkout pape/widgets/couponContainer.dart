@@ -9,8 +9,8 @@ class CouponContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: Theme.of(context).own().defaultProductCardMargin),
+      padding: EdgeInsets.only(
+          bottom: Theme.of(context).own().defaultProductCardMargin),
       child: Material(
         color: Theme.of(context).own().defaultContainerColor,
         child: InkWell(
@@ -40,7 +40,12 @@ class CouponContainer extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
-                Text("Chọn hoặc nhập mã   >")
+                Row(
+                  children: [
+                    Text("Chọn hoặc nhập mã"),
+                    Icon(Icons.chevron_right)
+                  ],
+                )
               ],
             ),
           ),

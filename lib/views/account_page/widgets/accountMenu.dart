@@ -59,10 +59,11 @@ class AccountMenu extends StatelessWidget {
     }
   ];
 
-  static const Color btnColor = Color(0xFFEBBFAF);
+  static const Color btnColor = Color(0xFFF6E6DF);
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
           color: Theme.of(context).own().defaultContainerColor,
           borderRadius: BorderRadius.circular(10)),
@@ -70,7 +71,7 @@ class AccountMenu extends StatelessWidget {
           Theme.of(context).own().defaultVerticalPaddingOfScreen),
       child: Wrap(
         alignment: WrapAlignment.spaceBetween,
-        runSpacing: Theme.of(context).own().defaultVerticalPaddingOfScreen,
+        runSpacing: Theme.of(context).own().defaultMarginBetween,
         children: [
           for (var i in menuItem)
             InkWell(

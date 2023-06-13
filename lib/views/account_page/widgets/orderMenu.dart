@@ -30,8 +30,14 @@ class OrderMenu extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Đơn hàng của tôi'),
-                Text("Xem tất cả >"),
+                Text(
+                  'Đơn hàng của tôi',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [Text("Xem tất cả"), Icon(Icons.chevron_right)],
+                ),
               ],
             ),
             //Order status menu

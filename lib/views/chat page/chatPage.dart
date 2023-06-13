@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/models/notification/notification.dart';
+import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/chat%20page/widgets/notificationItem.dart';
 
 import '../../common widgets/top navigation/topNavigation.dart';
-import '../../services/chat/chat.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -13,19 +13,6 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  void test() {}
-
-  @override
-  void initState() {
-    super.initState();
-    newChat;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +20,8 @@ class _ChatPageState extends State<ChatPage> {
             child: Column(
       children: [
         TopNavigation(
-          left: Text("Thông báo"),
+          left:
+              Text("Thông báo", style: Theme.of(context).textTheme.titleMedium),
           right: TextButton(
             onPressed: () {},
             child: Text("Đọc tất cả (1)"),
@@ -42,7 +30,11 @@ class _ChatPageState extends State<ChatPage> {
         ),
         Expanded(
             child: ListView(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.symmetric(
+              horizontal:
+                  Theme.of(context).own().defaultVerticalPaddingOfScreen,
+              vertical:
+                  Theme.of(context).own().defaultVerticalPaddingOfScreen / 2),
           children: [
             for (var i in List.generate(5, (index) => index + 10))
               notificationItem(

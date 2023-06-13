@@ -58,37 +58,41 @@ class _couponState extends State<coupon> {
                 bottomLeft: Radius.circular(15),
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, left: 10),
-                  child: Text(
-                    couponTitle,
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: couponFontColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border(right: BorderSide(color: borderColor))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, left: 10),
+                    child: Text(
+                      couponTitle,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: couponFontColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(top: 10.0, left: 10, bottom: 10),
-                  child: Text(
-                    couponCode,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: couponFontColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10.0, left: 10, bottom: 10),
+                    child: Text(
+                      couponCode,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: couponFontColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SvgPicture.asset(

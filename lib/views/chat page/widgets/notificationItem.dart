@@ -32,13 +32,13 @@ class _notificationItemState extends State<notificationItem> {
         alignment: Alignment.topRight,
         children: [
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 5),
+            margin: const EdgeInsets.symmetric(vertical: 2),
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: widget.isRead == true
                     ? Colors.white
-                    : Color.fromRGBO(255, 251, 235, 1),
+                    : Color.fromRGBO(255, 251, 240, 1.0),
                 border: Border.all(color: Color.fromRGBO(233, 222, 228, 1))),
             child: Column(
               children: [
@@ -48,10 +48,13 @@ class _notificationItemState extends State<notificationItem> {
                     Container(
                       width: 35,
                       height: 35,
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(69, 207, 47, 1),
+                          borderRadius: BorderRadius.circular(500)),
                       margin: EdgeInsets.only(
                           right: Theme.of(context).own().defaultMarginBetween,
                           bottom: Theme.of(context).own().defaultMarginBetween),
-                      child: Image.network(""),
+                      child: Image.asset("assets/icons/icon_truck.png"),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

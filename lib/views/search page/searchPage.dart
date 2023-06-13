@@ -55,7 +55,7 @@ class _SearchPageState extends State<SearchPage> {
                                       child: Row(
                                         children: const [
                                           Text("Xóa tất cả"),
-                                          Icon(Icons.restore_from_trash),
+                                          Icon(Icons.close_rounded),
                                         ],
                                       ),
                                     )
@@ -74,6 +74,10 @@ class _SearchPageState extends State<SearchPage> {
                           return Container();
                         }
                       }),
+                  SizedBox(
+                    height: Theme.of(context).own().defaultMarginBetween,
+                  )
+                  ,
                   FutureBuilder(
                       future:
                           SharedPreferencesObject().futureGetSearchingHistory(),
@@ -94,7 +98,7 @@ class _SearchPageState extends State<SearchPage> {
                                       child: Row(
                                         children: const [
                                           Text("Xóa tất cả"),
-                                          Icon(Icons.restore_from_trash),
+                                          Icon(Icons.close_rounded),
                                         ],
                                       ),
                                     )
@@ -104,7 +108,11 @@ class _SearchPageState extends State<SearchPage> {
                                   spacing: 5,
                                   runSpacing: 5,
                                   children: [
-                                    for (var i in snapshot.data!)
+                                    for (var i in [
+                                      'Kem dưỡng',
+                                      'Mặt nạ',
+                                      'Dưỡng ẩm'
+                                    ])
                                       searchingItem(i)
                                   ],
                                 ),

@@ -96,11 +96,12 @@ class SharedPreferencesObject {
     return acc;
   }
 
-  Future<int?> futureGetIdCus() async {
+  Future<int> futureGetIdCus() async {
     final prefs = await _prefs;
     final id = prefs.getString('idcus');
     if (id != null)
-    return int.parse(id);
-    else return 0;
+      return int.parse(id);
+    else
+      return 0;
   }
 }

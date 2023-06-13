@@ -59,106 +59,108 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white70,
         body: SafeArea(
             child: Column(
-      children: [
-        TopNavigation(
-          isSearcher: true,
-          left: Material(
-            child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.rightToLeftWithFade,
-                          child: qrScannerPage(),
-                          childCurrent: context.widget));
-                },
-                icon: const Icon(Icons.qr_code_scanner_outlined)),
-          ),
-          right: cartIcon(),
-        ),
-        Expanded(
-            child: ListView(
           children: [
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.width,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.only(bottomLeft: Radius.circular(80)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.black45.withOpacity(0.1),
-                      blurRadius: 1,
-                      offset: Offset(0, 2),
-                    ),
-                  ]),
-              child: FutureBuilder<List<ImageSlider>>(
-                  future: futureGetImageSliderCollection(),
-                  builder: (builder, snapshot) {
-                    if (snapshot.hasData) {
-                      return SizedBox(
-                          width: double.infinity,
-                          child: imageSlider(snapshot.data!));
-                    } else {
-                      return const SizedBox(
-                          width: double.infinity,
-                          child: SkeletonAvatar(
-                            style:
-                                SkeletonAvatarStyle(shape: BoxShape.rectangle),
-                          ));
-                    }
-                  }),
+            TopNavigation(
+              isSearcher: true,
+              left: Material(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.rightToLeftWithFade,
+                              child: qrScannerPage(),
+                              childCurrent: context.widget));
+                    },
+                    icon: const Icon(Icons.qr_code_scanner_outlined)),
+              ),
+              right: cartIcon(),
             ),
-            flashSaleBox(15100),
-            SwitchCardsEvent(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Expanded(
+                child: ListView(
               children: [
                 Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Theme.of(context)
-                            .own()
-                            .defaultVerticalPaddingOfScreen,
-                        vertical: 4),
-                    decoration: const BoxDecoration(
-                        color: Color.fromRGBO(244, 163, 155, 0.4),
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10),
-                            bottomRight: Radius.circular(10))),
-                    child: Text(
-                      "Gợi ý cho bạn",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(color: Colors.red),
-                    )),
-                FutureBuilder<Collection>(
-                    future: futureGetCollection(65),
-                    builder: (builder, snapshot) {
-                      if (snapshot.hasData) {
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Theme.of(context)
-                                      .own()
-                                      .defaultVerticalPaddingOfScreen -
-                                  Theme.of(context)
-                                      .own()
-                                      .defaultProductCardMargin),
-                          child: productListView(snapshot.data!.products, true),
-                        );
-                      } else {
-                        return productListViewSkeleton();
-                      }
-                    }),
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.width,
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(80)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.black45.withOpacity(0.1),
+                          blurRadius: 1,
+                          offset: Offset(0, 2),
+                        ),
+                      ]),
+                  child: FutureBuilder<List<ImageSlider>>(
+                      future: futureGetImageSliderCollection(),
+                      builder: (builder, snapshot) {
+                        if (snapshot.hasData) {
+                          return SizedBox(
+                              width: double.infinity,
+                              child: imageSlider(snapshot.data!));
+                        } else {
+                          return const SizedBox(
+                              width: double.infinity,
+                              child: SkeletonAvatar(
+                                style: SkeletonAvatarStyle(
+                                    shape: BoxShape.rectangle),
+                              ));
+                        }
+                      }),
+                ),
+                flashSaleBox(15100),
+                SwitchCardsEvent(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        margin: EdgeInsets.only(bottom: 5),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Theme.of(context)
+                                .own()
+                                .defaultVerticalPaddingOfScreen,
+                            vertical: 4),
+                        decoration: const BoxDecoration(
+                            color: Color.fromRGBO(244, 163, 155, 0.4),
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                bottomRight: Radius.circular(10))),
+                        child: Text(
+                          "Gợi ý cho bạn",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(color: Colors.red),
+                        )),
+                    FutureBuilder<Collection>(
+                        future: futureGetCollection(65),
+                        builder: (builder, snapshot) {
+                          if (snapshot.hasData) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: Theme.of(context)
+                                          .own()
+                                          .defaultVerticalPaddingOfScreen -
+                                      Theme.of(context)
+                                          .own()
+                                          .defaultProductCardMargin),
+                              child: productListView(
+                                  snapshot.data!.products, true),
+                            );
+                          } else {
+                            return productListViewSkeleton();
+                          }
+                        }),
+                  ],
+                )
               ],
-            )
+            )),
           ],
-        )),
-      ],
-    )));
+        )));
   }
 }
