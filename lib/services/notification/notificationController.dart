@@ -50,7 +50,6 @@ class NotificationController {
         // visit http://awesome-notifications.carda.me#prices
         licenseKeys: null,
         debug: debug);
-
     // FirebaseMessaging messaging = FirebaseMessaging.instance;
   }
 
