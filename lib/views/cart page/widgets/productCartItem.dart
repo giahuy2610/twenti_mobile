@@ -2,10 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/futureRemoveToCart.dart';
 import 'package:twenti_mobile/views/product%20page/productPage.dart';
 
+import '../../../providers/cartProvider.dart';
 import '../../../services/currency_format/currencyFormat.dart';
 import '../../../services/deep linking/deepLink.dart';
 import '../controllers/futureAddToCart.dart';
@@ -33,7 +35,7 @@ class ProductCartItem extends StatefulWidget {
 }
 
 class _ProductCartItemState extends State<ProductCartItem> {
-  bool _isChecked = true;
+  bool _isChecked = false;
 
   Widget quantityPicker() {
     return Container(
@@ -61,25 +63,37 @@ class _ProductCartItemState extends State<ProductCartItem> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),
-          InkWell(
-            onTap: () async {
-              futureAddToCart(context, widget.id, 1).then((value) {
-                if (value == true) {
-                  setState(() {
-                    widget.quantity++;
-                  });
-                } else {}
-              });
-            },
-            child: ColoredBox(
-                color: Colors.grey.shade300, child: Icon(CupertinoIcons.plus)),
-          )
+          (widget.quantity < 10)
+              ? InkWell(
+                  onTap: () async {
+                    futureAddToCart(context, widget.id, 1).then((value) {
+                      if (value == true) {
+                        setState(() {
+                          widget.quantity++;
+                        });
+                      } else {}
+                    });
+                  },
+                  child: ColoredBox(
+                      color: Colors.grey.shade300,
+                      child: Icon(CupertinoIcons.plus)),
+                )
+              : const InkWell(
+                  child: ColoredBox(
+                      color: Colors.white,
+                      child: Icon(
+                        CupertinoIcons.plus,
+                        color: Colors.white,
+                      )),
+                )
         ],
       ),
     );
   }
 
   Widget item() {
+    _isChecked =
+        context.read<CartProvider>().selectedProductInCart.contains(widget.id);
     return Container(
       child: Row(
         children: [
@@ -93,6 +107,9 @@ class _ProductCartItemState extends State<ProductCartItem> {
               onChanged: (bool? value) {
                 setState(() {
                   _isChecked = value!;
+                  context
+                      .read<CartProvider>()
+                      .addToSelectedProductInCart(widget.id, _isChecked);
                 });
               },
               activeColor: Theme.of(context).own().headingSearchBoxBorderColor,

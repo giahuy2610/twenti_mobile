@@ -83,7 +83,7 @@ class SharedPreferencesObject {
   Future<List<int>?> futureGetViewProductHistory() async {
     final prefs = await _prefs;
     List<String>? res = prefs.getStringList("viewProductHistory");
-    return res!.map((e) => int.parse(e)).toList();
+    return res!.reversed.map((e) => int.parse(e)).toList();
   }
 
   Future<Account> futureGetAccountLocal() async {

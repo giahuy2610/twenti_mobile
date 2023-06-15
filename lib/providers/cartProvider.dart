@@ -37,6 +37,8 @@ class CartProvider with ChangeNotifier {
   late String paymentMethod =
       "1"; //1 is cash on delivery, 2 is pay on vnpay gateway
 
+  late Set<int> selectedProductInCart = {};
+
   Future<void> saveCustomerAddressContact(
       String a, String b, String c, String d, String e, String f) async {
     this.nameCustomer = a;
@@ -68,17 +70,16 @@ class CartProvider with ChangeNotifier {
     _cartProducts = list;
     //update total number of products in cart
     _numOfProducts = list.length;
-    //update total of price
-    _total = 0;
-    for (var i in list) {
-      _total += i.quantity * i.product.retailPrice;
-    }
+    // list.forEach((element) {
+    //   selectedProductInCart.add(element.product.idProduct);
+    // });
+    // calcTotalPrice();
     notifyListeners();
   }
 
   Future<Map<String, dynamic>> makeToOrder() async {
     var invDetail = [];
-    this.cartProducts.forEach((e) {
+    getCheckoutProduct().forEach((e) {
       invDetail.add({
         "IDProduct": e.product.idProduct.toString(),
         "Quantity": e.quantity.toString(),
@@ -113,5 +114,41 @@ class CartProvider with ChangeNotifier {
       'IDInvoice': jsonDecode(response.body)['IDInvoice'],
       "MethodPay": jsonDecode(response.body)['MethodPay']
     };
+  }
+
+  void calcTotalPrice() {
+    //update total of price
+    _total = 0;
+    _cartProducts.forEach((i) {
+      if (selectedProductInCart.contains(i.product.idProduct)) {
+        _total += i.quantity * i.product.retailPrice;
+      }
+    });
+  }
+
+  Set<int> addToSelectedProductInCart(int id, bool isAdd) {
+    isAdd == true
+        ? selectedProductInCart.add(id)
+        : selectedProductInCart.remove(id);
+    calcTotalPrice();
+    notifyListeners();
+    return selectedProductInCart;
+  }
+
+  List<CartProduct> getCheckoutProduct() {
+    List<CartProduct> res = [];
+    print("selected product in cart");
+    print(selectedProductInCart);
+    _cartProducts.forEach((e) {
+      if (selectedProductInCart.contains(e.product.idProduct)) res.add(e);
+    });
+    print(res);
+    return res;
+  }
+
+  void getBuyNow(id) {
+    selectedProductInCart = {id};
+    calcTotalPrice();
+    notifyListeners();
   }
 }

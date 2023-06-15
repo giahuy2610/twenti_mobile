@@ -8,7 +8,8 @@ import 'package:twenti_mobile/views/checkout%20pape/widgets/productCheckoutListV
 import '../../common widgets/top navigation/topNavigation.dart';
 
 class checkoutPage extends StatefulWidget {
-  const checkoutPage({Key? key}) : super(key: key);
+  bool isBuyNow;
+  checkoutPage({this.isBuyNow = false});
 
   @override
   State<checkoutPage> createState() => _checkoutPageState();
@@ -43,7 +44,7 @@ class _checkoutPageState extends State<checkoutPage> {
             child: ListView(
           children: [
             AddressContainer(),
-            ProductCheckoutListView(),
+            ProductCheckoutListView(widget.isBuyNow),
             CouponContainer(),
             PaymentContainer(),
           ],

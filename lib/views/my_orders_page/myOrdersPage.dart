@@ -39,7 +39,10 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                     },
                     icon: const Icon(Icons.keyboard_arrow_left)),
               ),
-              Text("Đơn hàng của tôi"),
+              Text(
+                "Đơn hàng của tôi",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ],
           ),
           isSearcher: false,

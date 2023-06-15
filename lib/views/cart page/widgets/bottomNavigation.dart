@@ -56,7 +56,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: const checkoutPage(),
+                              child: checkoutPage(),
                               childCurrent: widget)),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.4,
@@ -81,7 +81,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Color.fromRGBO(215, 129, 121, 1)),
+                            color: Colors.grey.shade400),
                         child: const Text(
                           "Thanh toán",
                           style: TextStyle(

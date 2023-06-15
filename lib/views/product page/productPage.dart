@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:twenti_mobile/common%20widgets/cart_icon/cartIcon.dart';
 import 'package:twenti_mobile/common%20widgets/description/description.dart';
+import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/imageSlider.dart';
 import 'package:twenti_mobile/views/product%20page/widgets/productHeading.dart';
@@ -16,6 +19,7 @@ import '../../services/currency_format/currencyFormat.dart';
 import '../../services/deep linking/deepLink.dart';
 import '../../services/shared preferences/sharedPreferences.dart';
 import '../cart page/controllers/futureAddToCart.dart';
+import '../checkout pape/checkoutPage.dart';
 import 'controllers/futureGetProduct.dart';
 
 class topW extends StatelessWidget {
@@ -153,7 +157,27 @@ class ProductPage extends StatelessWidget {
                           Material(
                             child: InkWell(
                               onTap: () async {
-                                futureAddToCart(context, idProduct, 1);
+                                //add to cart
+                                if (context
+                                        .read<CartProvider>()
+                                        .selectedProductInCart
+                                        .contains(idProduct) ==
+                                    false) {
+                                  await futureAddToCart(context, idProduct, 1);
+                                }
+
+                                //set selected to product
+                                context
+                                    .read<CartProvider>()
+                                    .getBuyNow(idProduct);
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: checkoutPage(
+                                          isBuyNow: true,
+                                        ),
+                                        childCurrent: this));
                               },
                               child: Container(
                                 height: 50,

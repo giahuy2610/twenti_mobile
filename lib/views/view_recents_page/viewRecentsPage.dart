@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/models/product/product.dart';
-import 'package:twenti_mobile/views/product%20page/controllers/futureGetProduct.dart';
 
 import '../../common widgets/product_list_view/product list view.dart';
 import '../../common widgets/product_list_view/productListViewSkeleton.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../services/shared preferences/sharedPreferences.dart';
+import 'controllers/futureFetchAllProduct.dart';
 
 class ViewRecentsPage extends StatefulWidget {
   const ViewRecentsPage({Key? key}) : super(key: key);
@@ -22,30 +22,52 @@ class _ViewRecentsPageState extends State<ViewRecentsPage> {
             child: Column(
       children: [
         TopNavigation(
-          left: Text("Đã xem gần đây"),
-          right: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.restore_from_trash),
+          left: Row(
+            children: [
+              Material(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.keyboard_arrow_left)),
+              ),
+              Text(
+                "Đã xem gần đây",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ],
           ),
+          isSearcher: false,
         ),
-        FutureBuilder(
-            future: SharedPreferencesObject().futureGetViewProductHistory(),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<int>?> snapshot) {
-              if (snapshot.hasData) {
-                var data = snapshot.data!;
-                List<Product> listProduct = <Product>[];
-                for (var id in data)
-                  futureGetProduct(id).then((value) => listProduct.add(value));
-
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [productListView(listProduct, true)],
-                );
-              } else {
-                return productListViewSkeleton();
-              }
-            })
+        Expanded(
+            child: SingleChildScrollView(
+          child: FutureBuilder(
+              future: SharedPreferencesObject().futureGetViewProductHistory(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<List<int>?> snapshot) {
+                if (snapshot.hasData) {
+                  var data = snapshot.data!;
+                  print(data);
+                  return FutureBuilder<List<Product>?>(
+                    future: fetchAllProduct(data),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<dynamic> snapshot) {
+                      if (snapshot.hasData) {
+                        print(snapshot.data!);
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [productListView(snapshot.data!, true)],
+                        );
+                      } else {
+                        return productListViewSkeleton();
+                      }
+                    },
+                  );
+                } else {
+                  return productListViewSkeleton();
+                }
+              }),
+        ))
       ],
     )));
   }

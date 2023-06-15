@@ -28,7 +28,7 @@ class OrderDetailPage extends StatelessWidget {
                       },
                       icon: const Icon(Icons.keyboard_arrow_left)),
                 ),
-                Text("Chi tiết đơn hàng")
+                Text("Chi tiết đơn hàng", style: Theme.of(context).textTheme.titleMedium,)
               ],
             ),
             isSearcher: false),
