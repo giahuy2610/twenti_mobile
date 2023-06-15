@@ -73,7 +73,7 @@ class CartProvider with ChangeNotifier {
     // list.forEach((element) {
     //   selectedProductInCart.add(element.product.idProduct);
     // });
-    // calcTotalPrice();
+    calcTotalPrice();
     notifyListeners();
   }
 
