@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
+import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/services/currency_format/currencyFormat.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/cart%20page/widgets/productCartItem.dart';
@@ -7,6 +9,7 @@ import 'package:twenti_mobile/views/make_review_page/makeReviewPage.dart';
 import 'package:twenti_mobile/views/order_detail_page/orderDetailPage.dart';
 
 import '../../../models/order/order.dart';
+import '../../checkout pape/checkoutPage.dart';
 import '../controllers/futureCancelOrder.dart';
 import '../trackingStatusConstrain.dart';
 
@@ -110,7 +113,17 @@ class _OrderCardState extends State<OrderCard> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await context
+                            .read<CartProvider>()
+                            .getBuyAgain(widget.orderData.products, context);
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child: checkoutPage(),
+                                childCurrent: widget));
+                      },
                       child: const Text(
                         "Mua lại",
                         style: TextStyle(

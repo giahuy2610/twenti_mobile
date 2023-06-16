@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:twenti_mobile/models/product/cartProduct.dart';
 import 'package:twenti_mobile/views/address_checkout_page/controllers/futureGetProvince.dart';
+import 'package:twenti_mobile/views/cart%20page/controllers/futureAddToCart.dart';
 
 import '../../../services/http/constant.dart';
 import '../models/coupon/Coupon.dart';
@@ -148,6 +149,18 @@ class CartProvider with ChangeNotifier {
 
   void getBuyNow(id) {
     selectedProductInCart = {id};
+    calcTotalPrice();
+    notifyListeners();
+  }
+
+  Future getBuyAgain(List<CartProduct> listId, context) async {
+    selectedProductInCart = {};
+    //add the number of product
+    for (var e in listId) {
+      for (var i = 0; i < e.quantity; i++)
+        await futureAddToCart(context, e.product.idProduct, 1);
+      selectedProductInCart.add(e.product.idProduct);
+    }
     calcTotalPrice();
     notifyListeners();
   }

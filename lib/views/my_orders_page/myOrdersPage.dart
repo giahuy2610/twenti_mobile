@@ -46,13 +46,6 @@ class _MyOrdersPageState extends State<MyOrdersPage>
             ],
           ),
           isSearcher: false,
-          right: Material(
-            child: IconButton(
-                onPressed: () {
-                  newChat();
-                },
-                icon: const Icon(Icons.mail_outline)),
-          ),
         ),
         Expanded(
           child: Column(
