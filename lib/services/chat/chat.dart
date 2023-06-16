@@ -4,7 +4,9 @@ void newChat() {
   print("opening chat api");
   dynamic conversationObject = {
     'appId':
-        '146a699b0210be3298a047df7d4a822c0', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+        '337cefa9c73e9fd53d6486986a4ad0b9b', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+    'isSingleConversation': true,
+    'conversationTitle': 'Chăm sóc khách hàng'
   };
 
   KommunicateFlutterPlugin.buildConversation(conversationObject)

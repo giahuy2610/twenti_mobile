@@ -1,18 +1,36 @@
-class NotificationItemModel {
-  late DateTime receivedTime;
-  late DateTime? readTime;
-  late bool isRead;
+class NotificationModel {
+  late int iDNoti;
+  late int iDCus;
+  late String createdOn;
+  late int isSeen;
+  late int isDeleted;
+  late String title;
   late String content;
-  late String? routePath;
-  late String? imagePath;
+  late int type;
+  late String? note;
 
-  bool get getIsRead => isRead;
+  NotificationModel(
+      {required this.iDNoti,
+      required this.iDCus,
+      required this.createdOn,
+      required this.isSeen,
+      required this.isDeleted,
+      required this.title,
+      required this.content,
+      required this.type,
+      this.note});
 
-  NotificationItemModel(
-      {required this.content,
-      imagePath,
-      required this.receivedTime,
-      this.routePath}) {
-    this.isRead = false;
+  factory NotificationModel.fromJson(Map<String, dynamic> json) {
+    return NotificationModel(
+      iDNoti: json['IDNoti'],
+      iDCus: json['IDCus'],
+      createdOn: json['CreatedOn'],
+      isSeen: json['IsSeen'],
+      isDeleted: json['IsDeleted'],
+      title: json['Title'],
+      content: json['Content'],
+      type: json['Type'],
+      note: json['Note'],
+    );
   }
 }

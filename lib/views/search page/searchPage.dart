@@ -76,8 +76,7 @@ class _SearchPageState extends State<SearchPage> {
                       }),
                   SizedBox(
                     height: Theme.of(context).own().defaultMarginBetween,
-                  )
-                  ,
+                  ),
                   FutureBuilder(
                       future:
                           SharedPreferencesObject().futureGetSearchingHistory(),

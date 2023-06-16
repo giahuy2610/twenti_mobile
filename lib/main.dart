@@ -100,7 +100,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
     },
     {
       'id': 2,
-      "title": "Tin nhắn",
+      "title": "Thông báo",
       "iconPath": "assets/icons/icon_bell.svg",
       "routePath": "",
       "isNoti": true,
@@ -123,7 +123,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
       "futureToGetBadge": null
     }
   ];
-  final QuickActions quickActions = QuickActions();
+  final QuickActions quickActions = const QuickActions();
 
   void _setupQuickActions() {
     quickActions.setShortcutItems(<ShortcutItem>[
@@ -178,11 +178,11 @@ class _MyAppState extends State<MyApp> with RouteAware {
           body: IndexedStack(
             index: _index,
             children: [
-              HomePage(),
+              const HomePage(),
               CategoryPage(),
-              NotificationPage(),
-              MapSample(),
-              AccountPage()
+              const NotificationPage(),
+              const MapSample(),
+              const AccountPage()
             ],
           ),
           bottomNavigationBar: Container(
@@ -214,11 +214,11 @@ class _MyAppState extends State<MyApp> with RouteAware {
                         child: Container(
                           child: (i['id'] == _index)
                               ? Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color:
-                                          Color.fromRGBO(244, 163, 155, 0.4)),
+                                      color: const Color.fromRGBO(
+                                          244, 163, 155, 0.4)),
                                   child: Row(
                                     children: [
                                       badges.Badge(
@@ -234,7 +234,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
                                           width: 24,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       Text(

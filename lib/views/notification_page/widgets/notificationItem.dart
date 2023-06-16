@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/themes/theme.dart';
+import 'package:twenti_mobile/views/order_detail_page/controllers/futureGetOrderDetail.dart';
 
 import '../../../models/notification/notification.dart';
+import '../../order_detail_page/orderDetailPage.dart';
+import '../controller/futureReadNoti.dart';
 
 class notificationItem extends StatefulWidget {
-  NotificationItemModel notiData;
-  final Key key;
+  NotificationModel notiData;
   late bool isRead;
 
-  notificationItem(this.key, this.notiData) {
-    this.isRead = notiData.getIsRead;
+  notificationItem(this.notiData) {
+    this.isRead = (notiData.isSeen == 0 ? false : true);
   }
 
   @override
@@ -24,7 +27,17 @@ class _notificationItemState extends State<notificationItem> {
       onTap: () {
         if (widget.isRead == false) {
           setState(() {
+            futureReadNotification(widget.notiData.iDNoti);
             widget.isRead = true;
+            if (widget.notiData.type == 2) {
+              futureGetOrderDetail(int.parse(widget.notiData.note!)).then(
+                  (value) => Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.rightToLeftWithFade,
+                          child: OrderDetailPage(value),
+                          childCurrent: widget)));
+            }
           });
         }
       },
@@ -41,34 +54,50 @@ class _notificationItemState extends State<notificationItem> {
                     : Color.fromRGBO(255, 251, 240, 1.0),
                 border: Border.all(color: Color.fromRGBO(233, 222, 228, 1))),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 35,
-                      height: 35,
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(69, 207, 47, 1),
-                          borderRadius: BorderRadius.circular(500)),
-                      margin: EdgeInsets.only(
-                          right: Theme.of(context).own().defaultMarginBetween,
-                          bottom: Theme.of(context).own().defaultMarginBetween),
-                      child: Image.asset("assets/icons/icon_truck.png"),
-                    ),
+                    if (widget.notiData.type == 1)
+                      Container(
+                        width: 35,
+                        height: 35,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(500)),
+                        margin: EdgeInsets.only(
+                            right: Theme.of(context).own().defaultMarginBetween,
+                            bottom:
+                                Theme.of(context).own().defaultMarginBetween),
+                        child: Image.asset("assets/icons/icon_mega.png"),
+                      )
+                    else if (widget.notiData.type == 2)
+                      Container(
+                        width: 35,
+                        height: 35,
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(69, 207, 47, 1),
+                            borderRadius: BorderRadius.circular(500)),
+                        margin: EdgeInsets.only(
+                            right: Theme.of(context).own().defaultMarginBetween,
+                            bottom:
+                                Theme.of(context).own().defaultMarginBetween),
+                        child: Image.asset("assets/icons/icon_truck.png"),
+                      ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(widget.notiData.content),
-                        Text(DateFormat.yMd()
-                            .add_jm()
-                            .format(widget.notiData.receivedTime))
+                        Text(widget.notiData.title),
+                        Text(DateFormat.yMd().add_jm().format(
+                            DateTime.tryParse(widget.notiData.createdOn)!))
                       ],
                     )
                   ],
                 ),
-                const Text(
-                  "nfobfofbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                Text(
+                  widget.notiData.content,
                   maxLines: 5,
                   style: TextStyle(overflow: TextOverflow.ellipsis),
                 )

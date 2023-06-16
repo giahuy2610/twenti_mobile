@@ -47,7 +47,7 @@ class topW extends StatelessWidget {
 class ProductPage extends StatelessWidget {
   final int idProduct;
 
-  ProductPage(this.idProduct);
+  const ProductPage(this.idProduct);
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +72,7 @@ class ProductPage extends StatelessWidget {
                   child: ListView(
                     children: [
                       Hero(
-                          tag:
-                              "hero_product_image_" + data.idProduct.toString(),
+                          tag: "hero_product_image_${data.idProduct}",
                           child: productImagesSlider(data.images!)),
                       productHeading(
                         nameProduct: data.nameProduct,
@@ -99,12 +98,13 @@ class ProductPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      relatedProductsList()
+                      const relatedProductsList()
                     ],
                   ),
                 )),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   decoration: BoxDecoration(
                       color: Theme.of(context).own().defaultContainerColor,
                       boxShadow: [
@@ -144,7 +144,7 @@ class ProductPage extends StatelessWidget {
                             ),
                             salePercent != 0
                                 ? Padding(
-                                    padding: EdgeInsets.only(left: 5),
+                                    padding: const EdgeInsets.only(left: 5),
                                     child: salePercentBadge(salePercent))
                                 : Container()
                           ],
@@ -196,7 +196,7 @@ class ProductPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Material(
@@ -230,7 +230,7 @@ class ProductPage extends StatelessWidget {
           } else {
             return Container(
                 color: Colors.white,
-                child: RiveAnimation.asset('assets/icons/delivery.riv'));
+                child: const RiveAnimation.asset('assets/icons/delivery.riv'));
           }
         });
   }

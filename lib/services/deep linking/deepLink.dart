@@ -7,7 +7,7 @@ void CreateSharingDynamicLink(int idProduct) async {
     uriPrefix: "https://twentimobile.page.link/product",
     androidParameters:
         const AndroidParameters(packageName: "com.example.twenti_mobile"),
-    iosParameters: IOSParameters(bundleId: "twenti_mobile"),
+    iosParameters: const IOSParameters(bundleId: "twenti_mobile"),
   );
   final dynamicLink =
       await FirebaseDynamicLinks.instance.buildLink(dynamicLinkParams);
