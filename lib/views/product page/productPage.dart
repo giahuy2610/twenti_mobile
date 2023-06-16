@@ -28,7 +28,6 @@ class topW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('ưi');
     return TopNavigation(
         left: Material(
           child: IconButton(
@@ -229,7 +228,9 @@ class ProductPage extends StatelessWidget {
               ],
             )));
           } else {
-            return RiveAnimation.asset('assets/icons/delivery.riv');
+            return Container(
+                color: Colors.white,
+                child: RiveAnimation.asset('assets/icons/delivery.riv'));
           }
         });
   }

@@ -27,7 +27,7 @@ class _OrderListViewState extends State<OrderListView> {
               padding: EdgeInsets.symmetric(
                   vertical: Theme.of(context).own().defaultProductCardMargin),
               children: [
-                for (var i in data) OrderCard(i),
+                for (var i in data.reversed) OrderCard(i),
               ],
             );
           else

@@ -170,7 +170,8 @@ class OrderDetailsContainer extends StatelessWidget {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: Vnpay(value['IDInvoice']),
+                                    child: Vnpay(value['IDInvoice'],
+                                        value['TotalValue'].toDouble()),
                                     childCurrent: this));
                           }
 

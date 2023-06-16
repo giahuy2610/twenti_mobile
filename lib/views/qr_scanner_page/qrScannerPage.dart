@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+
+import '../product page/productPage.dart';
 
 class qrScannerPage extends StatefulWidget {
   const qrScannerPage({Key? key}) : super(key: key);
@@ -45,9 +49,8 @@ class _qrScannerPageState extends State<qrScannerPage> {
               flex: 1,
               child: Center(
                 child: (result != null)
-                    ? Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
-                    : Text('Scan a code'),
+                    ? Text('Mã: ${result!.code!}')
+                    : Text('Đang tìm mã...'),
               ),
             )
           ],
@@ -78,6 +81,25 @@ class _qrScannerPageState extends State<qrScannerPage> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        String code = result!.code!;
+        //scan to get product information
+        if (code.substring(0, 2) == 'SP') {
+          Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeftWithFade,
+                  child: ProductPage(int.parse(code.substring(2))),
+                  childCurrent: widget));
+        }
+        //scan to get order information
+        else if (code.substring(0, 2) == 'OR') {
+        }
+        //scan to get collection(sale,by brand,..ect) information
+        else if (code.substring(0, 2) == 'CL') {}
+      });
+    }).onDone(() {
+      Timer(Duration(seconds: 3), () {
+        print("Delay 3s to avoid rewrite");
       });
     });
   }

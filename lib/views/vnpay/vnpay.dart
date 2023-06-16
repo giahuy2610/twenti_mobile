@@ -12,7 +12,8 @@ import '../order_detail_page/orderDetailPage.dart';
 
 class Vnpay extends StatefulWidget {
   late final IdInvoice;
-  Vnpay(this.IdInvoice);
+  late final double TotalValue;
+  Vnpay(this.IdInvoice, this.TotalValue);
 
   @override
   State<Vnpay> createState() => _VnpayState();
@@ -26,7 +27,7 @@ class _VnpayState extends State<Vnpay> {
         child: Container(
           child: WebView(
               javascriptMode: JavascriptMode.unrestricted,
-              initialUrl: vnpay(),
+              initialUrl: vnpay(widget.TotalValue),
               navigationDelegate: (nav) async {
                 String url = nav.url;
                 if (url.contains('vnp_ResponseCode')) {

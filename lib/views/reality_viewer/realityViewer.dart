@@ -28,8 +28,8 @@ class _RealityViewerState extends State<RealityViewer> {
         ),
         Expanded(
             child: ModelViewer(
-          src: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
-          iosSrc: 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
+          src: 'assets/icons/loreal.glb',
+          iosSrc: 'assets/icons/loreal.glb',
           ar: true,
           autoRotate: true,
           cameraControls: true,

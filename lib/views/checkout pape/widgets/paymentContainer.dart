@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:twenti_mobile/providers/cartProvider.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
-import '../../../services/vnpay/vnpay.dart';
-
 class PaymentContainer extends StatefulWidget {
   @override
   State<PaymentContainer> createState() => _PaymentContainerState();
@@ -71,7 +69,6 @@ class _PaymentContainerState extends State<PaymentContainer> {
                                 context.read<CartProvider>().paymentMethod =
                                     i['id']!;
                               });
-                              vnpay();
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.6,

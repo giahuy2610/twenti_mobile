@@ -15,9 +15,9 @@ import 'package:twenti_mobile/views/account_page/accountPage.dart';
 import 'package:twenti_mobile/views/cart%20page/cartPage.dart';
 import 'package:twenti_mobile/views/cart%20page/controllers/getCart.dart';
 import 'package:twenti_mobile/views/category%20page/categoryPage.dart';
-import 'package:twenti_mobile/views/chat%20page/chatPage.dart';
 import 'package:twenti_mobile/views/home%20page/homePage.dart';
 import 'package:twenti_mobile/views/map_page/mapPage.dart';
+import 'package:twenti_mobile/views/notification_page/notificationPage.dart';
 import 'package:twenti_mobile/views/search%20page/searchPage.dart';
 import 'package:twenti_mobile/views/welcome_page/welcomePage.dart';
 
@@ -31,7 +31,7 @@ void main() async {
   );
 
   // Initialize cho Local Notification
-  // await NotificationController.initializeLocalNotifications(debug: true);
+  await NotificationController.initializeLocalNotifications(debug: true);
 
   // Initialize cho Push Notification
   await NotificationController.initializeRemoteNotifications(debug: true);
@@ -158,7 +158,9 @@ class _MyAppState extends State<MyApp> with RouteAware {
   @override
   void initState() {
     super.initState();
-    NotificationController().requestFirebaseToken();
+    NotificationController()
+        .requestFirebaseToken()
+        .then((value) => context.read<CartProvider>().deviceTokenFCM = value);
     _setupQuickActions();
     _handleQuickActions();
   }
@@ -178,7 +180,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
             children: [
               HomePage(),
               CategoryPage(),
-              ChatPage(),
+              NotificationPage(),
               MapSample(),
               AccountPage()
             ],

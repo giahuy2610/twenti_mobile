@@ -34,6 +34,7 @@ class CartProvider with ChangeNotifier {
   late String city = 'province';
   late String district = 'district';
   late String ward = 'ward';
+  late String deviceTokenFCM;
 
   late String paymentMethod =
       "1"; //1 is cash on delivery, 2 is pay on vnpay gateway
@@ -88,22 +89,22 @@ class CartProvider with ChangeNotifier {
     });
     late final body;
     await SharedPreferencesObject()
-        .futureGetIdCus()
+        .futureGetAccountLocal()
         .then((value) => body = jsonEncode({
-              "IDCus": value.toString(),
-              "MethodPay": this.paymentMethod,
-              "CodeCoupon": this.selectedCoupon == null
-                  ? null
-                  : this.selectedCoupon!.codeCoupon,
+              "IDCus": value.idcus,
+              "MethodPay": paymentMethod,
+              "CodeCoupon":
+                  selectedCoupon == null ? null : selectedCoupon!.codeCoupon,
               "InvoiceDetail": invDetail,
-              "City": this.city,
-              "District": this.district,
-              "Ward": this.ward,
-              "AddressDetail": this.addressDetail,
-              "Email": "giahuytrinh.26102002@gmail.com",
-              "Phone": this.phoneCustomer,
-              "FirstName": this.nameCustomer,
-              "LastName": "."
+              "City": city,
+              "District": district,
+              "Ward": ward,
+              "AddressDetail": addressDetail,
+              "Email": value.email,
+              "Phone": phoneCustomer,
+              "FirstName": nameCustomer,
+              "LastName": ".",
+              "DeviceTokenFCM": deviceTokenFCM
             }));
 
     http.Response response = await http.post(
@@ -113,7 +114,8 @@ class CartProvider with ChangeNotifier {
     );
     return {
       'IDInvoice': jsonDecode(response.body)['IDInvoice'],
-      "MethodPay": jsonDecode(response.body)['MethodPay']
+      "MethodPay": jsonDecode(response.body)['MethodPay'],
+      "TotalValue": jsonDecode(response.body)['TotalValue']
     };
   }
 

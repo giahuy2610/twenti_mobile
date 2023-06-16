@@ -132,7 +132,7 @@ class VNPAYFlutter {
 
 // import 'package:vnpay_flutter/vnpay_flutter.dart';
 //
-String vnpay() {
+String vnpay(double amount) {
   print("vnpay attacked");
   final paymentUrl = VNPAYFlutter.instance.generatePaymentUrl(
     url:
@@ -143,7 +143,7 @@ String vnpay() {
         .millisecondsSinceEpoch
         .toString(), //ref code, default is timestamp
     orderInfo: 'Pay 30.000 VND', //order info, default is Pay Order
-    amount: 30000, //amount
+    amount: amount, //amount
     returnUrl:
         "http://localhost:8000/api/vnpay-return", //https://sandbox.vnpayment.vn/apis/docs/huong-dan-tich-hop/#code-returnurl
     ipAdress: '192.168.1.4', //Your IP address
