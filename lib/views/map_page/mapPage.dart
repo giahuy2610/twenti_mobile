@@ -38,69 +38,80 @@ class MapSampleState extends State<MapSample> {
         position: LatLng(10.79050603641339, 106.68831586075733))
   };
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    determinePosition().then((value) {
-      print("position loading");
-      currentPosition = value;
-      print("position loaded");
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   determinePosition().then((value) {
+  //     print("position loading");
+  //     currentPosition = value;
+  //     print(value);
+  //     super.initState();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(alignment: Alignment.bottomLeft, children: [
-        GoogleMap(
-          markers: this.markerList,
-          mapType: MapType.hybrid,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(currentPosition.latitude, currentPosition.longitude),
-            zoom: 20,
-          ),
-          onMapCreated: (GoogleMapController controller) {
-            _controller.complete(controller);
-          },
-          padding: EdgeInsets.only(
-            top: 50.0,
-          ),
-          myLocationEnabled: true,
-        ),
-        Container(
-          padding: EdgeInsets.all(20),
-          child: Material(
-            clipBehavior: Clip.hardEdge,
-            borderRadius: BorderRadius.circular(50),
-            color: Colors.black, // button color
-            child: InkWell(
-              splashColor: Colors.white70,
-              onTap: () {
-                _goToNearest();
-              }, // button pressed
-
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(
-                      Icons.store,
-                      color: Colors.white,
-                    ), // icon
-                    Text(
-                      "Gần nhất",
-                      style: TextStyle(fontSize: 12, color: Colors.white),
-                    ), // text
-                  ],
+      body: FutureBuilder(
+        future: determinePosition(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            currentPosition = snapshot.data!;
+            return Stack(alignment: Alignment.bottomLeft, children: [
+              GoogleMap(
+                markers: this.markerList,
+                mapType: MapType.hybrid,
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
+                      currentPosition.latitude, currentPosition.longitude),
+                  zoom: 20,
                 ),
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                },
+                padding: EdgeInsets.only(
+                  top: 50.0,
+                ),
+                myLocationEnabled: true,
               ),
-            ),
-          ),
-        )
-      ]),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Material(
+                  clipBehavior: Clip.hardEdge,
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.black, // button color
+                  child: InkWell(
+                    splashColor: Colors.white70,
+                    onTap: () {
+                      _goToNearest();
+                    }, // button pressed
+
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.store,
+                            color: Colors.white,
+                          ), // icon
+                          Text(
+                            "Gần nhất",
+                            style: TextStyle(fontSize: 12, color: Colors.white),
+                          ), // text
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ]);
+          } else
+            return Container();
+        },
+      ),
     );
   }
 

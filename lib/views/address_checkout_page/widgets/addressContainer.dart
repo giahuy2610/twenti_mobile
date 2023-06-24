@@ -150,8 +150,8 @@ class _AddressCheckoutContainerState extends State<AddressCheckoutContainer> {
               alignment: Alignment.center,
               padding: EdgeInsets.fromLTRB(20, 3, 20, 0),
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.shade400),
+                  color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10)),
               child: TextField(
                 onChanged: (value) {

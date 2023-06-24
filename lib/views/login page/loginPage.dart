@@ -120,12 +120,13 @@ class _LoginPageState extends State<LoginPage> {
                       });
 
                       Authentication.signInWithGoogle().then((value) =>
-                          Navigator.pushReplacement(
+                          Navigator.pushAndRemoveUntil(
                               context,
                               PageTransition(
                                   type: PageTransitionType.rightToLeftWithFade,
                                   child: MyApp(),
-                                  childCurrent: widget)));
+                                  childCurrent: widget),
+                              (Route route) => false));
                     },
                   ),
                 ),

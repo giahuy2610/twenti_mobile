@@ -29,16 +29,16 @@ class _notificationItemState extends State<notificationItem> {
           setState(() {
             futureReadNotification(widget.notiData.iDNoti);
             widget.isRead = true;
-            if (widget.notiData.type == 2) {
-              futureGetOrderDetail(int.parse(widget.notiData.note!)).then(
-                  (value) => Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.rightToLeftWithFade,
-                          child: OrderDetailPage(value),
-                          childCurrent: widget)));
-            }
           });
+        }
+        if (widget.notiData.type == 2) {
+          futureGetOrderDetail(int.parse(widget.notiData.note!)).then((value) =>
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeftWithFade,
+                      child: OrderDetailPage(value),
+                      childCurrent: widget)));
         }
       },
       child: Stack(

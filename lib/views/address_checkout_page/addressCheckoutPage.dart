@@ -15,12 +15,30 @@ class AddressCheckoutPage extends StatefulWidget {
 }
 
 class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
-  late String? nameCustomer;
+  late String nameCustomer = '';
   late String? phoneCustomer;
   late String? addressDetail;
   late String? city;
   late String? district;
   late String? ward;
+  bool isValid = false;
+
+  void getCheckValid() {
+    bool newIsValid = false;
+    if (nameCustomer.isNotEmpty &&
+        phoneCustomer!.isNotEmpty &&
+        city!.isNotEmpty &&
+        district!.isNotEmpty &&
+        ward!.isNotEmpty &&
+        addressDetail!.isNotEmpty)
+      newIsValid = true;
+    else
+      newIsValid = false;
+    if (newIsValid != isValid)
+      setState(() {
+        isValid = newIsValid;
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +77,10 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
                   (e) => this.city = e,
                   (e) => this.district = e,
                   (e) => this.ward = e,
-                  (e) => this.addressDetail = e,
+                  (e) {
+                    this.addressDetail = e;
+                    this.getCheckValid();
+                  },
                 ),
               ],
             )),
@@ -96,42 +117,69 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      context.read<CartProvider>().saveCustomerAddressContact(
-                          this.nameCustomer!,
-                          this.phoneCustomer!,
-                          this.city!,
-                          this.district!,
-                          this.ward!,
-                          this.addressDetail!);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.indigo,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.check,
-                            color: Colors.white,
+                  isValid == true
+                      ? InkWell(
+                          onTap: () {
+                            context
+                                .read<CartProvider>()
+                                .saveCustomerAddressContact(
+                                    this.nameCustomer!,
+                                    this.phoneCustomer!,
+                                    this.city!,
+                                    this.district!,
+                                    this.ward!,
+                                    this.addressDetail!);
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.indigo,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Hoàn thành",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
-                          SizedBox(
-                            width: 5,
+                        )
+                      : Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          Text(
-                            "Hoàn thành",
-                            style: TextStyle(color: Colors.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                Icons.check,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "Hoàn thành",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
+                        ),
                 ],
               ),
             ),

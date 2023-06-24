@@ -40,7 +40,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                   .defaultVerticalPaddingOfScreen /
                               2),
                       children: [
-                        for (var i in snapshot.data!) notificationItem(i)
+                        for (var i in snapshot.data!.reversed)
+                          notificationItem(i)
                       ],
                     );
                   } else {
