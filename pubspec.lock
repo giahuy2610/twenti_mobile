@@ -295,6 +295,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.4"
+  easy_localization:
+    dependency: "direct main"
+    description:
+      name: easy_localization
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
+  easy_logger:
+    dependency: transitive
+    description:
+      name: easy_logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -398,13 +412,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  flutter_i18n:
-    dependency: "direct main"
-    description:
-      name: flutter_i18n
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.32.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -1188,13 +1195,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  toml:
-    dependency: transitive
-    description:
-      name: toml
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.1"
   typed_data:
     dependency: transitive
     description:
@@ -1342,13 +1342,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.4.1"
-  xml2json:
-    dependency: transitive
-    description:
-      name: xml2json
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.3.2"
   yaml:
     dependency: transitive
     description:

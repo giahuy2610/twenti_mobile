@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -28,7 +29,10 @@ class OrderDetailPage extends StatelessWidget {
                       },
                       icon: const Icon(Icons.keyboard_arrow_left)),
                 ),
-                Text("Chi tiết đơn hàng", style: Theme.of(context).textTheme.titleMedium,)
+                Text(
+                  "orderDetail".tr(),
+                  style: Theme.of(context).textTheme.titleMedium,
+                )
               ],
             ),
             isSearcher: false),
@@ -80,7 +84,7 @@ class OrderDetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Text("Địa chỉ nhận hàng",
+                        Text("address".tr(),
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         Text(
                             "${orderData.address.firstName} ${orderData.address.lastName}|${orderData.address.phone}"),

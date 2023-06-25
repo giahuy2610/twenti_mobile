@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -157,7 +158,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                                 (widget.isUseInCart == true)
                                     ? quantityPicker()
                                     : Text(
-                                        "Số lượng: ${widget.quantity}",
+                                        "${'quantity'.tr()}: ${widget.quantity}",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       )

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/models/notification/notification.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -21,8 +22,8 @@ class _NotificationPageState extends State<NotificationPage> {
             child: Column(
       children: [
         TopNavigation(
-          left:
-              Text("Thông báo", style: Theme.of(context).textTheme.titleMedium),
+          left: Text("notifications".tr(),
+              style: Theme.of(context).textTheme.titleMedium),
           isSearcher: false,
         ),
         Expanded(

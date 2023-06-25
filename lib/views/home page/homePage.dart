@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                 topRight: Radius.circular(10),
                                 bottomRight: Radius.circular(10))),
                         child: Text(
-                          "Gợi ý cho bạn",
+                          "recommendations".tr(),
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!

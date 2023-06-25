@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart' as badges;
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,6 +30,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await EasyLocalization.ensureInitialized();
 
   // Initialize cho Local Notification
   await NotificationController.initializeLocalNotifications(debug: true);
@@ -37,11 +39,19 @@ void main() async {
   await NotificationController.initializeRemoteNotifications(debug: true);
 
   runApp(
-    MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => GlobalProvider()),
-      ChangeNotifierProvider(create: (_) => CartProvider()),
-      ChangeNotifierProvider(create: (_) => CollectionPageProvider()),
-    ], child: TwentiApp()),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => GlobalProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => CollectionPageProvider()),
+      ],
+      child: EasyLocalization(
+          supportedLocales: [Locale('en', 'US'), Locale('vn', 'VN')],
+          path:
+              'assets/language', // <-- change the path of the translation files
+          fallbackLocale: Locale('en', 'US'),
+          child: TwentiApp()),
+    ),
   );
 }
 
@@ -84,7 +94,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
   List<Map<String, dynamic>> navList = [
     {
       'id': 0,
-      "title": "Trang chủ",
+      "title": "home",
       "iconPath": "assets/icons/icon_house.svg",
       "routePath": "",
       "isNoti": false,
@@ -92,7 +102,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
     },
     {
       'id': 1,
-      "title": "Danh mục",
+      "title": "explore",
       "iconPath": "assets/icons/icon_lipstick.svg",
       "routePath": "",
       "isNoti": false,
@@ -100,7 +110,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
     },
     {
       'id': 2,
-      "title": "Thông báo",
+      "title": "notifications",
       "iconPath": "assets/icons/icon_bell.svg",
       "routePath": "",
       "isNoti": true,
@@ -108,7 +118,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
     },
     {
       'id': 3,
-      "title": "Cửa hàng",
+      "title": "stores",
       "iconPath": "assets/icons/icon_map.svg",
       "routePath": "",
       "isNoti": false,
@@ -116,7 +126,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
     },
     {
       'id': 4,
-      "title": "Tài khoản",
+      "title": "account",
       "iconPath": "assets/icons/User.svg",
       "routePath": "",
       "isNoti": true,
@@ -170,6 +180,9 @@ class _MyAppState extends State<MyApp> with RouteAware {
   Widget build(BuildContext context) {
     getCart(context);
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       navigatorKey: navigatorKey,
       title: 'Twenti',
       theme: lightTheme,
@@ -238,7 +251,7 @@ class _MyAppState extends State<MyApp> with RouteAware {
                                         width: 5,
                                       ),
                                       Text(
-                                        i['title'],
+                                        i['title'].toString().tr(),
                                         style: const TextStyle(
                                             color: Colors.red,
                                             fontWeight: FontWeight.bold),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
@@ -7,13 +8,13 @@ class relatedProductsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       padding: EdgeInsets.all(
           Theme.of(context).own().defaultVerticalPaddingOfScreen),
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(color: Colors.white),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          "Có thể bạn cũng thích",
+          "recommendations".tr(),
           style: Theme.of(context).textTheme.titleMedium,
         ),
         // productListView(productList)

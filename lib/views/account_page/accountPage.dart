@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/views/account_page/widgets/accountMenu.dart';
 import 'package:twenti_mobile/views/account_page/widgets/avatar.dart';
-import 'package:twenti_mobile/views/account_page/widgets/historyPurchasedListView.dart';
 import 'package:twenti_mobile/views/account_page/widgets/orderMenu.dart';
 
 //the reason why this page is stateless is because
@@ -20,7 +19,7 @@ class AccountPage extends StatelessWidget {
             children: [
               Avatar(),
               OrderMenu(),
-              HistoryPurchasedListView(),
+              // HistoryPurchasedListView(),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/coupon/Coupon.dart';
@@ -31,7 +32,7 @@ class _CouponPageState extends State<CouponPage> {
                       icon: const Icon(Icons.keyboard_arrow_left)),
                 ),
                 Text(
-                  "Ví voucher",
+                  "vouchers".tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                 )
               ],

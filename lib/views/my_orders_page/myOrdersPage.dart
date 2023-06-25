@@ -1,10 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 import 'package:twenti_mobile/views/my_orders_page/widgets/orderListView.dart';
 
 import './trackingStatusConstrain.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
-import '../../services/chat/chat.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                     icon: const Icon(Icons.keyboard_arrow_left)),
               ),
               Text(
-                "Đơn hàng của tôi",
+                "myOrders".tr(),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ],
@@ -59,7 +59,9 @@ class _MyOrdersPageState extends State<MyOrdersPage>
                   isScrollable: true,
                   controller: _tabController,
                   tabs: [
-                    for (var i in statusList)
+                    for (var i in context.locale.languageCode == 'vn'
+                        ? statusList
+                        : statusListEn)
                       Tab(
                         child: Container(
                           padding: EdgeInsets.all(5),

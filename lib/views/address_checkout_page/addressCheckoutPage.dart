@@ -123,7 +123,7 @@ class _AddressCheckoutPageState extends State<AddressCheckoutPage> {
                             context
                                 .read<CartProvider>()
                                 .saveCustomerAddressContact(
-                                    this.nameCustomer!,
+                                    this.nameCustomer,
                                     this.phoneCustomer!,
                                     this.city!,
                                     this.district!,

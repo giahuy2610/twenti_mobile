@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -156,8 +157,8 @@ class _couponState extends State<coupon> {
                           identical(
                                   context.watch<CartProvider>().selectedCoupon,
                                   widget.model)
-                              ? "Đang sử dụng"
-                              : "Áp dụng",
+                              ? "voucherApplied".tr()
+                              : "voucherApply".tr(),
                           style: TextStyle(
                             fontSize: 15,
                             color: buttonFontColor,

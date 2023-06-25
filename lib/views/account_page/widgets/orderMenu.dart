@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -31,12 +32,12 @@ class OrderMenu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Đơn hàng của tôi',
+                  'myOrders'.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: [Text("Xem tất cả"), Icon(Icons.chevron_right)],
+                  children: [Text("all".tr()), Icon(Icons.chevron_right)],
                 ),
               ],
             ),
@@ -61,8 +62,8 @@ class OrderMenu extends StatelessWidget {
                           height: 30,
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          'Chờ xác nhận',
+                        Text(
+                          'pending'.tr(),
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -85,8 +86,8 @@ class OrderMenu extends StatelessWidget {
                           height: 30,
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          'Đang giao',
+                        Text(
+                          'toShip'.tr(),
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -109,8 +110,8 @@ class OrderMenu extends StatelessWidget {
                           height: 30,
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          'Đã giao',
+                        Text(
+                          'completed'.tr(),
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -133,8 +134,8 @@ class OrderMenu extends StatelessWidget {
                           height: 30,
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          'Đã hủy',
+                        Text(
+                          'canceled'.tr(),
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,

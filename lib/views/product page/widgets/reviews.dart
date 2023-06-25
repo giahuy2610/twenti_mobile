@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -30,7 +31,7 @@ class reviews extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Đánh giá ",
+                    "reviews".tr(),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text("(${reviewList.length})"),
@@ -62,11 +63,9 @@ class reviews extends StatelessWidget {
                           type: PageTransitionType.rightToLeftWithFade,
                           child: reviewPage(reviewList),
                           childCurrent: this)),
-                  child: const Text("Xem tất cả >")),
+                  child: Text("${"all".tr()} >")),
             ),
-          if (reviewList.isEmpty)
-            Text(
-                "Nhanh tay mua hàng để trở thành người đầu tiên đánh giá sản phẩm")
+          if (reviewList.isEmpty) Text("makeFirstReview".tr())
         ],
       ),
     );

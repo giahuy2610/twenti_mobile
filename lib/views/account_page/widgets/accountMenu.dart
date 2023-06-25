@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -11,48 +12,56 @@ class AccountMenu extends StatelessWidget {
   late List<dynamic> menuItem = [
     {
       "name": "Đã xem gần đây",
+      "nameEn": "Recently viewed",
       "icon": "assets/icons/viewed.svg",
       "route": ViewRecentsPage(),
       "function": null
     },
     {
       "name": "Đã thích",
+      "nameEn": "Favorite",
       "icon": "assets/icons/heart.svg",
       "route": ViewRecentsPage(),
       "function": null
     },
     {
       "name": "Mã giảm giá",
+      "nameEn": "Voucher",
       "icon": "assets/icons/voucher.svg",
       "route": CouponPage(),
       "function": null
     },
     {
       "name": "Khách thân thiết",
+      "nameEn": "Memberships",
       "icon": "assets/icons/medal.svg",
       "route": ViewRecentsPage(),
       "function": null
     },
     {
       "name": "Nạp tiền",
+      "nameEn": "Top up",
       "icon": "assets/icons/Dollar.svg",
       "route": ViewRecentsPage(),
       "function": null
     },
     {
       "name": "Twenti live",
+      "nameEn": "Twenti live",
       "icon": "assets/icons/live.svg",
       "route": ViewRecentsPage(),
       "function": null
     },
     {
       "name": "Nhắn tin",
+      "nameEn": "Chat with Twenti",
       "icon": "assets/icons/chat.svg",
       "route": null,
       "function": newChat
     },
     {
       "name": "Trợ giúp",
+      "nameEn": "Help",
       "icon": "assets/icons/faq.svg",
       "route": ViewRecentsPage(),
       "function": null
@@ -102,13 +111,15 @@ class AccountMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset(i['icon']!.toString()),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
-                      i['name']!.toString(),
+                      context.locale.languageCode == 'vn'
+                          ? i['name']!.toString()
+                          : i['nameEn']!.toString(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ],
                 ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -70,8 +71,8 @@ class _descriptionState extends State<description> {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         )),
-                        child: const Text(
-                          "Xem đầy đủ",
+                        child: Text(
+                          "readAll".tr(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -88,8 +89,8 @@ class _descriptionState extends State<description> {
                   child: Container(
                     padding: const EdgeInsets.all(20),
                     alignment: Alignment.center,
-                    child: const Text(
-                      "Thu gọn",
+                    child: Text(
+                      "minimize".tr(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),

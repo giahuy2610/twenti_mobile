@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -124,8 +125,8 @@ class _OrderCardState extends State<OrderCard> {
                                 child: checkoutPage(),
                                 childCurrent: widget));
                       },
-                      child: const Text(
-                        "Mua lại",
+                      child: Text(
+                        "buyAgain".tr(),
                         style: TextStyle(
                           color: Colors.redAccent,
                         ),
@@ -156,8 +157,8 @@ class _OrderCardState extends State<OrderCard> {
                                           widget.orderData.products),
                                       childCurrent: widget));
                             },
-                            child: const Text(
-                              "Đánh giá",
+                            child: Text(
+                              "toReview".tr(),
                               style: TextStyle(
                                 color: Colors.redAccent,
                               ),
@@ -197,8 +198,8 @@ class _OrderCardState extends State<OrderCard> {
                                 color: Colors.redAccent,
                               ),
                             ),
-                            child: const Text(
-                              "Hủy đơn",
+                            child: Text(
+                              "toCancel".tr(),
                               style: TextStyle(
                                 color: Colors.redAccent,
                               ),

@@ -27,7 +27,6 @@ class GridItem extends StatelessWidget {
                 nameList,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              TextButton(onPressed: () {}, child: Text("Xem tất cả"))
             ],
           ),
           Wrap(

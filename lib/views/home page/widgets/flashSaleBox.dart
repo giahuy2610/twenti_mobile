@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/themes/theme.dart';
 
@@ -85,10 +86,11 @@ class _flashSaleHeaderState extends State<flashSaleHeader> {
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
-                              text: ' NGÀY',
-                              style: TextStyle(fontWeight: FontWeight.normal)),
+                              text: 'days'.tr(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.normal)),
                         ],
                       ),
                     ),
@@ -104,9 +106,9 @@ class _flashSaleHeaderState extends State<flashSaleHeader> {
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
-                              text: ' GIỜ',
+                              text: 'hours'.tr(),
                               style: TextStyle(fontWeight: FontWeight.normal)),
                         ],
                       ),
@@ -124,9 +126,9 @@ class _flashSaleHeaderState extends State<flashSaleHeader> {
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
-                              text: ' PHÚT',
+                              text: 'mins'.tr(),
                               style: TextStyle(fontWeight: FontWeight.normal)),
                         ],
                       ),
@@ -140,9 +142,9 @@ class _flashSaleHeaderState extends State<flashSaleHeader> {
                         style: DefaultTextStyle.of(context).style.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor),
-                        children: const <TextSpan>[
+                        children: <TextSpan>[
                           TextSpan(
-                              text: ' GIÂY',
+                              text: 'secs'.tr(),
                               style: TextStyle(fontWeight: FontWeight.normal)),
                         ],
                       ),

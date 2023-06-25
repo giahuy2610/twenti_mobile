@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:twenti_mobile/views/checkout%20pape/widgets/addressContainer.dart';
 import 'package:twenti_mobile/views/checkout%20pape/widgets/couponContainer.dart';
@@ -34,7 +35,7 @@ class _checkoutPageState extends State<checkoutPage> {
                       icon: const Icon(Icons.keyboard_arrow_left)),
                 ),
                 Text(
-                  "Thanh toán",
+                  "checkout".tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                 )
               ],

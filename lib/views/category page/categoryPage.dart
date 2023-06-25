@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/views/category%20page/widgets/grid_item.dart';
@@ -112,8 +113,8 @@ class CategoryPage extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              GridItem("Nhãn hàng", dataBrand),
-              GridItem("Công dụng", dataCategory)
+              GridItem("brands".tr(), dataBrand),
+              GridItem("categories".tr(), dataCategory)
             ],
           ),
         )

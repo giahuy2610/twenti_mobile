@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             Expanded(
               child: RichText(
                 text: TextSpan(
-                  text: 'Tổng: ',
+                  text: 'total'.tr(),
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
                     TextSpan(
@@ -64,8 +65,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: Color.fromRGBO(215, 129, 121, 1)),
-                        child: const Text(
-                          "Thanh toán",
+                        child: Text(
+                          "placeOrder".tr(),
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 20,
@@ -82,9 +83,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: Colors.grey.shade400),
-                        child: const Text(
-                          "Thanh toán",
-                          style: TextStyle(
+                        child: Text(
+                          "placeOrder".tr(),
+                          style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 20,
                               color: Colors.white),

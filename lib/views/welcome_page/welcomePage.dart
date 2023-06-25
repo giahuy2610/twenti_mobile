@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/main.dart';
@@ -19,6 +20,9 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         debugShowCheckedModeBanner: false,
         home: Builder(
           builder: (BuildContext context) => Scaffold(
@@ -70,8 +74,8 @@ class _WelcomePageState extends State<WelcomePage> {
                                   begin: Offset(
                                       MediaQuery.of(context).size.width, 0),
                                   end: const Offset(0, 0)),
-                              child: const Text(
-                                "Khám phá các thương hiệu dành cho bạn",
+                              child: Text(
+                                "welcomeQuote1".tr(),
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 22),
                               ),
@@ -90,9 +94,9 @@ class _WelcomePageState extends State<WelcomePage> {
                                   begin: Offset(
                                       MediaQuery.of(context).size.width, 0),
                                   end: const Offset(0, 0)),
-                              child: const Text(
-                                "Khám phá sản phẩm dễ dàng qua các thương hiệu",
-                                style: TextStyle(color: Colors.grey),
+                              child: Text(
+                                "welcomeQuote2".tr(),
+                                style: const TextStyle(color: Colors.grey),
                               ),
                               builder: (context, offset, child) {
                                 return Transform.translate(
@@ -115,9 +119,9 @@ class _WelcomePageState extends State<WelcomePage> {
                                           .rightToLeftWithFade,
                                       child: const LoginPage(),
                                       childCurrent: widget)),
-                              child: const Text(
-                                "Đăng ký tài khoản miễn phí",
-                                style: TextStyle(
+                              child: Text(
+                                "welcomeQuote3".tr(),
+                                style: const TextStyle(
                                     color: Colors.white,
                                     decoration: TextDecoration.underline,
                                     fontWeight: FontWeight.bold,
@@ -157,26 +161,67 @@ class _WelcomePageState extends State<WelcomePage> {
                                           .rightToLeftWithFade,
                                       child: LoginPage(),
                                       childCurrent: widget)),
-                              child: const Text(
-                                "Đăng nhập",
-                                style: TextStyle(
+                              child: Text(
+                                "login".tr(),
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () => Navigator.pushReplacement(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType
-                                          .rightToLeftWithFade,
-                                      child: MyApp(),
-                                      childCurrent: widget)),
-                              child: const Text(
-                                "Bỏ qua",
-                                style: TextStyle(color: Colors.white),
+                            Row(children: [
+                              GestureDetector(
+                                onTap: () => Navigator.pushReplacement(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        child: MyApp(),
+                                        childCurrent: widget)),
+                                child: Text(
+                                  "skip".tr(),
+                                  style: const TextStyle(color: Colors.white),
+                                ),
                               ),
-                            )
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              if (context.locale.languageCode == "vn")
+                                IconButton(
+                                    onPressed: () {
+                                      context
+                                          .setLocale(const Locale("en", "US"));
+                                    },
+                                    icon: Container(
+                                      width: 40,
+                                      height: 40,
+                                      clipBehavior: Clip.hardEdge,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(500)),
+                                      child: Image.network(
+                                        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/1280px-Flag_of_Vietnam.svg.png",
+                                        width: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ))
+                              else
+                                IconButton(
+                                    onPressed: () {
+                                      context.setLocale(Locale("vn", "VN"));
+                                    },
+                                    icon: Container(
+                                      width: 40,
+                                      height: 40,
+                                      clipBehavior: Clip.hardEdge,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(500)),
+                                      child: Image.network(
+                                        "https://cdn.britannica.com/33/4833-050-F6E415FE/Flag-United-States-of-America.jpg",
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ))
+                            ])
                           ],
                         ),
                       ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -144,8 +145,8 @@ class _topNavigationSearchPageState extends State<topNavigationSearchPage> {
                           decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(8)),
-                          child: const Text(
-                            "Tìm kiếm",
+                          child: Text(
+                            "search".tr(),
                             style: TextStyle(
                               color: Colors.white,
                             ),

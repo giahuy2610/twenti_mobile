@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -63,10 +64,10 @@ class CartPage extends StatelessWidget {
                                             RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(18.0),
-                                                side: BorderSide(
+                                                side: const BorderSide(
                                                     color: Colors.red)))),
-                                    child: Text("Đăng nhập")),
-                                SizedBox(
+                                    child: Text("login".tr())),
+                                const SizedBox(
                                   width: 15,
                                 ),
                                 OutlinedButton(
@@ -83,9 +84,9 @@ class CartPage extends StatelessWidget {
                                             RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(18.0),
-                                                side: BorderSide(
+                                                side: const BorderSide(
                                                     color: Colors.red)))),
-                                    child: Text("Đăng kí"))
+                                    child: Text("signup".tr()))
                               ],
                             ));
                       } else

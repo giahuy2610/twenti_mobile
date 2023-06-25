@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -187,8 +188,8 @@ class ProductPage extends StatelessWidget {
                                     color: Color.fromRGBO(244, 163, 155, 0.4),
                                     border:
                                         Border.all(color: Colors.redAccent)),
-                                child: const Text(
-                                  "MUA NGAY",
+                                child: Text(
+                                  "buyNow".tr().toUpperCase(),
                                   style: TextStyle(
                                       color: Colors.redAccent,
                                       fontWeight: FontWeight.bold),
@@ -211,8 +212,8 @@ class ProductPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     color: Colors.red.shade400,
                                     borderRadius: BorderRadius.circular(500)),
-                                child: const Text(
-                                  "THÊM VÀO GIỎ",
+                                child: Text(
+                                  "addToCart".tr().toUpperCase(),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
