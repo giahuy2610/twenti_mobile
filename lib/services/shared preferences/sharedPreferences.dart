@@ -11,6 +11,18 @@ class SharedPreferencesObject {
   }
    */
 
+  Future<bool> saveCoachGuideState(bool newState) async {
+    final prefs = await _prefs;
+    await prefs.setBool('coachState', newState).then((bool success) {});
+    return true;
+  }
+
+  Future<bool> getCoachGuideState() async {
+    final prefs = await _prefs;
+    bool? res = await prefs.getBool('coachState');
+    return res ?? false;
+  }
+
   Future<bool> saveLoginState(Account account) async {
     final prefs = await _prefs;
     await prefs.setString('idcus', account.idcus).then((bool success) {});

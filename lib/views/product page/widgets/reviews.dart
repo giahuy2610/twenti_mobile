@@ -48,9 +48,6 @@ class reviews extends StatelessWidget {
               margin: EdgeInsets.symmetric(
                   vertical: Theme.of(context).own().defaultProductCardMargin),
               child: reviewItem(i),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade500),
-                  borderRadius: BorderRadius.circular(5)),
             ),
           if (reviewList.length > 2)
             Padding(

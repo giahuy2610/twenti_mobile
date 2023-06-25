@@ -92,7 +92,7 @@ class ProductPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Mô tả sản phẩm",
+                              "productDescriptions".tr(),
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             description(data.description!),

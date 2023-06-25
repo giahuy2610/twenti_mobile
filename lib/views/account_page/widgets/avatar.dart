@@ -124,31 +124,31 @@ class _AvatarState extends State<Avatar> {
                     ),
                   ),
                   //Hiển thị đã thích và đang theo dõi
-                  Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          'Đã thích: 0',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Padding(
-                        padding: EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          'Đang theo dõi: 0',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: const [
+                  //     Padding(
+                  //       padding: EdgeInsets.only(top: 5.0),
+                  //       child: Text(
+                  //         'Đã thích: 0',
+                  //         style: TextStyle(
+                  //           fontSize: 14,
+                  //           fontWeight: FontWeight.w400,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     SizedBox(width: 10),
+                  //     Padding(
+                  //       padding: EdgeInsets.only(top: 5.0),
+                  //       child: Text(
+                  //         'Đang theo dõi: 0',
+                  //         style: TextStyle(
+                  //           fontSize: 14,
+                  //           fontWeight: FontWeight.w300,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ]),
           ],
         ),

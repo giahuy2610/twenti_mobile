@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:twenti_mobile/common%20widgets/rating%20stars/ratingStars.dart';
@@ -17,14 +18,13 @@ class reviewItem extends StatelessWidget {
           Theme.of(context).own().defaultVerticalPaddingOfScreen),
       margin: EdgeInsets.symmetric(
           horizontal: 0,
-          vertical: Theme.of(context).own().defaultProductCardMargin),
+          vertical: Theme.of(context).own().defaultProductCardMargin / 2),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Theme.of(context).own().defaultContainerColor),
+          borderRadius: BorderRadius.circular(10), color: Colors.grey.shade100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Khách hàng"),
+          Text("customer".tr()),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -40,11 +40,6 @@ class reviewItem extends StatelessWidget {
             children: [
               for (var i in review.images!)
                 InkWell(
-                  // onTap: () => Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (_) =>
-                  //             viewImagePage(review.images, _current))),
                   child: Container(
                     margin: EdgeInsets.only(right: 5),
                     width: 60,

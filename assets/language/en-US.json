@@ -46,5 +46,9 @@
   "canceled": "Canceled",
   "makeFirstReview": "Quickly to make a purchase and become the first customer to review the product",
   "readAll": "Read all",
-  "minimize": "Minimize"
+  "minimize": "Minimize",
+  "qrCoachGuide" : "Scan the QR code on the shelf to view product information directly on your Twenti application.",
+  "cart" : "Cart",
+  "cartCoachGuide": "Fill your cart and pick it up at the Twenti store, or we guarantee to ship it to you within 2 hours in HCMC and within 48 hours elsewhere"
+  ,"customer": "Customer"
 }

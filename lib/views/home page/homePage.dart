@@ -3,6 +3,7 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:skeletons/skeletons.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/product%20list%20view.dart';
 import 'package:twenti_mobile/common%20widgets/product_list_view/productListViewSkeleton.dart';
 import 'package:twenti_mobile/themes/theme.dart';
@@ -15,6 +16,7 @@ import '../../common widgets/image slider/imageSlider.dart';
 import '../../common widgets/top navigation/topNavigation.dart';
 import '../../models/image_slider/image_slider.dart';
 import '../../models/product/collection.dart';
+import '../../services/shared preferences/sharedPreferences.dart';
 import '../collection page/controllers/futureGetCollection.dart';
 import '../product page/productPage.dart';
 import 'controllers/futureGetImageSliderCollection.dart';
@@ -27,10 +29,154 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<TargetFocus> targets = [];
+  GlobalKey qrScanGlobalKey = GlobalKey();
+  GlobalKey cartGlobalKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
     initDynamicLinks();
+
+    targets.add(TargetFocus(
+        identify: "Target 1",
+        keyTarget: qrScanGlobalKey,
+        contents: [
+          TargetContent(
+              align: ContentAlign.bottom,
+              child: Container(
+                margin: EdgeInsets.only(top: 100),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "QR scanner",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20.0),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        "qrCoachGuide".tr(),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+              ))
+        ]));
+
+    targets.add(
+        TargetFocus(identify: "Target 2", keyTarget: cartGlobalKey, contents: [
+      TargetContent(
+          align: ContentAlign.left,
+          child: Container(
+            margin: EdgeInsets.only(top: 100),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "cart".tr(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20.0),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "cartCoachGuide".tr(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          )),
+      TargetContent(
+          align: ContentAlign.top,
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Multiples content",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20.0),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ))
+    ]));
+    //
+    // targets.add(
+    //     TargetFocus(identify: "Target 3", keyTarget: keyButton5, contents: [
+    //   TargetContent(
+    //       align: ContentAlign.right,
+    //       child: Container(
+    //         child: Column(
+    //           mainAxisSize: MainAxisSize.min,
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: <Widget>[
+    //             Text(
+    //               "Title lorem ipsum",
+    //               style: TextStyle(
+    //                   fontWeight: FontWeight.bold,
+    //                   color: Colors.white,
+    //                   fontSize: 20.0),
+    //             ),
+    //             Padding(
+    //               padding: const EdgeInsets.only(top: 10.0),
+    //               child: Text(
+    //                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
+    //                 style: TextStyle(color: Colors.white),
+    //               ),
+    //             )
+    //           ],
+    //         ),
+    //       ))
+    // ]));
+  }
+
+  void showTutorial() {
+    TutorialCoachMark(
+      targets: targets, // List<TargetFocus>
+      colorShadow: Theme.of(context).primaryColor, // DEFAULT Colors.black
+      // alignSkip: Alignment.bottomRight,
+      textSkip: "skip".tr(),
+      // paddingFocus: 10,
+      // opacityShadow: 0.8,
+      onClickTarget: (target) {
+        print(target);
+      },
+      onClickTargetWithTapPosition: (target, tapDetails) {
+        print("target: $target");
+        print(
+            "clicked at position local: ${tapDetails.localPosition} - global: ${tapDetails.globalPosition}");
+      },
+      onClickOverlay: (target) {
+        print(target);
+      },
+      onSkip: () {
+        print("skip");
+      },
+      onFinish: () {
+        print("finish");
+      },
+    ).show(context: context);
   }
 
   void initDynamicLinks() async {
@@ -59,6 +205,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SharedPreferencesObject().getCoachGuideState().then((value) {
+      if (value == false) {
+        showTutorial();
+        SharedPreferencesObject().saveCoachGuideState(true);
+      }
+    });
+
     return Scaffold(
         backgroundColor: Colors.white70,
         body: SafeArea(
@@ -67,6 +220,7 @@ class _HomePageState extends State<HomePage> {
             TopNavigation(
               isSearcher: true,
               left: Material(
+                key: qrScanGlobalKey,
                 child: IconButton(
                     onPressed: () {
                       Navigator.push(
@@ -78,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     icon: const Icon(Icons.qr_code_scanner_outlined)),
               ),
-              right: cartIcon(),
+              right: Container(key: cartGlobalKey, child: cartIcon()),
             ),
             Expanded(
                 child: ListView(

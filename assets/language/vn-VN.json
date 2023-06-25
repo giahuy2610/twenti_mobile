@@ -3,7 +3,7 @@
   "addToCart": "thêm vào giỏ",
   "login": "Đăng nhập",
   "logout": "Đăng xuất",
-  "sign up": "Đăng ký",
+  "signup": "Đăng ký",
   "placeOrder": "Thanh toán",
   "brands": "Nhãn hàng",
   "categories": "Công dụng",
@@ -46,5 +46,9 @@
   "canceled": "Đã hủy",
   "makeFirstReview": "Nhanh tay mua hàng để trở thành người đầu tiên đánh giá sản phẩm",
   "readAll": "Xem đầy đủ",
-  "minimize": "Thu gọn"
+  "minimize": "Thu gọn",
+  "qrCoachGuide": "Quét mã QR trên kệ hàng để xem thông tin sản phẩm ngay trên ứng dụng Twenti của bạn.",
+  "cart": "Giỏ hàng",
+  "cartCoachGuide": "Bạn có thể thêm sản phẩm vào giỏ hàng và nhận hàng tại cửa hàng hoặc Twenti cam kết giao trong 2h tại nội thành TP.HCM hoặc 48h trên toàn quốc."
+  ,"customer": "Khách hàng"
 }
