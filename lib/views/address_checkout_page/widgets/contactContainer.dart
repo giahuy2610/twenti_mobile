@@ -62,6 +62,7 @@ class _ContactContainerState extends State<ContactContainer> {
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10)),
               child: TextField(
+                maxLength: 10,
                 onChanged: (value) {
                   widget.callBackPhoneContact(value);
                 },
