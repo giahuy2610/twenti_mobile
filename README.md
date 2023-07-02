@@ -1,10 +1,11 @@
 # Twenti Beauti Mobile
-The next platform of Twenti Beauti Cosmestic
+The next platform of Twenti Beauti Cosmetic
 
-Visit to our website at https://github.com/giahuy2610/twentibeauti-frontend
-Our backend repository https://github.com/giahuy2610/twentibeauti_backend_laravel
+Visit our website at https://github.com/giahuy2610/twentibeauti-frontend  
+Our backend repository https://github.com/giahuy2610/twentibeauti_backend_laravel  
+Our figma design https://www.figma.com/file/haRsnj5ONyFoXtr2KjpPJd/%C4%90%E1%BB%92-%C3%81N?type=design&node-id=0%3A1&mode=design&t=5sUk85QIP8UPuIEP-1
 
-Our Vietnamse document: 
+Our Vietnamese document  
 Video demo: https://drive.google.com/file/d/1tbpy98CX0kNl3Qw7H1LVE3b3c9JSctJx/view?usp=sharing
 
 # What is Twenti Mobile
@@ -26,8 +27,5 @@ Video demo: https://drive.google.com/file/d/1tbpy98CX0kNl3Qw7H1LVE3b3c9JSctJx/vi
 14. Provider 
 15. Skeleton loading effect
 
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/9295385f-f3b6-4924-acae-8875de60567e)
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/68c22af7-c88c-4c15-97e5-5b60bba651ae)
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/f11c0287-94e6-4596-a48d-0f3e4ddcec79)
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/bf3f862e-cf42-48ec-bd07-322cb5131a11)
+
 
