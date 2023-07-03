@@ -22,30 +22,29 @@ Video demo:
 5. HTTP package
 6. Firebase OAuth 2.0
 7. Firebase Messaging  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/11cffe31-993e-43a0-9fe8-d4d81ca0f635)
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/11cffe31-993e-43a0-9fe8-d4d81ca0f635" width="300" />
 
-9. Kommunicate Chatbot  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/bfd1f47a-a76b-4235-b347-b326e9e2920f)
+8. Kommunicate Chatbot  
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/bfd1f47a-a76b-4235-b347-b326e9e2920f" width="300" />  
 
-11. VNPay gateway  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/0ab03ffa-ed25-464f-b894-765ae7806226)
+9. VNPay gateway
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/0ab03ffa-ed25-464f-b894-765ae7806226" width="300" />  
 
-13. Dynamic linking  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/330490b3-ea12-4807-8754-b622f866e3b2)
+10. Dynamic linking
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/330490b3-ea12-4807-8754-b622f866e3b2" width="300" />  
 
-15. Quick actions  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/db6d2c6a-9391-4d48-b5a8-3364541aac5d)
+11. Quick actions
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/db6d2c6a-9391-4d48-b5a8-3364541aac5d" width="300" />  
 
-16. QR code scanning to read product details  
-17. Shared preferences
-18. Google map  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/a9667f5b-bcec-4aa6-9f3b-817d03338ae0)
-
-19. Skeleton loading effect
-20. AR  
+12. QR code scanning to read product details  
+13. Shared preferences
+14. Google map  
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/a9667f5b-bcec-4aa6-9f3b-817d03338ae0" width="300" />  
+15. Skeleton loading effect
+16. AR  
 ![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/a730f41e-b11a-41e1-b047-4dfb52984def)
 ![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/47b0070a-7086-47bd-be2b-f541a0b0dc22.png)
-21. Multi-language
+17. Multi-language
 
 
 
