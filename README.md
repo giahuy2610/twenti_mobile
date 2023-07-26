@@ -37,14 +37,19 @@ Video demo:
 <img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/db6d2c6a-9391-4d48-b5a8-3364541aac5d" width="300" />  
 
 12. QR code scanning to read product details  
-13. Shared preferences
+13. Shared preferences  
 14. Google map  
-<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/a9667f5b-bcec-4aa6-9f3b-817d03338ae0" width="300" />  
-15. Skeleton loading effect
-16. AR  
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/a730f41e-b11a-41e1-b047-4dfb52984def)
-![image](https://github.com/giahuy2610/twenti_mobile/assets/87313146/47b0070a-7086-47bd-be2b-f541a0b0dc22.png)
-17. Multi-language
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/a9667f5b-bcec-4aa6-9f3b-817d03338ae0" width="300" />
+
+16. Skeleton loading effect
+
+18. AR
+
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/a730f41e-b11a-41e1-b047-4dfb52984def" width="300" /> 
+
+<img src="https://github.com/giahuy2610/twenti_mobile/assets/87313146/47b0070a-7086-47bd-be2b-f541a0b0dc22" width="300" /> 
+
+18. Multi-language
 
 
 
